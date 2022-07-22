@@ -1,0 +1,43 @@
+<div id="app">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <img class="img-responsive" src="assets/images/logo.png">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Acceuil</a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showRhBoard">
+        <a href="/rh" class="nav-link" routerLink="rh">Ressources Humaines</a>
+      </li>
+      <li class="nav-item">
+        <a href="/manager" class="nav-link" *ngIf="isLoggedIn" routerLink="manager">Manager</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">S'inscrire</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Se Connecter</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ name }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">Se déconnecter</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <br>
+    <router-outlet></router-outlet>
+  </div>
+</div>

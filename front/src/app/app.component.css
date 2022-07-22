@@ -1,0 +1,10 @@
+.img-responsive {
+  height: 40px;
+  width: 130px;
+}
+.nav-link {
+  font-size: 17px;
+}
+.bg-dark {
+  background-color: #091E3E !important;
+}
