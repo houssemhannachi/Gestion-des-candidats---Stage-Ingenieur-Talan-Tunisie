@@ -1,3 +1,5 @@
+
+@import 'material-icons/iconfont/material-icons.css';
 .img-responsive {
   height: 40px;
   width: 130px;
@@ -8,3 +10,6 @@
 .bg-dark {
   background-color: #091E3E !important;
 }
+
+@import 'material-icons/iconfont/material-icons.css';
+

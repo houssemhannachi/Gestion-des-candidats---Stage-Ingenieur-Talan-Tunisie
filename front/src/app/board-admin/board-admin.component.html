@@ -1,5 +1,38 @@
 <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-xs-6">
+            <h2>{{ content }}</h2>
+          </div>
+
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>Nom et prénom</th>
+          <th>Adresse électronique</th>
+          <th>Rôle</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>
+            <select [(ngModel)]="user.roles[0].name" (ngModelChange)="user.roles[0].id= check($event)">
+              <option *ngFor="let i of roles" [value]="i.name"> {{i.role}}</option>
+            </select>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button (click)="save()">Save all</button>
+    </div>
+  </div>
 </div>
+
