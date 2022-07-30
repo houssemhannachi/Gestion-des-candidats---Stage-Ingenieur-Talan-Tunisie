@@ -22,7 +22,6 @@
     "bootstrap": "^4.6.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
-    "material-icons": "^1.11.8",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.24",

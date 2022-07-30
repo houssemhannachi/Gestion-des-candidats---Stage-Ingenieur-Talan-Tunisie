@@ -32,3 +32,10 @@ label {
 }
 
 
+button {
+  width: auto;
+}
+
+.boutton {
+  text-align: -webkit-center;
+}
