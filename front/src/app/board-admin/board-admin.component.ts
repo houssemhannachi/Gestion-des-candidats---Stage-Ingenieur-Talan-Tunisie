@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from 
 import {UserService} from '../_services/user.service';
 import {ActivatedRoute, Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-board-admin',
   templateUrl: './board-admin.component.html',
@@ -9,7 +10,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BoardAdminComponent implements OnInit, OnChanges {
   content?: string;
-  public users: any;
+  public users: any=[];
+  totalLength :any;
+  page:number=1;
   public roles = [
     {id: 1, name: 'ROLE_MANAGER', role: 'Manager'},
     {id: 2, name: 'ROLE_RH', role: 'Ressources Huamines'},
@@ -45,9 +48,9 @@ export class BoardAdminComponent implements OnInit, OnChanges {
   getUser() {
     this.userService.getUser()
       .subscribe(
-      data=>{this.users=data},
+      data=>{this.users=data;this.totalLength=this.users.length},
       err=>{console.error(err)},
-      ()=>{console.log(this.users)}
+      ()=>{console.log(this.totalLength)}
 
     )
 

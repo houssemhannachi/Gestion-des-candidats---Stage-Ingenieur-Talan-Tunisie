@@ -13,6 +13,9 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardRhComponent } from './board-rh/board-rh.component';
 import { BoardManagerComponent } from './board-manager/board-manager.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 
 @NgModule({
   declarations: [
@@ -30,8 +33,8 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-  ],
+    NgxPaginationModule  ],
   providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
