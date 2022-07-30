@@ -79,7 +79,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+            return ResponseEntity.badRequest().body(new MessageResponse("Erreur: Cet adresse courriel est déjà utilisé!"));
         }
 
         // Create new user's account
@@ -91,26 +91,26 @@ public class AuthController {
 
         if (strRoles == null) {
             Role managerRole = roleRepository.findByName(ERole.ROLE_MANAGER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                    .orElseThrow(() -> new RuntimeException("Error: Le rôle est introuvable."));
             roles.add(managerRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
                         Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                                .orElseThrow(() -> new RuntimeException("Erreur: Le rôle est introuvable."));
                         roles.add(adminRole);
 
                         break;
                     case "rh":
                         Role rhRole = roleRepository.findByName(ERole.ROLE_RH)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                                .orElseThrow(() -> new RuntimeException("Erreur: Le rôle est introuvable."));
                         roles.add(rhRole);
 
                         break;
                     default:
                         Role managerRole = roleRepository.findByName(ERole.ROLE_MANAGER)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                                .orElseThrow(() -> new RuntimeException("Erreur: Le rôle est introuvable."));
                         roles.add(managerRole);
                 }
             });
@@ -119,13 +119,13 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok(new MessageResponse("Enregistré avec succès!"));
     }
 
     @PostMapping("/signout")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
-                .body(new MessageResponse("You've been signed out!"));
+                .body(new MessageResponse("Votre session a été fermée!"));
     }
 }
