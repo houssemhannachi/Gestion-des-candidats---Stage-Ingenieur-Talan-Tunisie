@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
     email: null,
     password: null
   };
+  showPassword: boolean = false;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -46,5 +47,8 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+  showHidePassword() {
+    this.showPassword = !this.showPassword;
   }
 }
