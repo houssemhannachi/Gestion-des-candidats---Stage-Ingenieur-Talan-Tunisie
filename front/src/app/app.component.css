@@ -1,8 +1,8 @@
 
 @import 'material-icons/iconfont/material-icons.css';
 .img-responsive {
-  height: 40px;
-  width: 130px;
+  height: 50px;
+  width: 120px;
 }
 .nav-link {
   font-size: 17px;
@@ -10,6 +10,3 @@
 .bg-dark {
   background-color: #091E3E !important;
 }
-
-@import 'material-icons/iconfont/material-icons.css';
-

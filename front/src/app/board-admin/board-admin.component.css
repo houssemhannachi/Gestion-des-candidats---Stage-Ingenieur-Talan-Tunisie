@@ -330,3 +330,8 @@ table.table .avatar {
 .ngx-pagination .current {
   background: #2199e8;
 }
+
+.swal-button {
+  background-color: #ff2600;
+  color: #ffffff;
+}

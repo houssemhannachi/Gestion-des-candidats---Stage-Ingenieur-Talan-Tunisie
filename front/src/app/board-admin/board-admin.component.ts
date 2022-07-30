@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {UserService} from '../_services/user.service';
 import {ActivatedRoute, Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -58,8 +59,6 @@ export class BoardAdminComponent implements OnInit, OnChanges {
 
   save() {
     this.userService.save(this.users).subscribe(result => this.gotoUserList());;
-    console.log(this.users);
-
   }
   check = function(role : String) : number {
     if (role=="ROLE_MANAGER") { return 1 }
@@ -71,5 +70,33 @@ export class BoardAdminComponent implements OnInit, OnChanges {
 
   gotoUserList() {
     this.router.navigate(['/user']);
+  }
+
+  open() {
+    Swal.fire({
+      title: 'Enregistrer',
+      text: 'Voulez-vous enregistrer vos modifications des rôles?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmer',
+      confirmButtonColor: '#435D7D',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.value) {
+        this.save()
+        Swal.fire({
+          title: 'Enregistré!',
+          text:'Vos modifications ont été enregistrées.',
+          icon: 'success',
+          confirmButtonColor:'#435D7D',
+          timer: 2000,
+          showCancelButton: false,
+          showConfirmButton: false}
+
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+      }
+    })
   }
 }
