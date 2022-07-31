@@ -14,6 +14,7 @@ import { BoardRhComponent } from './board-rh/board-rh.component';
 import { BoardManagerComponent } from './board-manager/board-manager.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {NgToastModule} from "ng-angular-popup";
 
 
 
@@ -33,7 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule  ],
+    NgxPaginationModule,
+  NgToastModule],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
