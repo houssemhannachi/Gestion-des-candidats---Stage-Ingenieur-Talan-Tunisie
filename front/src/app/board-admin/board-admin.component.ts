@@ -69,7 +69,9 @@ export class BoardAdminComponent implements OnInit, OnChanges {
 
 
   gotoUserList() {
-    this.router.navigate(['/user']);
+    setTimeout( () => {
+      window.location.reload();
+    }, 1500);
   }
 
   open() {
