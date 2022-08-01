@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import {NgToastService} from "ng-angular-popup";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',

@@ -15,10 +15,11 @@
       novalidate
     >
       <div class="form-group">
-        <label for="name">Nom et Prènom *</label>
+        <label><b>Nom et Prénom</b> *</label>
         <input
           type="text"
           class="form-control"
+          placeholder="Entrer le nom et le prénom"
           name="name"
           [(ngModel)]="form.name"
           required
@@ -38,10 +39,11 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="email">Adresse e-mail *</label>
+        <label><b>Adresse e-mail</b> *</label>
         <input
           type="email"
           class="form-control"
+          placeholder="Entrer l'adresse e-mail"
           name="email"
           [(ngModel)]="form.email"
           required
@@ -57,10 +59,11 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Mot de passe *</label>
+        <label><b>Mot de passe</b> *</label>
         <input
           type="password"
           class="form-control"
+          placeholder="Entrer le mot de passe"
           name="password"
           [(ngModel)]="form.password"
           required
@@ -80,10 +83,14 @@
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        Inscription a échoué!<br />{{ errorMessage }}
+        Inscription a échoué!<br/>{{ errorMessage }}
       </div>
-    </form>
 
+    </form>
+    <div class="align-self-md-center">
+    <span class="msg">Vous avez déjà un compte ?
+      <a [routerLink]="['/login']">CONNECTEZ-VOUS ICI</a></span>
+    </div>
     <div class="alert alert-success" *ngIf="isSuccessful">
       Votre inscription a été réussi!
     </div>
