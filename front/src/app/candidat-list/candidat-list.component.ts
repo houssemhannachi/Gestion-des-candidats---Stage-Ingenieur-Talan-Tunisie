@@ -6,6 +6,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {Candidat} from "../_services/Candidat";
 import { CandidatService } from '../_services/candidat.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-candidat-list',
@@ -25,6 +26,7 @@ export class CandidatListComponent implements OnInit {
   }
   key:string='nom';
   reverse:boolean=false;
+  totalLength :any;
   sort(key:string){
   this.key=key;
   this.reverse=!this.reverse;
@@ -32,6 +34,8 @@ export class CandidatListComponent implements OnInit {
   private getCandidats(){
     this.candidatService.getList().subscribe(data => {
       this.candidats = data;
+      this.totalLength=this.candidats.length;
+      console.log(this.totalLength)
     });
   }
 
@@ -47,16 +51,13 @@ export class CandidatListComponent implements OnInit {
   }
 
   delete(id: number){
+    this.candidatService.delete(id)
+      .pipe(first())
+      .subscribe(
+        success => console.log('candidat supprimé'),
+        error2 => console.error(' suppression du candidat annulé')
 
-    if (confirm(`Voulez-vous supprimer le candidat #${id}`)) {
-      this.candidatService.delete(id)
-        .pipe(first())
-        .subscribe(
-          success => console.log('candidat supprimé'),
-          error2 => console.error(' suppression du candidat annulé')
-
-        );
-    }
+      );
   }
 
   exportpdf():void{
@@ -70,5 +71,33 @@ export class CandidatListComponent implements OnInit {
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
       PDF.save('liste candidat.pdf');
     });
+  }
+  open(id:number) {
+    Swal.fire({
+      title: 'Supprimer',
+      text: 'Voulez-vous supprimer ce candidat?',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmer',
+      confirmButtonColor: '#435D7D',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.value) {
+        this.delete(id);
+
+        Swal.fire({
+          title: 'Supprimé!',
+          text:'Ce candidat a été supprimé.',
+          icon: 'success',
+          confirmButtonColor:'#435D7D',
+          timer: 2000,
+          showCancelButton: false,
+          showConfirmButton: false}
+        )
+        window.location.reload();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+      }
+    })
   }
 }

@@ -29,12 +29,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'candidats', component: CandidatListComponent},
   {path: 'add-candidat', component: AddCandidatComponent},
-  {path: '', redirectTo: 'candidats', pathMatch: 'full'},
   {path: 'update-candidat/:id', component: UpdateCandidatComponent},
   {path: 'candidat-details/:id', component: CandidatDetailsComponent},
   {path: 'dossier', component: DossierListComponent},
   {path: 'add-dossier', component: AddDossierComponent},
-  {path: '', redirectTo: 'dossier', pathMatch: 'full'},
   {path: 'update-dossier/:id', component: UpdateDossierComponent},
   {path: 'dossier-details/:id', component: DossierDetailsComponent},
   {path: 'file', component: UploadfileComponent}

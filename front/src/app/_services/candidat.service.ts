@@ -28,6 +28,7 @@ export class CandidatService {
 
   update(id: number | undefined, candidat: Candidat): Observable<Object>{
     return this.httpClient.put(`/server/api/candidat/update/${id}`, candidat);
+
   }
 
   delete(id: number): Observable<Object>{

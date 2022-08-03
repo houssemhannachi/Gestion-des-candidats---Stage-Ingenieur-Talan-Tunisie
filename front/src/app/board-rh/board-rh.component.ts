@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import {AppRoutingModule} from "../app-routing.module";
+import {AppComponent} from "../app.component";
+
 
 @Component({
   selector: 'app-board-rh',

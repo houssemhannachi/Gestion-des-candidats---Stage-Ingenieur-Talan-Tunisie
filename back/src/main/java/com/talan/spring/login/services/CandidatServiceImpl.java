@@ -28,7 +28,8 @@ public class CandidatServiceImpl implements ICandidatService{
 	DossierCandidatureRepository dossierCandidatureRepository;
 	
 	
-	public List<Candidat> listAll() {
+	public List<Candidat> listAll()
+	{
 		return mesCda.findAll();
 	}
 	
@@ -70,12 +71,12 @@ public class CandidatServiceImpl implements ICandidatService{
 	    
 		candidat.setEmail(cdt.getEmail());
 		candidat.setMdp(cdt.getMdp());
+		candidat.setNom(cdt.getNom());
 		candidat.setPrenom(cdt.getPrenom());
 		candidat.setTel(cdt.getTel());
-		candidat.setDateNaissance(Calendar.getInstance().getTime());
 		 mesCda.saveAndFlush(candidat);
 	}
-	
+
 
 	@Override
 	public void delete(Integer id) {

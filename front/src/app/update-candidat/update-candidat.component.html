@@ -1,39 +1,50 @@
-<div class="row">
+<div class="container">
+  <div class="row">
     <div class="card col-md-6 offset-md-3 offset-md-3">
-        <div class="row">
-            <h3 class="text-center">Update Candidat </h3>
-            <hr />
-            <div class="card-body">
-                <form (ngSubmit)="onSubmit()">
-
-                    <div class="form-group">
-                        <label> Nom</label>
-                        <input type="text" class="form-control" id="nom" [(ngModel)]="candidat.nom"
-                            name="nom">
-                    </div>
-
-                    <div class="form-group">
-                        <label> Prenom</label>
-                        <input type="text" class="form-control" id="prenom" [(ngModel)]="candidat.prenom"
-                            name="prenom">
-                    </div>
-
-                    <div class="form-group">
-                        <label> Email </label>
-                        <input type="email" class="form-control" id="email" [(ngModel)]="candidat.email"
-                            name="email">
-                    </div>
-                    <div class="form-group">
-                        <label> Tel </label>
-                        <input type="tel" class="form-control" id="tel" [(ngModel)]="candidat.tel"
-                            name="tel">
-                    </div>
-                    <br />
-                    <button class="btn btn-success" type="submit">Submit</button>
-
-                </form>
-            </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>Modifier un candidat</h2>
+          <span>Veuillez utiliser le formulaire ci-dessous pour modifier les coordonnées d'un candidat.</span>
         </div>
-    </div>
-</div>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
 
+          <div class="form-group">
+            <label><b>Nom</b> *</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="candidat.nom"
+                   name="nom"
+                   placeholder="Entrer le nom">
+          </div>
+
+          <div class="form-group">
+            <label><b>Prénom</b> *</label>
+            <input type="text" class="form-control" id="prenom" [(ngModel)]="candidat.prenom"
+                   name="prenom"
+                   placeholder="Entrer le prénom">
+          </div>
+          <div class="form-group">
+            <label><b>E-mail</b> * </label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="candidat.email"
+                   name="email"
+                   placeholder="Entrer l'e-mail">
+          </div>
+          <div class="form-group">
+            <label><b>Numéro de téléphone</b> *</label>
+            <input type="tel" class="form-control" id="tel" [(ngModel)]="candidat.tel"
+                   name="tel"
+                   placeholder="Entrer le numéro de téléphone"
+            >
+          </div>
+
+          <div class="form-group boutton">
+            <button class="btn btn-primary btn-block"  type="submit">
+              Ajouter
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
