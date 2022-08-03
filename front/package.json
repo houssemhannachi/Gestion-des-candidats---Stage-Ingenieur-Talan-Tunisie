@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -20,9 +20,11 @@
     "@angular/router": "^14.0.0",
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^4.6.1",
+    "bootstrap-icons": "^1.9.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "ng-angular-popup": "^0.1.2",
+    "ng2-order-pipe": "^0.1.5",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.24",

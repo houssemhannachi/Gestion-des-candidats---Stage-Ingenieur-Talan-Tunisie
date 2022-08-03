@@ -69,9 +69,7 @@ export class BoardAdminComponent implements OnInit, OnChanges {
 
 
   gotoUserList() {
-    setTimeout( () => {
-      window.location.reload();
-    }, 1500);
+
   }
 
   open() {

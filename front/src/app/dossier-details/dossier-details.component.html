@@ -1,0 +1,14 @@
+<h3> Details d'un dossier</h3>
+<div>
+    <div>
+        <label> <b> Titre: </b></label> {{ dossier.titre }} 
+    </div>
+    <div>
+        <label> <b> Date Creation :</b></label> {{ dossier.DateCreation | date: 'dd/MM/yyyy' }}
+    </div>
+    
+    <div>
+        <label> <b> Date Validation : </b></label> {{ dossier.DateValidation | date: 'dd/MM/yyyy'}}
+    </div>
+  
+</div> 

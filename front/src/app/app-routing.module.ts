@@ -8,6 +8,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardRhComponent } from './board-rh/board-rh.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {BoardManagerComponent} from "./board-manager/board-manager.component";
+import {CandidatListComponent} from "./candidat-list/candidat-list.component";
+import {UpdateCandidatComponent} from "./update-candidat/update-candidat.component";
+import {AddCandidatComponent} from "./add-candidat/add-candidat.component";
+import {CandidatDetailsComponent} from "./candidat-details/candidat-details.component";
+import {DossierListComponent} from "./dossier-list/dossier-list.component";
+import {AddDossierComponent} from "./add-dossier/add-dossier.component";
+import {UpdateDossierComponent} from "./update-dossier/update-dossier.component";
+import {DossierDetailsComponent} from "./dossier-details/dossier-details.component";
+import {UploadfileComponent} from "./uploadfile/uploadfile.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,7 +26,18 @@ const routes: Routes = [
   { path: 'manager', component: BoardManagerComponent },
   { path: 'rh', component: BoardRhComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: 'candidats', component: CandidatListComponent},
+  {path: 'add-candidat', component: AddCandidatComponent},
+  {path: '', redirectTo: 'candidats', pathMatch: 'full'},
+  {path: 'update-candidat/:id', component: UpdateCandidatComponent},
+  {path: 'candidat-details/:id', component: CandidatDetailsComponent},
+  {path: 'dossier', component: DossierListComponent},
+  {path: 'add-dossier', component: AddDossierComponent},
+  {path: '', redirectTo: 'dossier', pathMatch: 'full'},
+  {path: 'update-dossier/:id', component: UpdateDossierComponent},
+  {path: 'dossier-details/:id', component: DossierDetailsComponent},
+  {path: 'file', component: UploadfileComponent}
 ];
 
 @NgModule({

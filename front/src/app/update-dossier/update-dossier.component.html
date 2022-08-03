@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+        <div class="row">
+            <h3 class="text-center"> Create Dossier </h3>
+            <hr />
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label> Titre</label>
+                        <input type="text" class="form-control" id="nom" 
+                        [(ngModel)]="dossier.titre" name="titre">
+                    </div>
+
+                   <div class="form-group">
+                        <label> Date Creation</label>
+                        <input type="date" class ="form-control" id = "DateCreation"
+                            [(ngModel)] = "dossier.DateCreation" name = "DateCreation">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label> Date Validation</label>
+                        <input type="date" class ="form-control" id = "DateValidation"
+                            [(ngModel)] = "dossier.DateValidation" name = "DateValidation">
+                    </div>
+                    
+                    <br />
+                    <button class="btn btn-success" type="submit">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

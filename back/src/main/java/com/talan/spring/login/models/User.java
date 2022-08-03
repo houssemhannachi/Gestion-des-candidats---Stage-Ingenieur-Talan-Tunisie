@@ -1,7 +1,6 @@
 package com.talan.spring.login.models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -34,7 +33,8 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
-
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    List<DossierCandidature> dossierCandidatures;
     public User() {
     }
 
