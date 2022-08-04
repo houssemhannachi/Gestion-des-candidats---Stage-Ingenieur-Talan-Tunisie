@@ -1,6 +1,6 @@
 import { Component, OnInit ,ViewChild,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import {Candidat} from "../_services/Candidat";
+import {Candidat} from "../_services/candidat";
 import {CandidatService} from "../_services/candidat.service";
 import { UploadFileService } from '../_services/uploadfile.service';
 import {HttpResponse} from "@angular/common/http";

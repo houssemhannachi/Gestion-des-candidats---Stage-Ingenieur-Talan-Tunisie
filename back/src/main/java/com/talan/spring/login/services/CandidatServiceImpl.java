@@ -32,7 +32,12 @@ public class CandidatServiceImpl implements ICandidatService{
 	{
 		return mesCda.findAll();
 	}
-	
+
+	@Override
+	public List<Candidat> findByName(String nom, String prenom) {
+		return mesCda.findByNomContainingIgnoreCaseAndPrenomContainingIgnoreCase(nom,prenom);
+	}
+
 	@Override
 	public Candidat getCandidatById(int id) {
 		return mesCda.findById(id).get();
@@ -82,15 +87,7 @@ public class CandidatServiceImpl implements ICandidatService{
 	public void delete(Integer id) {
 		mesCda.deleteById(id);
 	}
-	
-	@Override
-	public void AjouterEtAffecterCandidatToDossierCandidature(Candidat cdt, int id) {
 
-		Set<DossierCandidature> dossier =(Set<DossierCandidature>) this.dossierCandidatureRepository.findAll().get(id);
-		cdt.setDossierCandidatures((List<DossierCandidature>) dossier);
-		mesCda.save(cdt);
-	
-	}
 	@Override
 	public long count() {
 		return mesCda.count();

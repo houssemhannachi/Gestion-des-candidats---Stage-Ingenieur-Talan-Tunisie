@@ -2,15 +2,7 @@ package com.talan.spring.login.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -39,24 +31,25 @@ public class DossierCandidature implements Serializable{
 	public String titre;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date DateCreation;
+	private Date DateCreation = new Date(System.currentTimeMillis());
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date DateValidation;
 	
 	@Enumerated(EnumType.STRING)
 	private State statut;
-	
-	@ManyToOne
-	Candidat candidat;
-	
-	@ManyToOne
-	User user;
 
-	public DossierCandidature(String titre, Candidat candidat) {
+	@ManyToOne
+	@JoinColumn(name = "candidat", referencedColumnName = "id_candidat")
+	private Candidat candidat;
+
+	@ManyToOne
+	@JoinColumn(name = "user", referencedColumnName = "id")
+	private User user;
+
+	public DossierCandidature(String titre) {
 		super();
 		this.titre = titre;
-		this.candidat = candidat;
 	}
 
 	

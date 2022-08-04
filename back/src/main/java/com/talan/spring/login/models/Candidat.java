@@ -48,10 +48,6 @@ public class Candidat implements Serializable {
 	private Date DateNaissance = new Date();
 
 
-	@OneToMany(mappedBy = "candidat", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	List<DossierCandidature> dossierCandidatures;
-
-
 }
 
 

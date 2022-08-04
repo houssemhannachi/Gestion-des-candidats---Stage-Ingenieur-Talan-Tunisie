@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import {Candidat} from "../_services/Candidat";
+import {Candidat} from "../_services/candidat";
 import { CandidatService } from '../_services/candidat.service';
 import Swal from "sweetalert2";
 

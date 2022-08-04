@@ -14,10 +14,10 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  check = function(role : String) : string {
-    if (role=="ROLE_MANAGER") { return 'Manager' }
-    else if (role=="ROLE_RH") { return "Ressources Huamines" }
-    else if (role=="ROLE_ADMIN") { return "Admin" }
+  check = function(role : number) : string {
+    if (role==1) { return 'Manager' }
+    else if (role==2) { return "Ressources Huamines" }
+    else if (role==3) { return "Admin" }
     else { return "ERR" }
   }
 

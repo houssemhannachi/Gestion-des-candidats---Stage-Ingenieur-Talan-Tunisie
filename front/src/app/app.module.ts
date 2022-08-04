@@ -45,8 +45,7 @@ import {CandidatService} from "./_services/candidat.service";
     UpdateDossierComponent,
     AddDossierComponent,
     DossierDetailsComponent,
-    UploadfileComponent
-  ],
+    UploadfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

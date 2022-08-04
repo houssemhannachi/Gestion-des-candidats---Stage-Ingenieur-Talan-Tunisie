@@ -9,7 +9,9 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.*;
+import javax.websocket.server.*;
 import java.util.*;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/test/admin/user")
@@ -19,10 +21,17 @@ public class UserController {
 
     @GetMapping()
     public List<User> list() {
-        return userRepository.findAll();    }
+        return userRepository.findAll();
+    }
 
     @PostMapping()
     public void save(@RequestBody List<User> users) {
         userRepository.saveAll(users);
     }
+
+    @GetMapping("/user-by-name-and-role/{name}/{role}")
+    public List<User> getUserByNameAndRole(@PathVariable("name") String name, @PathVariable("role") ERole role) {
+        return userRepository.findByNameContainingIgnoreCaseAndRole_Name(name, role);
+    }
+
 }

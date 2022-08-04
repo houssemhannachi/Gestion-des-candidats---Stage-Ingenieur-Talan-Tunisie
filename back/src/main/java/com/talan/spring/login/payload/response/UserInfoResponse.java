@@ -1,6 +1,6 @@
 package com.talan.spring.login.payload.response;
 
-import java.util.List;
+import com.talan.spring.login.models.*;
 
 public class UserInfoResponse {
     private Long id;
@@ -8,14 +8,15 @@ public class UserInfoResponse {
 
     private String name;
 
-    private List<String> roles;
+    private String role;
 
-    public UserInfoResponse(Long id, String email,String name, List<String> roles) {
+    public UserInfoResponse(Long id, String email, String name, String role) {
         this.id = id;
         this.email = email;
-        this.name=name;
-        this.roles = roles;
+        this.name = name;
+        this.role = role;
     }
+
 
     public Long getId() {
         return id;
@@ -29,6 +30,10 @@ public class UserInfoResponse {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
@@ -37,11 +42,11 @@ public class UserInfoResponse {
         this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getRole() {
+        return role;
     }
 
-    public List<String> getRoles() {
-        return roles;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
