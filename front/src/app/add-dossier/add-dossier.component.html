@@ -11,11 +11,6 @@
             <input type="text" class="form-control" id="titre"[(ngModel)]="dossier.titre" name="titre">
           </div>
 
-          <div class="form-group">
-            <label> Date Validation<abbr>*</abbr></label>
-            <input type="date" class="form-control" id="DateValidation"
-                   [(ngModel)]="dossier.DateValidation" name="DateValidation">
-          </div>
 
           <div class="form-group">
             <label for="statut">Statut <abbr>*</abbr></label>
@@ -32,9 +27,9 @@
           </div>
           <div class="form-group">
             <label for="statut">Candidat <abbr>*</abbr></label>
-            <input name="candidat" id="candidat" #cnom>
-*            <input #cprenom>
-            <button type="button" (click)="getCandidats(cnom.value,cprenom.value)">Click</button>
+            <input name="candidat" id="candidat" #cnom placeholder="Nom de candidat">
+           <input #cprenom placeholder="Prénom de candidat">
+            <button type="button" (click)="getCandidats(cnom.value,cprenom.value)">Chercher Candidats</button>
           </div>
           <ul>
             <select *ngIf="candidats" class="form-select" [(ngModel)]="dossier.candidat"
@@ -45,8 +40,8 @@
 
           <div class="form-group">
             <label for="statut">Manager <abbr>*</abbr></label>
-            <input name="manager" id="manager" #x>
-            <button type="button" (click)="getManager(x.value)">Click</button>
+            <input name="manager" id="manager" placeholder="Nom de manager" #x>
+            <button type="button" (click)="getManager(x.value)">Chercher Manager</button>
           </div>
           <ul>
             <select *ngIf="managers" class="form-select" [(ngModel)]="dossier.user"
