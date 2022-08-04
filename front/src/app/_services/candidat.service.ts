@@ -36,4 +36,8 @@ export class CandidatService {
   }
 
 
+  countPostss() {
+    return this.httpClient.get(`/server/api/candidat/count`);
+  }
+
 }

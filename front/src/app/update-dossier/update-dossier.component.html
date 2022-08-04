@@ -24,6 +24,19 @@
                             [(ngModel)] = "dossier.DateValidation" name = "DateValidation">
                     </div>
                     
+                    <div class="form-group">
+                        <label for="statut">Statut</label>
+                        <select
+                          id="statut"
+                         class="form-select"  name="statut" [(ngModel)]="dossier.statut"
+                          style="height: 35px;">
+                          <option value="En_attente" selected>En_attente</option>
+                          <option value="En_cours">En_cours</option>
+                          <option value="accepte">accepte</option>
+                          <option value="refuse">refuse</option>
+                        </select>
+                      
+                       </div>
                     <br />
                     <button class="btn btn-success" type="submit">Submit</button>
 

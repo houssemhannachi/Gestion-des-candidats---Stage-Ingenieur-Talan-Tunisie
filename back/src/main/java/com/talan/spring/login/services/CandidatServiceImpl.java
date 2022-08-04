@@ -91,6 +91,10 @@ public class CandidatServiceImpl implements ICandidatService{
 		mesCda.save(cdt);
 	
 	}
+	@Override
+	public long count() {
+		return mesCda.count();
+	}
 	
 	
 }

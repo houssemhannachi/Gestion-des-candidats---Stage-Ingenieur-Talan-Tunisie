@@ -41,9 +41,9 @@ public class  DossierServiceImpl implements IDossierService {
 		DossierCandidature dossier = dossierCandidatureRepository.findById(id).get();
 	    
 		dossier.setTitre(d.getTitre());
-		dossier.setDateCreation(Calendar.getInstance().getTime());
+		dossier.setDateCreation(d.getDateCreation());
 		
-		dossier.setDateValidation(Calendar.getInstance().getTime());
+		dossier.setDateValidation(d.getDateValidation());
 		dossier.setStatut(d.getStatut());
 		dossierCandidatureRepository.saveAndFlush(dossier);
 	}

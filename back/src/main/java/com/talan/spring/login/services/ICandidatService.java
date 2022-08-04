@@ -25,6 +25,8 @@ public interface ICandidatService {
 	void updateCandidat(int id,Candidat cdt);
 
 	void AjouterEtAffecterCandidatToDossierCandidature(Candidat cdt, int id);
+
+	long count();
   
 
 }
