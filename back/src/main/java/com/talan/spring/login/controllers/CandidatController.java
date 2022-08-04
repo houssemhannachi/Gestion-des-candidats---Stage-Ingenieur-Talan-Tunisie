@@ -78,7 +78,10 @@ public class CandidatController {
         candidatService.updateCandidat(id, candidat);
     }
 
- 
+    @GetMapping("/count")
+	public long countPostss() {
+		return candidatService.count();
+	}
 
   
 

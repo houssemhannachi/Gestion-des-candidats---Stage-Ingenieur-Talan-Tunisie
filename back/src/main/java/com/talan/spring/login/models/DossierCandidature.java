@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,10 +38,10 @@ public class DossierCandidature implements Serializable{
 	
 	public String titre;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date DateCreation;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date DateValidation;
 	
 	@Enumerated(EnumType.STRING)
