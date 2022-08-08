@@ -13,6 +13,7 @@ export class AppComponent {
   isLoggedIn = false;
   showAdminBoard = false;
   showRhBoard = false;
+  showManagerBoard = false;
   name?: string;
   title: string ='';
 
@@ -27,7 +28,7 @@ export class AppComponent {
 
       this.showAdminBoard = this.role==='ROLE_ADMIN';
       this.showRhBoard = this.role==='ROLE_RH';
-
+      this.showManagerBoard=this.role==='ROLE_MANAGER'
       this.name = user.name;
     }
   }

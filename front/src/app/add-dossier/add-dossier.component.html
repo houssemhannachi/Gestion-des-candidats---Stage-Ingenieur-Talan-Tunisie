@@ -84,6 +84,12 @@
                 <option *ngFor="let m of managers " selected [ngValue]="m"> {{m.name}}</option>
               </select>
               <br/>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea required type="text" class ="form-control" id = "description"
+                          [(ngModel)] = "dossier.description" name = "description">
+          </textarea>
+              </div>
             </div>
           </div>
           <div class="form-group boutton">

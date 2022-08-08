@@ -70,10 +70,11 @@ public class CandidatController {
     }
 
     @GetMapping("/count")
-    public long countPostss() {
-        return candidatService.count();
-    }
+	public long count() {
+		return candidatService.count();
+	}
 
+  
 
 }
 	

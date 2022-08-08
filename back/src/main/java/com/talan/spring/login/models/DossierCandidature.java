@@ -33,6 +33,7 @@ public class DossierCandidature implements Serializable{
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date DateCreation = new Date(System.currentTimeMillis());
 	
+	private String description;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date DateValidation;
 
@@ -51,4 +52,6 @@ public class DossierCandidature implements Serializable{
 		this.id_dossier = id_dossier;
 		this.intitule = intitule;
 	}
+
+	
 }

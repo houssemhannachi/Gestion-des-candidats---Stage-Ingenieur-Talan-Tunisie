@@ -7,6 +7,6 @@ export class DossierCandidature {
   statut: any;
   candidat: any;
   user: any;
-
+  description:any;
 
 }

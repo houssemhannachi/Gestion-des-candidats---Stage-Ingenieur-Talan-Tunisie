@@ -30,4 +30,5 @@ export class BoardManagerComponent implements OnInit {
       }
     });
   }
+  
 }

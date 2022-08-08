@@ -12,7 +12,8 @@ import { CandidatService } from '../_services/candidat.service';
 })
 export class BoardRhComponent implements OnInit {
   content?: string;
-  @Input() public count!: number;
+  public count!: number;
+  
 
   constructor(private userService: UserService,private candidatService: CandidatService,) { }
 
@@ -35,6 +36,8 @@ export class BoardRhComponent implements OnInit {
       }
     });
   }
+
+
   
   
 }
