@@ -28,16 +28,16 @@ public class DossierCandidature implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_dossier; 
 	
-	public String titre;
+	public String intitule;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date DateCreation = new Date(System.currentTimeMillis());
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date DateValidation;
-	
+
 	@Enumerated(EnumType.STRING)
-	private State statut;
+	private State statut = State.valueOf("En_attente");
 
 	@ManyToOne
 	@JoinColumn(name = "candidat", referencedColumnName = "id_candidat")
@@ -47,10 +47,8 @@ public class DossierCandidature implements Serializable{
 	@JoinColumn(name = "user", referencedColumnName = "id")
 	private User user;
 
-	public DossierCandidature(String titre) {
-		super();
-		this.titre = titre;
+	public DossierCandidature(int id_dossier, String intitule) {
+		this.id_dossier = id_dossier;
+		this.intitule = intitule;
 	}
-
-	
 }

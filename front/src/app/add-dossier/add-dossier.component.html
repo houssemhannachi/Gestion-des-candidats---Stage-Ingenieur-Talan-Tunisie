@@ -1,60 +1,100 @@
-<div class="row">
-  <div class="card col-md-6 offset-md-3 offset-md-3">
-    <div class="row">
-      <h3 class="text-center"> Create Dossier </h3>
-      <hr/>
+<div class="container">
+  <div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>Créer un dossier de candidature</h2>
+          <span>Veuillez utiliser le formulaire ci-dessous pour <br>créer un dossier de candidature.</span>
+        </div>
+      </div>
       <div class="card-body">
         <form (ngSubmit)="onSubmit()">
 
           <div class="form-group">
-            <label> Titre<abbr>*</abbr></label>
-            <input type="text" class="form-control" id="titre"[(ngModel)]="dossier.titre" name="titre">
+            <label><b>Intitulé de poste</b> *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="intitule" [(ngModel)]="dossier.intitule"
+              name="intitule"
+              placeholder="Entrer l'intitlué de poste">
           </div>
 
 
           <div class="form-group">
-            <label for="statut">Statut <abbr>*</abbr></label>
-            <select
-              id="statut"
-              class="form-select" name="statut" [(ngModel)]="dossier.statut"
-              style="height: 35px;">
-              <option value="En_attente" selected>En_attente</option>
-              <option value="En_cours">En_cours</option>
-              <option value="accepte">accepte</option>
-              <option value="refuse">refuse</option>
-            </select>
+            <label><b>Candidat</b> *</label>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <input
+                  name="candidat"
+                  id="candidat"
+                  type="text"
+                  class="form-control"
+                  #cnom
+                  placeholder="Nom de candidat">
+              </div>
+              <div class="form-group col-md-5">
+                <input
+                  name="prenom"
+                  id="prenom"
+                  type="text"
+                  class="form-control"
+                  #cprenom
+                  placeholder="Prénom de candidat">
 
+              </div>
+              <button type="button" (click)="getCandidats(cnom.value,cprenom.value)"
+                      style="float: right;margin-left:20px;width:50px;height:40px">
+                <i class="bi bi-search"></i>
+              </button>
+
+
+            </div>
           </div>
-          <div class="form-group">
-            <label for="statut">Candidat <abbr>*</abbr></label>
-            <input name="candidat" id="candidat" #cnom placeholder="Nom de candidat">
-           <input #cprenom placeholder="Prénom de candidat">
-            <button type="button" (click)="getCandidats(cnom.value,cprenom.value)">Chercher Candidats</button>
-          </div>
-          <ul>
-            <select *ngIf="candidats" class="form-select" [(ngModel)]="dossier.candidat"
+          <ul *ngIf="candidats">Candidat :
+            <select class="custom-select-sm-4" [(ngModel)]="dossier.candidat"
                     name="candidat">
-              <option  *ngFor="let c of candidats" [ngValue]="c"> {{c.nom}}</option>
+              <option *ngFor="let c of candidats" [ngValue]="c"> {{c.nom}} {{c.prenom}}</option>
             </select>
           </ul>
 
+
           <div class="form-group">
-            <label for="statut">Manager <abbr>*</abbr></label>
-            <input name="manager" id="manager" placeholder="Nom de manager" #x>
-            <button type="button" (click)="getManager(x.value)">Chercher Manager</button>
+            <label for="manager"><b>Manager</b> *</label>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <input
+                  name="manager"
+                  id="manager"
+                  placeholder="Nom de manager"
+                  #m
+                  type="text"
+                  class="form-control">
+
+              </div>
+              <button type="button" (click)="getManager(m.value)" style="margin-left:20px;width:50px;height:40px">
+                <i class="bi bi-search"></i>>
+              </button>
+              <select
+                class="form-select"
+                *ngIf="managers"
+                [(ngModel)]="dossier.user"
+                style="margin-left:20px;width:150px;height:40px"
+                name="user">
+                <option *ngFor="let m of managers " selected [ngValue]="m"> {{m.name}}</option>
+              </select>
+              <br/>
+            </div>
           </div>
-          <ul>
-            <select *ngIf="managers" class="form-select" [(ngModel)]="dossier.user"
-                    name="user">
-              <option  *ngFor="let m of managers " [ngValue]="m"> {{m.name}}</option>
-            </select>
-          </ul>
-          <br/>
-          <button class="btn btn-success" type="submit">Submit</button>
+          <div class="form-group boutton">
+            <button class="btn btn-primary btn-block" type="submit">
+              Ajouter
+            </button>
+          </div>
 
         </form>
       </div>
     </div>
   </div>
-</div>
 
+</div>

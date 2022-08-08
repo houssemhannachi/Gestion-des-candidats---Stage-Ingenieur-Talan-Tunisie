@@ -24,7 +24,7 @@ export class DossierListComponent implements OnInit {
     this.getdossier();
   }
 
-  key:string='titre';
+  key:string='intitule';
   reverse:boolean=false;
   sort(key:string){
   this.key=key;
@@ -75,6 +75,22 @@ export class DossierListComponent implements OnInit {
     });
   }
 
+  checkstyle(statut:string) : string{
+    if(statut=="En_attente") {
+      return "bi bi-pause-circle";
+    }
+    else {
+      return ""
+    }
+  }
+  checkstatut(statut:string) : string{
+    if(statut=="En_attente") {
+      return "En attente";
+    }
+    else {
+      return ""
+    }
+  }
 
 
 

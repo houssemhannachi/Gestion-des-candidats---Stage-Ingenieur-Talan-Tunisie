@@ -1,49 +1,59 @@
-<div class="row">
-  <h2>Liste des dossiers</h2>
-</div><br>
-
-<br>
-<button (click)="create()" class="btn btn-outline-success"
-        style="margin-left: 10px;float: right;width:45px;height:40px"><i class="bi bi-plus-circle-fill"></i></button>
-<button (click)="exportpdf()" class="btn btn-outline-secondary"
-        style="float: right;margin-left: 10px;width:45px;height:40px">
-  <i class="bi bi-file-pdf-fill"></i>
-</button>
-
-<br> <br>
-<table id="table" class="table table-striped table-bordered">
-  <thead>
-  <tr>
-    <th>Intitulé du poste</th>
-    <th>Candidat</th>
-    <th>DateCreation</th>
-    <th>Manager</th>
-    <th>Status</th>
-    <th> Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let dossier of dossiers | paginate:{itemsPerPage:5,currentPage:p} ">
-
-    <td> {{ dossier.titre }} </td>
-    <td> {{ dossier.candidat.nom}} {{dossier.candidat.prenom}} </td>
-    <td> {{ dossier.DateCreation | date: 'dd/MM/yyyy'}}</td>
-    <td> {{ dossier.user.name}} </td>
-    <td> {{dossier.statut}} </td>
-
-    <td>
-      <button (click)="update(dossier.id_dossier)" class="btn btn-outline-warning"><i class="bi bi-pen-fill"></i>
+<div class="container">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-xs-6">
+            <h2>Gérer les dossiers de candidature</h2>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button (click)="create()" class="btn btn-outline-success"
+              style="margin-left: 10px;float: right;width:45px;height:40px"><i class="bi bi-plus-circle-fill"></i>
       </button>
-      <button (click)="delete(dossier.id_dossier)" class="btn btn-outline-danger" style="margin-left: 10px"><i
-        class="bi bi-trash3-fill"></i></button>
-      <button (click)="dossierDetails(dossier.id_dossier)" class="btn btn-outline-primary" style="margin-left: 10px"><i
-        class="bi bi-card-list"></i></button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+      <button (click)="exportpdf()" class="btn btn-outline-secondary"
+              style="float: right;margin-left: 10px;width:45px;height:40px">
+        <i class="bi bi-file-pdf-fill"></i>
+      </button>
 
+      <br> <br>
+      <table id="table" class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th>Intitulé du poste</th>
+          <th>Candidat</th>
+          <th>Date de création</th>
+          <th>Manager</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let dossier of dossiers | paginate:{itemsPerPage:5,currentPage:p} ">
 
-<pagination-controls (pageChange)="p=$event"></pagination-controls>
+          <td> {{ dossier.intitule }} </td>
+          <td> <a routerLink="/candidat-details/{{dossier.candidat.id_candidat}}">{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a></td>
+          <td> {{ dossier.DateCreation | date: 'dd/MM/yyyy'}}</td>
+          <td> {{ dossier.user.name}} </td>
+          <td><i class="{{checkstyle(dossier.statut)}}"></i> {{checkstatut(dossier.statut)}}</td>
+
+          <td>
+            <button (click)="update(dossier.id_dossier)" class="btn btn-outline-warning"><i class="bi bi-pen-fill"></i>
+            </button>
+            <button (click)="delete(dossier.id_dossier)" class="btn btn-outline-danger" style="margin-left: 10px"><i
+              class="bi bi-trash3-fill"></i></button>
+            <button (click)="dossierDetails(dossier.id_dossier)" class="btn btn-outline-primary"
+                    style="margin-left: 10px"><i
+              class="bi bi-card-list"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+      <pagination-controls class="text-center" (pageChange)="p=$event"></pagination-controls>
 
 

@@ -32,18 +32,6 @@ public class CandidatController {
     ICandidatService candidatService;
     @Autowired
     CandidatRepository CandidatRepository;
-	
-	
-   /* @PostMapping("/addP")
-    public void saveProduct(@RequestParam("file") MultipartFile file,
-    		@RequestParam("nom") String nom,
-    		@RequestParam("prenom")String prenom,
-    		@RequestParam("email") String email){
-    	
-    	 candidatService.save(file, nom, prenom, email);
-    
-    }*/
-	
 
     @GetMapping("/getAllcandidat")
     @ResponseBody
@@ -77,16 +65,15 @@ public class CandidatController {
     }
 
     @GetMapping("/candidat-by-name/{nom}/{prenom}")
-    public List<Candidat> getCandidatByName(@PathVariable("nom") String nom,@PathVariable("prenom") String prenom) {
-        return candidatService.findByName(nom,prenom);
+    public List<Candidat> getCandidatByName(@PathVariable("nom") String nom, @PathVariable("prenom") String prenom) {
+        return candidatService.findByName(nom, prenom);
     }
 
     @GetMapping("/count")
-	public long countPostss() {
-		return candidatService.count();
-	}
+    public long countPostss() {
+        return candidatService.count();
+    }
 
-  
 
 }
 	

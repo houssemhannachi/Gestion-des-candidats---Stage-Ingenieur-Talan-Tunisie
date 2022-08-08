@@ -1,7 +1,7 @@
 export class DossierCandidature {
 
   id_dossier: any;
-  titre: any;
+  intitule: any;
   DateCreation?: any;
   DateValidation?: any;
   statut: any;
