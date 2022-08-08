@@ -16,7 +16,9 @@ import {DossierListComponent} from "./dossier-list/dossier-list.component";
 import {AddDossierComponent} from "./add-dossier/add-dossier.component";
 import {UpdateDossierComponent} from "./update-dossier/update-dossier.component";
 import {DossierDetailsComponent} from "./dossier-details/dossier-details.component";
-import {UploadfileComponent} from "./uploadfile/uploadfile.component";
+import { CalendarComponent } from './calendar/calendar.component';
+import { FileComponent } from './file/file.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -35,7 +37,10 @@ const routes: Routes = [
   {path: 'add-dossier', component: AddDossierComponent},
   {path: 'update-dossier/:id', component: UpdateDossierComponent},
   {path: 'dossier-details/:id', component: DossierDetailsComponent},
-  {path: 'file', component: UploadfileComponent}
+  {path: 'calendar', component: CalendarComponent},
+  {path: 'file', component: FileComponent},
+
+  
 ];
 
 @NgModule({

@@ -33,17 +33,7 @@ public class CandidatController {
     @Autowired
     CandidatRepository CandidatRepository;
 	
-	
-   /* @PostMapping("/addP")
-    public void saveProduct(@RequestParam("file") MultipartFile file,
-    		@RequestParam("nom") String nom,
-    		@RequestParam("prenom")String prenom,
-    		@RequestParam("email") String email){
-    	
-    	 candidatService.save(file, nom, prenom, email);
-    
-    }*/
-	
+
 
     @GetMapping("/getAllcandidat")
     @ResponseBody
@@ -82,7 +72,7 @@ public class CandidatController {
     }
 
     @GetMapping("/count")
-	public long countPostss() {
+	public long count() {
 		return candidatService.count();
 	}
 

@@ -16,9 +16,8 @@
   <tr>
     <th>Intitulé du poste</th>
     <th>Candidat</th>
-    <th>DateCreation</th>
     <th>Manager</th>
-    <th>Status</th>
+    <th>Statut</th>
     <th> Actions</th>
   </tr>
   </thead>
@@ -27,7 +26,7 @@
 
     <td> {{ dossier.titre }} </td>
     <td> {{ dossier.candidat.nom}} {{dossier.candidat.prenom}} </td>
-    <td> {{ dossier.DateCreation | date: 'dd/MM/yyyy'}}</td>
+  
     <td> {{ dossier.user.name}} </td>
     <td> {{dossier.statut}} </td>
 

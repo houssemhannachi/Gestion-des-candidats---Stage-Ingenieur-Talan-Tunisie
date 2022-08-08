@@ -15,6 +15,9 @@
       <li class="nav-item">
         <a href="/manager" class="nav-link" *ngIf="isLoggedIn" routerLink="manager">Manager</a>
       </li>
+      <li class = "nav-item" *ngIf="showManagerBoard">
+        <a routerLink="calendar" routerLinkActive="active" class="nav-link" >Calendrier</a>
+      </li>
       <li class = "nav-item" *ngIf="showRhBoard">
         <a routerLink="candidats" routerLinkActive="active" class="nav-link" >Gérer les candidats</a>
       </li>
@@ -25,19 +28,19 @@
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">S'inscrire</a>
+        <a href="/register" class="nav-link" routerLink="register"><i class="bi bi-person-plus-fill"></i></a>
       </li>
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Se Connecter</a>
+        <a href="/login" class="nav-link" routerLink="login"><i class="bi bi-person-workspace"></i></a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ name }}</a>
+        <a href="/profile" class="nav-link" routerLink="profile"><i class="bi bi-person-square"></i>  {{ name }}</a>
       </li>
       <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">Se déconnecter</a>
+        <a href class="nav-link" (click)="logout()"><i class="bi bi-box-arrow-right"></i></a>
       </li>
     </ul>
   </nav>

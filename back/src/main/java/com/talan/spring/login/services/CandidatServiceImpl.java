@@ -49,26 +49,7 @@ public class CandidatServiceImpl implements ICandidatService{
 		return mesCda.save(cdt);
 	}
 	
-	/*public void  save(MultipartFile file,String nom,String prenom,String email)
-	{
-		Candidat c = new Candidat();
-		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		if(fileName.contains(".."))
-		{
-			System.out.println("not a a valid file");
-		}
-		try {
-			c.setPhoto(Base64.getEncoder().encodeToString(file.getBytes()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		c.setNom(nom);
-		
-        c.setPrenom(prenom);
-        c.setEmail(email);
-        
-        mesCda.save(c);
-	}*/
+	
 	
 	@Override
 	public void updateCandidat(int id,Candidat cdt) {

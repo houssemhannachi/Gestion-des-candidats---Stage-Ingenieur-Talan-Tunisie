@@ -28,16 +28,13 @@ public class DossierCandidature implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_dossier; 
 	
-	public String titre;
+	private String titre;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date DateCreation = new Date(System.currentTimeMillis());
-	
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date DateValidation;
-	
+	private String description;
 	@Enumerated(EnumType.STRING)
 	private State statut;
+	
+	
 
 	@ManyToOne
 	@JoinColumn(name = "candidat", referencedColumnName = "id_candidat")
