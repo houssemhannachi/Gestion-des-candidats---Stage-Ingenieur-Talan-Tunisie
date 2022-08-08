@@ -32,7 +32,12 @@ public class CandidatServiceImpl implements ICandidatService{
 	{
 		return mesCda.findAll();
 	}
-	
+
+	@Override
+	public List<Candidat> findByName(String nom, String prenom) {
+		return mesCda.findByNomContainingIgnoreCaseAndPrenomContainingIgnoreCase(nom,prenom);
+	}
+
 	@Override
 	public Candidat getCandidatById(int id) {
 		return mesCda.findById(id).get();
@@ -44,26 +49,7 @@ public class CandidatServiceImpl implements ICandidatService{
 		return mesCda.save(cdt);
 	}
 	
-	/*public void  save(MultipartFile file,String nom,String prenom,String email)
-	{
-		Candidat c = new Candidat();
-		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		if(fileName.contains(".."))
-		{
-			System.out.println("not a a valid file");
-		}
-		try {
-			c.setPhoto(Base64.getEncoder().encodeToString(file.getBytes()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		c.setNom(nom);
-		
-        c.setPrenom(prenom);
-        c.setEmail(email);
-        
-        mesCda.save(c);
-	}*/
+	
 	
 	@Override
 	public void updateCandidat(int id,Candidat cdt) {
@@ -82,15 +68,7 @@ public class CandidatServiceImpl implements ICandidatService{
 	public void delete(Integer id) {
 		mesCda.deleteById(id);
 	}
-	
-	@Override
-	public void AjouterEtAffecterCandidatToDossierCandidature(Candidat cdt, int id) {
 
-		Set<DossierCandidature> dossier =(Set<DossierCandidature>) this.dossierCandidatureRepository.findAll().get(id);
-		cdt.setDossierCandidatures((List<DossierCandidature>) dossier);
-		mesCda.save(cdt);
-	
-	}
 	@Override
 	public long count() {
 		return mesCda.count();

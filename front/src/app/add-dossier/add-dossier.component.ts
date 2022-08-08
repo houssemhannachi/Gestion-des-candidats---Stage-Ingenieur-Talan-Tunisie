@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import {DossierCandidature} from "../_services/DossierCandidature";
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Router} from '@angular/router';
+import {DossierCandidature} from "../_services/dossier.candidature";
 import {DossierService} from "../_services/dossier.service";
-
-
+import {CandidatService} from "../_services/candidat.service";
+import {UserService} from "../_services/user.service";
 
 
 @Component({
@@ -14,20 +14,45 @@ import {DossierService} from "../_services/dossier.service";
 export class AddDossierComponent implements OnInit {
 
 
-    dossier: DossierCandidature = new DossierCandidature();
-    dossiers: any;
-    
-  
-  
-    constructor( private DossierService: DossierService,private router: Router) { }
+  dossier: DossierCandidature = new DossierCandidature();
+  dossiers: any;
+  candidats: any;
+  managers: any;
+
+
+  constructor(private DossierService: DossierService, private router: Router, private candidatService: CandidatService, private userService: UserService) {
+  }
+
+
+  getCandidats(nom:string,prenom:string){
+    this.candidatService.getCandidatsByName(nom,prenom).subscribe(data => {
+      this.candidats = data;
+      console.log(this.candidats)
+
+
+    });
+  }
+
+
+
+  getManager(name:string) {
+      this.userService.getUsersByNameAndRole(name,"ROLE_MANAGER")
+        .subscribe(data => {
+        this.managers = data;
+        console.log(this.managers)
+      });;
+  }
+
+
 
     ngOnInit(): void {
-    }
 
-    
+  }
+
+
     save(){
       this.DossierService.create(this.dossier).subscribe( data =>{
-        console.log(data);
+
         this.goToList();
       },
       error => console.log(error));
@@ -38,10 +63,14 @@ export class AddDossierComponent implements OnInit {
     }
 
     onSubmit(){
-      console.log(this.dossier);
       this.save();
     }
+
+
+  selectManager(target: EventTarget|null) {
+    console.log((target as HTMLInputElement).value)
   }
+}
 
 
 

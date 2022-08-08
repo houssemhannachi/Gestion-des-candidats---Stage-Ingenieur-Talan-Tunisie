@@ -8,7 +8,7 @@
     <strong>Email:</strong>
     {{ currentUser.email }}
   </p>
-  <strong>Rôle :</strong> <span *ngFor="let role of currentUser.roles"> {{check(role)}} </span>
+  <strong>Rôle :</strong> <span> {{check(currentUser.role)}} </span>
 
 </div>
 

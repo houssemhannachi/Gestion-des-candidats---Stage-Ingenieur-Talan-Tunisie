@@ -32,7 +32,8 @@ public class  DossierServiceImpl implements IDossierService {
 
 	@Override
 	public DossierCandidature addDossierCandidature(DossierCandidature dc) {
-       
+            
+		
 			return dossierCandidatureRepository.save(dc);
 	}
 
@@ -41,9 +42,7 @@ public class  DossierServiceImpl implements IDossierService {
 		DossierCandidature dossier = dossierCandidatureRepository.findById(id).get();
 	    
 		dossier.setTitre(d.getTitre());
-		dossier.setDateCreation(d.getDateCreation());
-		
-		dossier.setDateValidation(d.getDateValidation());
+	    dossier.setDescription(d.getDescription());
 		dossier.setStatut(d.getStatut());
 		dossierCandidatureRepository.saveAndFlush(dossier);
 	}

@@ -30,8 +30,8 @@
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td>
-          <select class="form-select" [(ngModel)]="user.roles[0].name"
-                  (ngModelChange)="user.roles[0].id= check($event)">
+          <select class="form-select" [(ngModel)]="user.role.name"
+                  (ngModelChange)="user.role.id= check($event)">
             <option  *ngFor="let i of roles" [value]="i.name"> {{i.role}}</option>
           </select>
         </td>

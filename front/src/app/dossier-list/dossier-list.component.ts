@@ -4,7 +4,7 @@ import { first } from 'rxjs/operators';
 
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import {DossierCandidature} from "../_services/DossierCandidature";
+import {DossierCandidature} from "../_services/dossier.candidature";
 import {DossierService} from "../_services/dossier.service";
 
 @Component({
@@ -23,7 +23,7 @@ export class DossierListComponent implements OnInit {
   ngOnInit(): void {
     this.getdossier();
   }
- 
+
   key:string='titre';
   reverse:boolean=false;
   sort(key:string){
@@ -75,7 +75,7 @@ export class DossierListComponent implements OnInit {
     });
   }
 
- 
+
 
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {DossierCandidature} from "../_services/DossierCandidature";
+import {DossierCandidature} from "../_services/dossier.candidature";
 import {DossierService} from "../_services/dossier.service";
 
 @Component({

@@ -1,9 +1,8 @@
 import { Component, OnInit ,ViewChild,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import {Candidat} from "../_services/Candidat";
+import {Candidat} from "../_services/candidat";
 import {CandidatService} from "../_services/candidat.service";
-import { UploadFileService } from '../_services/uploadfile.service';
-import {HttpResponse} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-add-candidat',
@@ -14,8 +13,9 @@ export class AddCandidatComponent implements OnInit {
 
 
   candidat: Candidat = new Candidat();
-
-  constructor( private candidatService: CandidatService,private UploadFileService:UploadFileService,private router: Router) { }
+   
+ 
+  constructor( private candidatService: CandidatService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,7 +28,7 @@ export class AddCandidatComponent implements OnInit {
     error => console.log(error));
   }
 
-
+  
   goToList(){
     this.router.navigate(['/candidats']);
   }
@@ -37,11 +37,16 @@ export class AddCandidatComponent implements OnInit {
     console.log(this.candidat);
     this.save();
   }
+ 
 
-
-
-
-
+  
 
 }
+
+
+
+
+
+
+
 

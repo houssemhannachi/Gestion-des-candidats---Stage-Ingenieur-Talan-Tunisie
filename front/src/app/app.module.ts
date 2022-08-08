@@ -1,10 +1,13 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {HomeComponent} from './home/home.component';
@@ -23,9 +26,20 @@ import {DossierDetailsComponent} from './dossier-details/dossier-details.compone
 import {DossierListComponent} from './dossier-list/dossier-list.component';
 import {UpdateCandidatComponent} from './update-candidat/update-candidat.component';
 import {UpdateDossierComponent} from './update-dossier/update-dossier.component';
-import {UploadfileComponent} from './uploadfile/uploadfile.component';
 import {CandidatService} from "./_services/candidat.service";
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; 
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import interactionPlugin from '@fullcalendar/interaction';
+import { FileComponent } from './file/file.component';
 
+
+
+
+FullCalendarModule.registerPlugins([ 
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -45,20 +59,30 @@ import {CandidatService} from "./_services/candidat.service";
     UpdateDossierComponent,
     AddDossierComponent,
     DossierDetailsComponent,
-    UploadfileComponent
-  ],
+    CalendarComponent,
+    FileComponent,
+    
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+  
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-
-    NgToastModule],
+    FullCalendarModule,
+    NgToastModule,
+    CalendarModule,
+  
+   
+   
+  ],
   providers: [
     CandidatService,
     httpInterceptorProviders],
   bootstrap: [AppComponent],
+  
 })
 export class AppModule {
 }

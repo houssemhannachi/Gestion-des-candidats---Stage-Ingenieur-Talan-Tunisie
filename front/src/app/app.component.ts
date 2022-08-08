@@ -9,10 +9,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private roles: string[] = [];
+  private role: string|undefined;
   isLoggedIn = false;
   showAdminBoard = false;
   showRhBoard = false;
+  showManagerBoard = false;
   name?: string;
   title: string ='';
 
@@ -23,11 +24,11 @@ export class AppComponent {
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
-      this.roles = user.roles;
+      this.role = user.role;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showRhBoard = this.roles.includes('ROLE_RH');
-
+      this.showAdminBoard = this.role==='ROLE_ADMIN';
+      this.showRhBoard = this.role==='ROLE_RH';
+      this.showManagerBoard=this.role==='ROLE_MANAGER'
       this.name = user.name;
     }
   }

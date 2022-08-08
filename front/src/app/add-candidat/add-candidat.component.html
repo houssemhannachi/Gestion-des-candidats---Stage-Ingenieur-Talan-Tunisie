@@ -33,7 +33,7 @@
               <label><b>Numéro de téléphone</b> *</label>
               <input type="tel" class="form-control" id="tel" [(ngModel)]="candidat.tel"
                      name="tel"
-                     placeholder="Entrer le numéro de téléphone"
+                     placeholder="Entrer le numéro de téléphone" 
               >
             </div>
             <div class="form-group">
@@ -42,6 +42,14 @@
                      [(ngModel)]="candidat.DateNaissance" name="DateNaissance"
                      placeholder="Entrer la date de naissance">
             </div>
+
+           
+            <div class="form-group">
+              <div class="custom-file">
+                  <a routerLink="/file" class="btn btn-primary"  >file</a>
+              </div>
+          </div>
+
             <div class="form-group boutton">
               <button class="btn btn-primary btn-block"  type="submit">
                 Ajouter

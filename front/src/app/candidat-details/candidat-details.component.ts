@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {CandidatService} from "../_services/candidat.service";
-import {Candidat} from "../_services/Candidat";
+import {Candidat} from "../_services/candidat";
 
 @Component({
   selector: 'app-candidat-details',
@@ -20,7 +20,6 @@ export class CandidatDetailsComponent implements OnInit {
     this.candidat = new Candidat();
     this.candidatService.getCandidatById(this.id).subscribe(data => {
       this.candidat = data;
-      console.log(this.candidat)
     });
   }
 }

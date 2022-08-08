@@ -15,6 +15,8 @@ public interface ICandidatService {
 
 	List<Candidat> listAll();
 
+	List<Candidat> findByName(String nom,String prenom);
+
 	Candidat ajouterCandidat(Candidat cdt);
 
 	Candidat getCandidatById(int id);
@@ -23,8 +25,6 @@ public interface ICandidatService {
 
 
 	void updateCandidat(int id,Candidat cdt);
-
-	void AjouterEtAffecterCandidatToDossierCandidature(Candidat cdt, int id);
 
 	long count();
   

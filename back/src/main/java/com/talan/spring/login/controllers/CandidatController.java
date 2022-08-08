@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,17 +33,7 @@ public class CandidatController {
     @Autowired
     CandidatRepository CandidatRepository;
 	
-	
-   /* @PostMapping("/addP")
-    public void saveProduct(@RequestParam("file") MultipartFile file,
-    		@RequestParam("nom") String nom,
-    		@RequestParam("prenom")String prenom,
-    		@RequestParam("email") String email){
-    	
-    	 candidatService.save(file, nom, prenom, email);
-    
-    }*/
-	
+
 
     @GetMapping("/getAllcandidat")
     @ResponseBody
@@ -78,8 +66,13 @@ public class CandidatController {
         candidatService.updateCandidat(id, candidat);
     }
 
+    @GetMapping("/candidat-by-name/{nom}/{prenom}")
+    public List<Candidat> getCandidatByName(@PathVariable("nom") String nom,@PathVariable("prenom") String prenom) {
+        return candidatService.findByName(nom,prenom);
+    }
+
     @GetMapping("/count")
-	public long countPostss() {
+	public long count() {
 		return candidatService.count();
 	}
 

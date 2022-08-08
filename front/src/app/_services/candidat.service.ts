@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Candidat } from './Candidat';
+import { Candidat } from './candidat';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-type':'application/json', 'Access-Control-Allow-Origin': '*'})
@@ -38,6 +38,10 @@ export class CandidatService {
 
   countPostss() {
     return this.httpClient.get(`/server/api/candidat/count`);
+  }
+
+  getCandidatsByName(nom: string,prenom:string) : Observable<any> {
+    return this.httpClient.get(`server/api/candidat/candidat-by-name/${nom}/${prenom}`);
   }
 
 }
