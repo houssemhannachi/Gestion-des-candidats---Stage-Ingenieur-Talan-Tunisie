@@ -28,15 +28,16 @@ import {UpdateCandidatComponent} from './update-candidat/update-candidat.compone
 import {UpdateDossierComponent} from './update-dossier/update-dossier.component';
 import {CandidatService} from "./_services/candidat.service";
 import { CalendarComponent } from './calendar/calendar.component';
-import { FullCalendarModule } from '@fullcalendar/angular'; 
-import dayGridPlugin from '@fullcalendar/daygrid'; 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FileComponent } from './file/file.component';
+import { ManagerListComponent } from './manager-list/manager-list.component';
 
 
 
 
-FullCalendarModule.registerPlugins([ 
+FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin
 ]);
@@ -61,12 +62,12 @@ FullCalendarModule.registerPlugins([
     DossierDetailsComponent,
     CalendarComponent,
     FileComponent,
-    
+    ManagerListComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-  
+
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -74,15 +75,15 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule,
     NgToastModule,
     CalendarModule,
-  
-   
-   
+
+
+
   ],
   providers: [
     CandidatService,
     httpInterceptorProviders],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule {
 }

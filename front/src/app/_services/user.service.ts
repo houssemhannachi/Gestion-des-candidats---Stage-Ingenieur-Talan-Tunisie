@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Candidat} from "./candidat";
+import {Obj} from "@popperjs/core";
 
 const API_URL = 'http://localhost:8080/api/test/';
 
@@ -35,6 +37,10 @@ export class UserService {
     return this.http.get(API_URL + `admin/user/user-by-name-and-role/${name}/${role}`);
   }
 
+  getUsersByRole(role: string) : Observable<any> {
+    return this.http.get(API_URL + `admin/user/user-by-role/${role}`);
+  }
+
   getUser() {
     return this.http.get(API_URL + 'admin/user')
   }
@@ -42,5 +48,11 @@ export class UserService {
   save(users: any): Observable<any> {
     return this.http.post('/server/api/test/admin/user', users, httpOptions)
   }
+
+  delete(id: number): Observable<Object>{
+    return this.http.delete(`/server/api/test/admin/user/delete/${id}`);
+  }
+
+
 
 }

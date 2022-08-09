@@ -34,4 +34,16 @@ public class UserController {
         return userRepository.findByNameContainingIgnoreCaseAndRole_Name(name, role);
     }
 
+    @GetMapping("/user-by-role/{role}")
+    public List<User> getUserByRole(@PathVariable("role") ERole role) {
+        return userRepository.findByRole_Name(role);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseBody
+    public String deleteUserById(@PathVariable("id") long id) {
+        userRepository.deleteById(id);
+        return "Deleted Successfully";
+    }
+
 }

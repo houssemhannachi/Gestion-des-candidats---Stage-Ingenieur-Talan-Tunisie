@@ -12,14 +12,17 @@
       <li class="nav-item" *ngIf="showRhBoard">
         <a href="/rh" class="nav-link" routerLink="rh">Ressources Humaines</a>
       </li>
+      <li class="nav-item" *ngIf="showRhBoard">
+        <a class="nav-link" routerLink="/managerList">Managers</a>
+      </li>
       <li class="nav-item">
-        <a href="/manager" class="nav-link" *ngIf="isLoggedIn" routerLink="manager">Manager</a>
+        <a href="/manager" class="nav-link" *ngIf="showManagerBoard" routerLink="manager">Manager</a>
       </li>
       <li class = "nav-item" *ngIf="showManagerBoard">
         <a routerLink="calendar" routerLinkActive="active" class="nav-link" >Calendrier</a>
       </li>
       <li class = "nav-item" *ngIf="showRhBoard">
-        <a routerLink="candidats" routerLinkActive="active" class="nav-link" >Gérer les candidats</a>
+        <a routerLink="candidats" routerLinkActive="active" class="nav-link" >Candidats</a>
       </li>
       <li class = "nav-item" *ngIf="showRhBoard">
         <a routerLink="dossier" routerLinkActive="active" class="nav-link" >Dossiers</a>

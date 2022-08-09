@@ -18,7 +18,7 @@ import {UpdateDossierComponent} from "./update-dossier/update-dossier.component"
 import {DossierDetailsComponent} from "./dossier-details/dossier-details.component";
 import { CalendarComponent } from './calendar/calendar.component';
 import { FileComponent } from './file/file.component';
-
+import {ManagerListComponent} from "./manager-list/manager-list.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -39,8 +39,8 @@ const routes: Routes = [
   {path: 'dossier-details/:id', component: DossierDetailsComponent},
   {path: 'calendar', component: CalendarComponent},
   {path: 'file', component: FileComponent},
+  {path:'managerList',component:ManagerListComponent},
 
-  
 ];
 
 @NgModule({
