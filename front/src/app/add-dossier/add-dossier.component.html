@@ -43,7 +43,7 @@
                   placeholder="Prénom de candidat">
 
               </div>
-              <button class="btn btn-outline-secondary" (click)="getCandidats(cnom.value,cprenom.value)"
+              <button type="button" class="btn btn-outline-secondary" (click)="getCandidats(cnom.value,cprenom.value)"
                       style="float: right;margin-left:10px;width:40px;height:40px">
                 <i class="bi bi-search"></i>
               </button>
@@ -72,7 +72,7 @@
                   class="form-control">
 
               </div>
-              <button  class="btn btn-outline-secondary" (click)="getManager(m.value)" style="margin-left:10px;width:40px;height:40px">
+              <button  type="button" class="btn btn-outline-secondary" (click)="getManager(m.value)" style="margin-left:10px;width:40px;height:40px">
                 <i class="bi bi-search"></i>
               </button>
               <select
@@ -85,15 +85,15 @@
               </select>
               </div>
               </div>
-  
+
               <div class="form-group">
                 <label>Description</label>
                 <textarea required type="text" class ="form-control" id = "description"
                           [(ngModel)] = "dossier.description" name = "description">
                 </textarea>
               </div>
-            
-          
+
+
           <div class="form-group boutton">
             <button class="btn btn-primary btn-block" type="submit">
               Ajouter
