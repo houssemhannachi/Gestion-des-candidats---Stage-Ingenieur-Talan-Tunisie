@@ -6,7 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
+//import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
@@ -27,12 +27,13 @@ import {DossierListComponent} from './dossier-list/dossier-list.component';
 import {UpdateCandidatComponent} from './update-candidat/update-candidat.component';
 import {UpdateDossierComponent} from './update-dossier/update-dossier.component';
 import {CandidatService} from "./_services/candidat.service";
-import { CalendarComponent } from './calendar/calendar.component';
+import {CalendarModule} from './calendar/calendar.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FileComponent } from './file/file.component';
 import { ManagerListComponent } from './manager-list/manager-list.component';
+import { AddCalendarComponent } from './add-calendar/add-calendar.component';
 
 
 
@@ -60,9 +61,10 @@ FullCalendarModule.registerPlugins([
     UpdateDossierComponent,
     AddDossierComponent,
     DossierDetailsComponent,
-    CalendarComponent,
+    
     FileComponent,
-    ManagerListComponent
+    ManagerListComponent,
+    AddCalendarComponent
    ],
   imports: [
     BrowserModule,
@@ -74,7 +76,7 @@ FullCalendarModule.registerPlugins([
     NgxPaginationModule,
     FullCalendarModule,
     NgToastModule,
-    CalendarModule,
+    CalendarModule
 
 
 

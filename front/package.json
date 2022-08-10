@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@daypilot/daypilot-lite-angular": "^3.10.0",
     "@fullcalendar/angular": "^5.11.2",
     "@fullcalendar/daygrid": "^5.11.2",
     "@fullcalendar/interaction": "^5.11.2",

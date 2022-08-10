@@ -6,6 +6,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {DossierCandidature} from "../_services/dossier.candidature";
 import {DossierService} from "../_services/dossier.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-dossier-list',
@@ -48,18 +49,45 @@ export class DossierListComponent implements OnInit {
     this.router.navigate(['update-dossier', id]);
   }
 
+  
+  
   delete(id: number){
+    this.DossierService.delete(id)
+      .pipe(first())
+      .subscribe(
+        success => console.log('candidat supprimé'),
+        error2 => console.error(' suppression du candidat annulé')
 
-    if (confirm(`Voulez-vous supprimer le dossier #${id}`)) {
-      this.DossierService.delete(id)
-        .pipe(first())
-        .subscribe(
-          success => console.log('dossier supprimé'),
-          error2 => console.error(' suppression du dossier annulé')
+      );
+  }
 
-        );
-    }
-    this.getdossier();
+  open(id:number) {
+    Swal.fire({
+      title: 'Supprimer',
+      text: 'Voulez-vous supprimer ce dossier?',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmer',
+      confirmButtonColor: '#435D7D',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.value) {
+        this.delete(id);
+
+        Swal.fire({
+          title: 'Supprimé!',
+          text:'Ce dossier a été supprimé.',
+          icon: 'success',
+          confirmButtonColor:'#435D7D',
+          timer: 2000,
+          showCancelButton: false,
+          showConfirmButton: false}
+        )
+        window.location.reload();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+      }
+    })
   }
 
   exportpdf():void{

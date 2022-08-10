@@ -34,9 +34,7 @@ public class DossierCandidature implements Serializable{
 	private Date DateCreation = new Date(System.currentTimeMillis());
 	
 	private String description;
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date DateValidation;
-
+	
 	@Enumerated(EnumType.STRING)
 	private State statut = State.valueOf("En_attente");
 

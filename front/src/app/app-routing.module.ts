@@ -16,7 +16,7 @@ import {DossierListComponent} from "./dossier-list/dossier-list.component";
 import {AddDossierComponent} from "./add-dossier/add-dossier.component";
 import {UpdateDossierComponent} from "./update-dossier/update-dossier.component";
 import {DossierDetailsComponent} from "./dossier-details/dossier-details.component";
-import { CalendarComponent } from './calendar/calendar.component';
+import { AddCalendarComponent } from './add-calendar/add-calendar.component';
 import { FileComponent } from './file/file.component';
 import {ManagerListComponent} from "./manager-list/manager-list.component";
 
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'manager', component: BoardManagerComponent },
+  { path: 'manager', component: ManagerListComponent },
   { path: 'rh', component: BoardRhComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: 'add-dossier', component: AddDossierComponent},
   {path: 'update-dossier/:id', component: UpdateDossierComponent},
   {path: 'dossier-details/:id', component: DossierDetailsComponent},
-  {path: 'calendar', component: CalendarComponent},
+  {path: 'calendar', component: AddCalendarComponent},
   {path: 'file', component: FileComponent},
   {path:'managerList',component:ManagerListComponent},
 

@@ -4,7 +4,7 @@
       <div class="table-title">
         <div class="row">
           <div class="col-xs-6">
-            <h2>Gérer les dossiers de candidature</h2>
+            <h2>Liste des dossiers de candidature</h2>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
           <td>
             <button (click)="update(dossier.id_dossier)" class="btn btn-outline-warning"><i class="bi bi-pen-fill"></i>
             </button>
-            <button (click)="delete(dossier.id_dossier)" class="btn btn-outline-danger" style="margin-left: 10px"><i
+            <button (click)="open(dossier.id_dossier)" class="btn btn-outline-danger" style="margin-left: 10px"><i
               class="bi bi-trash3-fill"></i></button>
             <button (click)="dossierDetails(dossier.id_dossier)" class="btn btn-outline-primary"
                     style="margin-left: 10px"><i
