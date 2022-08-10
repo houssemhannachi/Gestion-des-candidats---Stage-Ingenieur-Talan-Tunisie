@@ -1,55 +1,58 @@
 <div id="app">
 
+  
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <img class="img-responsive" src="assets/images/logo.png">
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Acceuil</a>
-      </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <li class="nav-item" *ngIf="showRhBoard">
-        <a href="/rh" class="nav-link" routerLink="rh">Ressources Humaines</a>
-      </li>
-      <li class="nav-item" *ngIf="showRhBoard">
-        <a class="nav-link" routerLink="/managerList">Managers</a>
-      </li>
-      <li class="nav-item">
-        <a href="/manager" class="nav-link" *ngIf="showManagerBoard" routerLink="manager">Manager</a>
-      </li>
-      <li class = "nav-item" *ngIf="showManagerBoard">
-        <a routerLink="calendar" routerLinkActive="active" class="nav-link" >Calendrier</a>
-      </li>
-      <li class = "nav-item" *ngIf="showRhBoard">
-        <a routerLink="candidats" routerLinkActive="active" class="nav-link" >Candidats</a>
-      </li>
-      <li class = "nav-item" *ngIf="showRhBoard">
-        <a routerLink="dossier" routerLinkActive="active" class="nav-link" >Dossiers</a>
-      </li>
-    </ul>
+  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+    <li class="nav-item">
+      <a href="/register" class="nav-link" routerLink="register"><i class="bi bi-person-plus-fill"></i></a>
+    </li>
+    <li class="nav-item">
+      <a href="/login" class="nav-link" routerLink="login"><i class="bi bi-person-workspace"></i></a>
+    </li>
+  </ul>
 
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register"><i class="bi bi-person-plus-fill"></i></a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login"><i class="bi bi-person-workspace"></i></a>
-      </li>
-    </ul>
+  <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+    <li class="nav-item">
+      <a href="/profile" class="nav-link" routerLink="profile"><i class="bi bi-person-square"></i>  {{ name }}</a>
+    </li>
+    <li class="nav-item">
+      <a href class="nav-link" (click)="logout()"><i class="bi bi-box-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
 
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile"><i class="bi bi-person-square"></i>  {{ name }}</a>
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()"><i class="bi bi-box-arrow-right"></i></a>
-      </li>
-    </ul>
-  </nav>
+<div class="sidebar">
+  <img class="img-responsive" style="margin-left:25px;" src="assets/images/logoA.png"><br><br><br><br>
+  <ul class="navbar-nav " routerLinkActive="active" style="margin-left:20px;">
+    <li class="nav-item">
+      <a href="/home" class="nav-link" routerLink="home"><i class="bi bi-house-fill"></i>  Acceuil</a>
+    </li>
+    <li class="nav-item" *ngIf="showAdminBoard">
+      <a href="/admin" class="nav-link" routerLink="admin"><i class="bi bi-person-fill"></i>  Admin Board</a>
+    </li>
+    <li class="nav-item" *ngIf="showRhBoard">
+      <a href="/rh" class="nav-link" routerLink="rh"><i class="bi bi-briefcase"></i>  Ressources Humaines</a>
+    </li>
+    <li class="nav-item" *ngIf="showRhBoard">
+      <a class="nav-link" routerLink="/managerList"><i class="bi bi-person-fill"></i>  Managers</a>
+    </li>
+    <li class="nav-item">
+      <a href="/manager" class="nav-link" *ngIf="showManagerBoard" routerLink="manager"><i class="bi bi-person-fill"></i>  Manager</a>
+    </li>
+    <li class = "nav-item" *ngIf="showManagerBoard">
+      <a routerLink="calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar-check"></i>  Calendrier</a>
+    </li>
+    <li class = "nav-item" *ngIf="showRhBoard">
+      <a routerLink="candidats" routerLinkActive="active" class="nav-link" ><i class="bi bi-people-fill"></i>  Candidats</a>
+    </li>
+    <li class = "nav-item" *ngIf="showRhBoard">
+      <a routerLink="dossier" routerLinkActive="active" class="nav-link" ><i class="bi bi-folder"></i>  Dossiers</a>
+    </li>
+  </ul>
+</div>
 
-  <div class="container">
-    <router-outlet></router-outlet>
-    <lib-ng-toast></lib-ng-toast>
-  </div>
+<div class="container" style="float: right;margin-left:30px;">
+  <router-outlet></router-outlet>
+  <lib-ng-toast></lib-ng-toast>
+</div>
 </div>

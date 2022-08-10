@@ -1,15 +1,37 @@
 .img-responsive {
-  height: 50px;
-  width: 120px;
+  height: 90px;
+  width: 150px;
 }
 .nav-link {
   font-size: 17px;
+  color: rgb(236, 236, 236);
 }
 .bg-dark {
-  background-color: #091E3E !important;
+  background-color:rgba(11, 65, 51, 0.733) !important;
 }
 
 h1{
   font-family: "Poppins SemiBold";
 
 }
+a{
+  color: rgb(236, 236, 236);
+}
+
+.sidebar {
+  height: 700px;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 40px;
+  color: rgba(239, 239, 240, 0.733);
+  background-color: rgba(11, 65, 51, 0.733);
+  }
+  
+  .sidebar div {
+  padding: 8px;
+  font-size: 24px;
+  display: block;
+  }
+  
