@@ -1,14 +1,14 @@
 package com.talan.spring.login.payload.request;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 
 public class LoginRequest {
 
-	@NotBlank
-	private String email;
+    @NotBlank
+    private String email;
 
-	@NotBlank
-	private String password;
+    @NotBlank
+    private String password;
 
     public String getEmail() {
         return email;
@@ -19,12 +19,12 @@ public class LoginRequest {
     }
 
     public String getPassword() {
-		return password;
-	}
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 
 }

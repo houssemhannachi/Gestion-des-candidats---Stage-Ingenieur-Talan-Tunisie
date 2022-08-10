@@ -33,17 +33,17 @@
         <tr *ngFor="let dossier of dossiers | paginate:{itemsPerPage:5,currentPage:p} ">
 
           <td> {{ dossier.intitule }} </td>
-          <td> <a routerLink="/candidat-details/{{dossier.candidat.id_candidat}}">{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a></td>
-          <td> {{ dossier.DateCreation | date: 'dd/MM/yyyy'}}</td>
+          <td> <a routerLink="/candidat-details/{{dossier.candidat.idCandidat}}">{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a></td>
+          <td> {{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</td>
           <td> {{ dossier.user.name}} </td>
           <td><i class="{{checkstyle(dossier.statut)}}"></i> {{checkstatut(dossier.statut)}}</td>
 
           <td>
-            <button (click)="update(dossier.id_dossier)" class="btn btn-outline-warning"><i class="bi bi-pen-fill"></i>
+            <button (click)="update(dossier.idDossier)" class="btn btn-outline-warning"><i class="bi bi-pen-fill"></i>
             </button>
-            <button (click)="open(dossier.id_dossier)" class="btn btn-outline-danger" style="margin-left: 10px"><i
+            <button (click)="open(dossier.idDossier)" class="btn btn-outline-danger" style="margin-left: 10px"><i
               class="bi bi-trash3-fill"></i></button>
-            <button (click)="dossierDetails(dossier.id_dossier)" class="btn btn-outline-primary"
+            <button (click)="dossierDetails(dossier.idDossier)" class="btn btn-outline-primary"
                     style="margin-left: 10px"><i
               class="bi bi-card-list"></i></button>
           </td>

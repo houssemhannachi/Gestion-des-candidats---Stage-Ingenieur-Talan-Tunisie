@@ -20,6 +20,7 @@ export class CandidatDetailsComponent implements OnInit {
     this.candidat = new Candidat();
     this.candidatService.getCandidatById(this.id).subscribe(data => {
       this.candidat = data;
+
     });
   }
 }

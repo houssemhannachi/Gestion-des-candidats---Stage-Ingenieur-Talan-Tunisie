@@ -1,8 +1,6 @@
 package com.talan.spring.login.payload.request;
 
-import java.util.Set;
-
-import javax.validation.constraints.*;
+import java.util.*;
 
 public class SignupRequest {
 

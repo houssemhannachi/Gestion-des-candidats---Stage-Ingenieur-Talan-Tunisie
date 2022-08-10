@@ -1,7 +1,5 @@
 package com.talan.spring.login.payload.response;
 
-import com.talan.spring.login.models.*;
-
 public class UserInfoResponse {
     private Long id;
     private String email;

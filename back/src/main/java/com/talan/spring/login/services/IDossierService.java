@@ -1,26 +1,22 @@
 package com.talan.spring.login.services;
 
-import java.util.List;
-
 import com.talan.spring.login.models.*;
 
-
-
+import java.util.*;
 
 
 public interface IDossierService {
 
-	List<DossierCandidature> findAll();
+    List<DossierCandidature> findAll();
 
-	DossierCandidature addDossierCandidature(DossierCandidature dossier);
+    DossierCandidature addDossierCandidature(DossierCandidature dossier);
 
 
-	void deleteDossierCandidature(int dossierId);
+    void deleteDossierCandidature(int dossierId);
 
-	DossierCandidature getDossierCandidatureById(int id);
+    DossierCandidature getDossierCandidatureById(int id);
 
-	void update(int id, DossierCandidature d);
+    void update(int id, DossierCandidature d);
 
-	
 
 }

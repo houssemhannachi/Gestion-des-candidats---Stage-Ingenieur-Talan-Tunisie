@@ -1,10 +1,10 @@
 package com.talan.spring.login.repository;
 
-import java.util.*;
-
 import com.talan.spring.login.models.*;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.*;
+import org.springframework.stereotype.*;
+
+import java.util.*;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -1,37 +1,21 @@
 package com.talan.spring.login.controllers;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import javax.swing.text.html.*;
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import com.talan.spring.login.models.*;
+import com.talan.spring.login.payload.request.*;
+import com.talan.spring.login.payload.response.*;
+import com.talan.spring.login.repository.*;
+import com.talan.spring.login.security.jwt.*;
+import com.talan.spring.login.security.services.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.*;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.*;
+import org.springframework.security.crypto.password.*;
+import org.springframework.web.bind.annotation.*;
 
-import com.talan.spring.login.models.ERole;
-import com.talan.spring.login.models.Role;
-import com.talan.spring.login.models.User;
-import com.talan.spring.login.payload.request.LoginRequest;
-import com.talan.spring.login.payload.request.SignupRequest;
-import com.talan.spring.login.payload.response.UserInfoResponse;
-import com.talan.spring.login.payload.response.MessageResponse;
-import com.talan.spring.login.repository.RoleRepository;
-import com.talan.spring.login.repository.UserRepository;
-import com.talan.spring.login.security.jwt.JwtUtils;
-import com.talan.spring.login.security.services.UserDetailsImpl;
+import javax.validation.*;
+import java.util.*;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController

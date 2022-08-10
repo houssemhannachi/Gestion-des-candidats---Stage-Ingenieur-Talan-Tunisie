@@ -17,8 +17,8 @@ export class DossierListComponent implements OnInit {
 
   dossiers: any;
   p:number=1;
-  DateValidation:Date=new Date();
-  DateCreation :Date=new Date();
+  dateValidation:Date=new Date();
+  dateCreation :Date=new Date();
   constructor(private DossierService: DossierService,private router: Router) { }
 
   ngOnInit(): void {
@@ -49,8 +49,8 @@ export class DossierListComponent implements OnInit {
     this.router.navigate(['update-dossier', id]);
   }
 
-  
-  
+
+
   delete(id: number){
     this.DossierService.delete(id)
       .pipe(first())

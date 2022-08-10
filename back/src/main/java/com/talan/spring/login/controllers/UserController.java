@@ -1,15 +1,10 @@
 package com.talan.spring.login.controllers;
 
 import com.talan.spring.login.models.*;
-import com.talan.spring.login.payload.request.*;
-import com.talan.spring.login.payload.response.*;
 import com.talan.spring.login.repository.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.*;
-import javax.websocket.server.*;
 import java.util.*;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")

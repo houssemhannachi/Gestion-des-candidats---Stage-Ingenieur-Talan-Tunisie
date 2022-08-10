@@ -13,8 +13,8 @@ export class AddCandidatComponent implements OnInit {
 
 
   candidat: Candidat = new Candidat();
-   
- 
+
+
   constructor( private candidatService: CandidatService,private router: Router) { }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class AddCandidatComponent implements OnInit {
     error => console.log(error));
   }
 
-  
+
   goToList(){
     this.router.navigate(['/candidats']);
   }
@@ -37,10 +37,14 @@ export class AddCandidatComponent implements OnInit {
     console.log(this.candidat);
     this.save();
   }
- 
 
-  
 
+
+
+  setCv($event: any) {
+    this.candidat.fileDB={};
+    this.candidat.fileDB.id=$event;
+  }
 }
 
 

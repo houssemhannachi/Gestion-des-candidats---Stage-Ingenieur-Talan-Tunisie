@@ -33,21 +33,20 @@
               <label><b>Numéro de téléphone</b> *</label>
               <input type="tel" class="form-control" id="tel" [(ngModel)]="candidat.tel"
                      name="tel"
-                     placeholder="Entrer le numéro de téléphone" 
+                     placeholder="Entrer le numéro de téléphone"
               >
             </div>
             <div class="form-group">
               <label><b>Date de naissance</b></label>
-              <input type="date" class="form-control" id="DateNaissance"
-                     [(ngModel)]="candidat.DateNaissance" name="DateNaissance"
+              <input type="date" class="form-control" id="dateNaissance"
+                     [(ngModel)]="candidat.dateNaissance" name="dateNaissance"
                      placeholder="Entrer la date de naissance">
             </div>
 
-           
+
             <div class="form-group">
-              <div class="custom-file">
-                  <a routerLink="/file" class="btn btn-primary"  >file</a>
-              </div>
+              <app-file-upload (cv)="setCv($event)"></app-file-upload>
+              <input type="hidden" >
           </div>
 
             <div class="form-group boutton">

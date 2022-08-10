@@ -1,26 +1,13 @@
 package com.talan.spring.login.controllers;
 
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import com.talan.spring.login.models.*;
 import com.talan.spring.login.repository.*;
 import com.talan.spring.login.services.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -70,11 +57,10 @@ public class CandidatController {
     }
 
     @GetMapping("/count")
-	public long count() {
-		return candidatService.count();
-	}
+    public long count() {
+        return candidatService.count();
+    }
 
-  
 
 }
 	

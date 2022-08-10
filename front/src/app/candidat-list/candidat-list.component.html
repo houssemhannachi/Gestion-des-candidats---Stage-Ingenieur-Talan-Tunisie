@@ -37,13 +37,13 @@
           <td> {{ candidat.prenom }} </td>
           <td> {{ candidat.email }} </td>
           <td> {{ candidat.tel }}</td>
-          <td> {{ candidat.DateNaissance }}</td>
+          <td> {{ candidat.dateNaissance }}</td>
           <td>
-            <button (click)="update(candidat.id_candidat)" class="btn btn-outline-warning"
+            <button (click)="update(candidat.idCandidat)" class="btn btn-outline-warning"
                     style="margin-left:20px;margin-right: 10px"><i class="bi bi-pen-fill"></i></button>
-            <button (click)="open(candidat.id_candidat)" class="btn btn-outline-danger" style="margin-right: 10px"><i
+            <button (click)="open(candidat.idCandidat)" class="btn btn-outline-danger" style="margin-right: 10px"><i
               class="bi bi-trash3-fill"></i></button>
-            <button (click)="candidatDetails(candidat.id_candidat)" class="btn btn-outline-primary"><i
+            <button (click)="candidatDetails(candidat.idCandidat)" class="btn btn-outline-primary"><i
               class="bi bi-card-list"></i></button>
           </td>
         </tr>

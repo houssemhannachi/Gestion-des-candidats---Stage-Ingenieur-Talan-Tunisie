@@ -1,9 +1,9 @@
-package com.talan.spring.login.payload.response;
+package com.talan.spring.login.payload.message;
 
-public class MessageResponse {
+public class ResponseMessage {
     private String message;
 
-    public MessageResponse(String message) {
+    public ResponseMessage(String message) {
         this.message = message;
     }
 

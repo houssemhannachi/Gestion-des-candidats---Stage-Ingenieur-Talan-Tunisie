@@ -1,11 +1,7 @@
 package com.talan.spring.login.models;
 
-import java.util.*;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users",
@@ -31,7 +27,6 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role", referencedColumnName = "id")
     private Role role;
-
 
 
     public User() {

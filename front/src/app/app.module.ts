@@ -31,9 +31,9 @@ import {CalendarModule} from './calendar/calendar.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { FileComponent } from './file/file.component';
 import { ManagerListComponent } from './manager-list/manager-list.component';
 import { AddCalendarComponent } from './add-calendar/add-calendar.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 
@@ -61,10 +61,9 @@ FullCalendarModule.registerPlugins([
     UpdateDossierComponent,
     AddDossierComponent,
     DossierDetailsComponent,
-    
-    FileComponent,
     ManagerListComponent,
-    AddCalendarComponent
+    AddCalendarComponent,
+    FileUploadComponent
    ],
   imports: [
     BrowserModule,

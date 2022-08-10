@@ -1,45 +1,60 @@
 package com.talan.spring.login.controllers;
 
 
-import java.io.InputStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+import com.talan.spring.login.models.*;
+import com.talan.spring.login.payload.message.*;
+import com.talan.spring.login.services.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
+import org.springframework.web.servlet.support.*;
 
-@RestController
-@RequestMapping(path = "/fileUpload")
-@CrossOrigin(origins = "http://localhost:4200")
-public class FileController 
-{
-	
-	private static Logger logger = LoggerFactory.getLogger(FileController.class);
-	
-    
-	@PostMapping("/upload")
-	public ResponseEntity<String> uploadData(@RequestParam("file") MultipartFile file) throws Exception {
-		if (file == null) {
-			throw new RuntimeException("You must select the a file for uploading");
-		}
-		InputStream inputStream = file.getInputStream();
-		String originalName = file.getOriginalFilename();
-		String name = file.getName();
-		String contentType = file.getContentType();
-		long size = file.getSize();
-		logger.info("inputStream: " + inputStream);
-		logger.info("originalName: " + originalName);
-		logger.info("name: " + name);
-		logger.info("contentType: " + contentType);
-		logger.info("size: " + size);
-		// Do processing with uploaded file data in Service layer
-		return new ResponseEntity<String>(originalName, HttpStatus.OK);
-	}
-	}
-    
+import java.util.*;
+import java.util.stream.*;
+
+@Controller
+@CrossOrigin("http://localhost:4200")
+public class FileController {
+    @Autowired
+    private FileStorageService storageService;
+
+    @PostMapping("/api/upload")
+    public ResponseEntity<UploadFileResponse> uploadFile(@RequestParam("file") MultipartFile file) {
+        String message = "";
+        try {
+            FileDB fileDb = storageService.store(file);
+            message = "Uploaded the file successfully: " + file.getOriginalFilename();
+            return ResponseEntity.status(HttpStatus.OK).body(new UploadFileResponse(fileDb.getId(), message));
+        } catch (Exception e) {
+            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new UploadFileResponse(null, message));
+        }
+    }
+
+    @GetMapping("/api/files")
+    public ResponseEntity<List<ResponseFile>> getListFiles() {
+        List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
+            String fileDownloadUri = ServletUriComponentsBuilder
+                    .fromCurrentContextPath()
+                    .path("/api/files/")
+                    .path(dbFile.getId().toString())
+                    .toUriString();
+            return new ResponseFile(
+                    dbFile.getName(),
+                    fileDownloadUri,
+                    dbFile.getType(),
+                    dbFile.getData().length);
+        }).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.OK).body(files);
+    }
+
+    @GetMapping("/api/files/{id}")
+    public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+        FileDB fileDB = storageService.getFile(id);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
+                .body(fileDB.getData());
+    }
+}
