@@ -24,19 +24,20 @@ export class CandidatListComponent implements OnInit {
   ngOnInit(): void {
     this.getCandidats();
   }
-  key:string='nom';
-  reverse:boolean=false;
-  totalLength :any;
-  sort(key:string){
-  this.key=key;
-  this.reverse=!this.reverse;
-}
+
   private getCandidats(){
     this.candidatService.getList().subscribe(data => {
       this.candidats = data;
-      this.totalLength=this.candidats.length;
-      console.log(this.totalLength)
+     
     });
+  }
+
+ 
+   key : string = 'nom';
+  reverse: boolean = false;
+  sort(key: any) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
   create(){

@@ -25,17 +25,20 @@ export class DossierListComponent implements OnInit {
     this.getdossier();
   }
 
-  key:string='intitule';
-  reverse:boolean=false;
-  sort(key:string){
-  this.key=key;
-  this.reverse=!this.reverse;
-}
+  
   private getdossier(){
     this.DossierService.getList().subscribe(data => {
       this.dossiers = data;
       console.log(data);
         });
+  }
+
+ 
+  key : string = 'intitule';
+  reverse: boolean = false;
+  sort(key: any) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
   create(){

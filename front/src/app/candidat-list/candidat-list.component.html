@@ -17,21 +17,25 @@
               style="float: right;margin-left: 10px;width:45px;height:40px">
         <i class="bi bi-file-pdf-fill"></i>
       </button>
+      <nav class="navbar">
+        <input class="form-control" type="text" name="nom" [(ngModel)]="nom"  
+        placeholder="chercher candidat">
+      </nav>
       <br> <br>
       <table id="candidat-table" class="table">
         <thead>
         <tr>
 
-          <th> Nom</th>
-          <th> Prenom</th>
-          <th> Email</th>
-          <th> Tel</th>
-          <th>Date Naissance</th>
+          <th (click)="sort('nom')"> Nom <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('prenom')">Prenom <i class="bi bi-sort-down"></i></th>
+          <th> Email <i class="bi bi-sort-down"></i></th>
+          <th> Tel <i class="bi bi-sort-down"></i></th>
+          <th>Date Naissance <i class="bi bi-sort-down"></i></th>
           <th> Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let candidat of candidats | paginate:{itemsPerPage:5,currentPage:p}">
+        <tr *ngFor="let candidat of candidats| orderBy: key: reverse  | paginate:{itemsPerPage:5,currentPage:p}">
 
           <td> {{ candidat.nom }} </td>
           <td> {{ candidat.prenom }} </td>

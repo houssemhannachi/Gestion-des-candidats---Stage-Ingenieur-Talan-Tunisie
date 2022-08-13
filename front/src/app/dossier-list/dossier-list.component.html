@@ -21,16 +21,16 @@
       <table id="table" class="table">
         <thead>
         <tr>
-          <th>Intitulé du poste</th>
-          <th>Candidat</th>
-          <th>Date de création</th>
-          <th>Manager</th>
-          <th>Status</th>
+          <th>Intitulé du poste <i class="bi bi-sort-down"></i></th>
+          <th>Candidat <i class="bi bi-sort-down"></i></th>
+          <th>Date de création <i class="bi bi-sort-down"></i></th>
+          <th>Manager <i class="bi bi-sort-down"></i></th>
+          <th>Status <i class="bi bi-sort-down"></i></th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let dossier of dossiers | paginate:{itemsPerPage:5,currentPage:p} ">
+        <tr *ngFor="let dossier of dossiers | paginate:{itemsPerPage:5,currentPage:p} |orderBy: key: reverse ">
 
           <td> {{ dossier.intitule }} </td>
           <td> <a routerLink="/candidat-details/{{dossier.candidat.idCandidat}}">{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a></td>

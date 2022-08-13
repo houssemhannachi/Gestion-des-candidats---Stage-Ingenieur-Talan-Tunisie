@@ -34,7 +34,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { ManagerListComponent } from './manager-list/manager-list.component';
 import { AddCalendarComponent } from './add-calendar/add-calendar.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 
 
@@ -75,7 +76,9 @@ FullCalendarModule.registerPlugins([
     NgxPaginationModule,
     FullCalendarModule,
     NgToastModule,
-    CalendarModule
+    CalendarModule,
+    //Ng2SearchPipeModule,
+    Ng2OrderModule
 
 
 
