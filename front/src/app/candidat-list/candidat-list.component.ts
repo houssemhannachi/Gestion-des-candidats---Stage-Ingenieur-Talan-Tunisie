@@ -18,6 +18,7 @@ export class CandidatListComponent implements OnInit {
   candidats:any;
   p:number=1;
   nom:any;
+  searchValue!:String;
 
   constructor(private candidatService: CandidatService,private router: Router) { }
 

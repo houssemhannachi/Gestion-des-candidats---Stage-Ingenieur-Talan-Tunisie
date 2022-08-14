@@ -7,7 +7,7 @@
   color: rgb(236, 236, 236);
 }
 .bg-dark {
-  background-color:rgba(6, 27, 128, 0.733) !important;
+  background-color:rgba(9, 33, 170, 0.733) !important;
 }
 
 h1{
@@ -20,13 +20,14 @@ a{
 
 .sidebar {
   height: 700px;
-  width: 250px;
+  width: 230px;
   position: fixed;
   top: 0;
   left: 0;
   padding-top: 40px;
   color: rgba(239, 239, 240, 0.733);
-  background-color: rgba(6, 27, 128, 0.733);
+  background-color: rgba(9, 33, 170, 0.733);
+  
   }
   
   .sidebar div {

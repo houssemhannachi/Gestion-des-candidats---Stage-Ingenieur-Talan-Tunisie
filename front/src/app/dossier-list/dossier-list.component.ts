@@ -19,6 +19,8 @@ export class DossierListComponent implements OnInit {
   p:number=1;
   dateValidation:Date=new Date();
   dateCreation :Date=new Date();
+  searchValue!:String;
+
   constructor(private DossierService: DossierService,private router: Router) { }
 
   ngOnInit(): void {
