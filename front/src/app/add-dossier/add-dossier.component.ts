@@ -18,6 +18,8 @@ export class AddDossierComponent implements OnInit {
   dossiers: any;
   candidats: any;
   managers: any;
+  candidatsLength: any;
+  managersLength: any;
 
 
   constructor(private DossierService: DossierService, private router: Router, private candidatService: CandidatService, private userService: UserService) {
@@ -27,10 +29,10 @@ export class AddDossierComponent implements OnInit {
   getCandidats(nom:string,prenom:string){
     this.candidatService.getCandidatsByName(nom,prenom).subscribe(data => {
       this.candidats = data;
-      console.log(this.candidats)
-
+      this.candidatsLength = data.length;
 
     });
+
   }
 
 
@@ -39,16 +41,13 @@ export class AddDossierComponent implements OnInit {
       this.userService.getUsersByNameAndRole(name,"ROLE_MANAGER")
         .subscribe(data => {
         this.managers = data;
-        console.log(this.managers)
+          this.managersLength = data.length;
       });;
   }
 
 
 
     ngOnInit(): void {
-
-
-
 
   }
 

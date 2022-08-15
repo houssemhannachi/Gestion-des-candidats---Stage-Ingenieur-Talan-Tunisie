@@ -13,11 +13,11 @@
           <div class="form-group">
             <label><b>Intitulé de poste</b> *</label>
             <input
-              type="text"
+              [(ngModel)]="dossier.intitule"
               class="form-control"
-              id="intitule" [(ngModel)]="dossier.intitule"
-              name="intitule"
-              placeholder="Entrer l'intitlué de poste">
+              id="intitule" name="intitule"
+              placeholder="Entrer l'intitlué de poste"
+              type="text">
           </div>
 
 
@@ -26,37 +26,41 @@
             <div class="form-row">
               <div class="form-group col-md-5">
                 <input
-                  name="candidat"
-                  id="candidat"
-                  type="text"
-                  class="form-control"
                   #cnom
-                  placeholder="Nom de candidat">
+                  class="form-control"
+                  id="candidat"
+                  name="candidat"
+                  placeholder="Nom de candidat"
+                  type="text">
               </div>
               <div class="form-group col-md-5">
                 <input
-                  name="prenom"
-                  id="prenom"
-                  type="text"
-                  class="form-control"
                   #cprenom
-                  placeholder="Prénom de candidat">
+                  class="form-control"
+                  id="prenom"
+                  name="prenom"
+                  placeholder="Prénom de candidat"
+                  type="text">
 
               </div>
-              <button type="button" class="btn btn-outline-secondary" (click)="getCandidats(cnom.value,cprenom.value)"
-                      style="float: right;margin-left:10px;width:40px;height:40px">
+              <button (click)="getCandidats(cnom.value,cprenom.value)" class="btn btn-outline-secondary" style="float: right;margin-left:10px;width:40px;height:40px"
+                      type="button">
                 <i class="bi bi-search"></i>
               </button>
 
 
             </div>
+            <div *ngIf="candidatsLength==0" class="alert alert-danger" role="alert">
+              Pas de candidats!
+            </div>
           </div>
-          <ul *ngIf="candidats">Candidat :
-            <select class="custom-select-sm-4" [(ngModel)]="dossier.candidat"
+          <div *ngIf="candidatsLength>0">Candidat :
+            <select [(ngModel)]="dossier.candidat" class="custom-select custom-select-sm-3"
                     name="candidat">
               <option *ngFor="let c of candidats" [ngValue]="c"> {{c.nom}} {{c.prenom}}</option>
             </select>
-          </ul>
+
+          </div>
 
 
           <div class="form-group">
@@ -64,34 +68,37 @@
             <div class="form-row">
               <div class="form-group col-md-5">
                 <input
-                  name="manager"
-                  id="manager"
-                  placeholder="Nom de manager"
                   #m
-                  type="text"
-                  class="form-control">
+                  class="form-control"
+                  id="manager"
+                  name="manager"
+                  placeholder="Nom de manager"
+                  type="text">
 
               </div>
-              <button  type="button" class="btn btn-outline-secondary" (click)="getManager(m.value)" style="margin-left:10px;width:40px;height:40px">
+              <button (click)="getManager(m.value)" class="btn btn-outline-secondary" style="margin-left:10px;width:40px;height:40px"
+                      type="button">
                 <i class="bi bi-search"></i>
               </button>
-              <select
-                class="form-select"
-                *ngIf="managers"
-                [(ngModel)]="dossier.user"
-                style="margin-left:20px;width:150px;height:40px"
-                name="user">
-                <option *ngFor="let m of managers " selected [ngValue]="m"> {{m.name}}</option>
+              <select *ngIf="managersLength>0"
+                      [(ngModel)]="dossier.user"
+                      class="form-select"
+                      name="user"
+                      style="margin-left:20px;width:150px;height:40px">
+                <option *ngFor="let m of managers " [ngValue]="m" selected> {{m.name}}</option>
               </select>
-              </div>
-              </div>
+            </div>
+            <div *ngIf="managersLength==0" class="alert alert-danger" role="alert">
+              Pas de manager!
+            </div>
+          </div>
 
-              <div class="form-group">
-                <label>Description</label>
-                <textarea required type="text" class ="form-control" id = "description"
-                          [(ngModel)] = "dossier.description" name = "description">
+          <div class="form-group">
+            <label>Description</label>
+            <textarea [(ngModel)]="dossier.description" class="form-control" id="description" name="description"
+                      required type="text">
                 </textarea>
-              </div>
+          </div>
 
 
           <div class="form-group boutton">
