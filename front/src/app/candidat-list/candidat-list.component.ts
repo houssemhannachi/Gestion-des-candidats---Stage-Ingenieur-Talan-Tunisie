@@ -18,25 +18,27 @@ export class CandidatListComponent implements OnInit {
   candidats:any;
   p:number=1;
   nom:any;
+  searchValue!:String;
 
   constructor(private candidatService: CandidatService,private router: Router) { }
 
   ngOnInit(): void {
     this.getCandidats();
   }
-  key:string='nom';
-  reverse:boolean=false;
-  totalLength :any;
-  sort(key:string){
-  this.key=key;
-  this.reverse=!this.reverse;
-}
+
   private getCandidats(){
     this.candidatService.getList().subscribe(data => {
       this.candidats = data;
-      this.totalLength=this.candidats.length;
-      console.log(this.totalLength)
+     
     });
+  }
+
+ 
+   key : string = 'nom';
+  reverse: boolean = false;
+  sort(key: any) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
   create(){

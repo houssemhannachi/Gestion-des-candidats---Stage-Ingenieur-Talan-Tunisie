@@ -69,3 +69,23 @@ a {
   font-size: 18px;
   color:white
 }
+
+.table-wrapper {
+  min-width: 1000px;
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+  padding-bottom: 15px;
+  background: whitesmoke;
+  color: black;
+  padding: 16px 30px;
+  margin: 20px;
+  border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+  margin: 5px 0 0;
+  font-size: 24px;
+}

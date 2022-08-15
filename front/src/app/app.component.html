@@ -10,7 +10,7 @@
       <a href="/login" class="nav-link" routerLink="login"><i class="bi bi-person-workspace"></i></a>
     </li>
   </ul>
-
+    
   <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
     <li class="nav-item">
       <a href="/profile" class="nav-link" routerLink="profile"><i class="bi bi-person-square"></i>  {{ name }}</a>
@@ -31,7 +31,7 @@
       <a href="/admin" class="nav-link" routerLink="admin"><i class="bi bi-person-fill"></i>  Admin Board</a>
     </li>
     <li class="nav-item" *ngIf="showRhBoard">
-      <a href="/rh" class="nav-link" routerLink="rh"><i class="bi bi-briefcase"></i>  Ressources Humaines</a>
+      <a href="/rh" class="nav-link" routerLink="rh"><i class="bi bi-briefcase"></i> Dashboard</a>
     </li>
     <li class="nav-item" *ngIf="showRhBoard">
       <a class="nav-link" routerLink="/managerList"><i class="bi bi-person-fill"></i>  Managers</a>
@@ -40,7 +40,10 @@
       <a href="/manager" class="nav-link" *ngIf="showManagerBoard" routerLink="manager"><i class="bi bi-person-fill"></i>  Manager</a>
     </li>
     <li class = "nav-item" *ngIf="showManagerBoard">
-      <a routerLink="calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar-check"></i>  Calendrier</a>
+      <a routerLink="/calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar-check"></i>  Calendrier</a>
+    </li>
+    <li class = "nav-item" *ngIf="showRhBoard">
+      <a routerLink="/calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar-check"></i>  Calendrier</a>
     </li>
     <li class = "nav-item" *ngIf="showRhBoard">
       <a routerLink="candidats" routerLinkActive="active" class="nav-link" ><i class="bi bi-people-fill"></i>  Candidats</a>

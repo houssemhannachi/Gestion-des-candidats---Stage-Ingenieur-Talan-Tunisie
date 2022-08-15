@@ -8,8 +8,13 @@
           </div>
         </div>
       </div>
+      
+      <input class="form-control" type="text" id="search" [(ngModel)]="searchValue"  
+      placeholder="chercher un dossier" >
+     
+    <br>
       <br>
-      <button (click)="create()" class="btn btn-outline-success"
+      <button (click)="create()" class="btn btn-outline-info"
               style="margin-left: 10px;float: right;width:45px;height:40px"><i class="bi bi-plus-circle-fill"></i>
       </button>
       <button (click)="exportpdf()" class="btn btn-outline-secondary"
@@ -21,16 +26,16 @@
       <table id="table" class="table">
         <thead>
         <tr>
-          <th>Intitulé du poste</th>
-          <th>Candidat</th>
-          <th>Date de création</th>
-          <th>Manager</th>
-          <th>Status</th>
+          <th (click)="sort('intitule')">Intitulé du poste <i class="bi bi-sort-down"></i></th>
+          <th>Candidat <i class="bi bi-sort-down"></i></th>
+          <th>Date de création <i class="bi bi-sort-down"></i></th>
+          <th>Manager <i class="bi bi-sort-down"></i></th>
+          <th>Status <i class="bi bi-sort-down"></i></th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let dossier of dossiers | paginate:{itemsPerPage:5,currentPage:p} ">
+        <tr *ngFor="let dossier of dossiers |search:searchValue| paginate:{itemsPerPage:5,currentPage:p} |orderBy: key: reverse ">
 
           <td> {{ dossier.intitule }} </td>
           <td> <a routerLink="/candidat-details/{{dossier.candidat.idCandidat}}">{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a></td>

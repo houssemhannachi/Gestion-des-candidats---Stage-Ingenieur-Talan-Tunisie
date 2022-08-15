@@ -34,7 +34,10 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { ManagerListComponent } from './manager-list/manager-list.component';
 import { AddCalendarComponent } from './add-calendar/add-calendar.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { SearchfilterPipe } from './searchfilter.pipe';
+import { SearchPipe } from './search.pipe';
 
 
 
@@ -63,7 +66,9 @@ FullCalendarModule.registerPlugins([
     DossierDetailsComponent,
     ManagerListComponent,
     AddCalendarComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    SearchfilterPipe,
+    SearchPipe
    ],
   imports: [
     BrowserModule,
@@ -75,7 +80,9 @@ FullCalendarModule.registerPlugins([
     NgxPaginationModule,
     FullCalendarModule,
     NgToastModule,
-    CalendarModule
+    CalendarModule,
+    //Ng2SearchPipeModule,
+    Ng2OrderModule
 
 
 

@@ -8,36 +8,41 @@
           </div>
         </div>
       </div>
-
+  
+        
+        <input class="form-control" type="text" id="search" [(ngModel)]="searchValue"  
+        placeholder="chercher candidat">
+      
       <br>
-      <button (click)="create()" class="btn btn-outline-success"
+      <button (click)="create()" class="btn btn-outline-info"
               style="float: right;margin-left: 10px;width:45px;height:40px"><i class="bi bi-plus-circle-fill"></i>
       </button>
       <button (click)="exportpdf()" class="btn btn-outline-secondary"
               style="float: right;margin-left: 10px;width:45px;height:40px">
         <i class="bi bi-file-pdf-fill"></i>
       </button>
+      
       <br> <br>
       <table id="candidat-table" class="table">
         <thead>
         <tr>
 
-          <th> Nom</th>
-          <th> Prenom</th>
-          <th> Email</th>
-          <th> Tel</th>
-          <th>Date Naissance</th>
+          <th (click)="sort('nom')"> Nom <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('prenom')">Prenom <i class="bi bi-sort-down"></i></th>
+          <th> Email <i class="bi bi-sort-down"></i></th>
+          <th> Tel <i class="bi bi-sort-down"></i></th>
+          <th>Date Naissance <i class="bi bi-sort-down"></i></th>
           <th> Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let candidat of candidats | paginate:{itemsPerPage:5,currentPage:p}">
+        <tr *ngFor="let candidat of candidats|searchfilter:searchValue| orderBy: key: reverse  | paginate:{itemsPerPage:5,currentPage:p}">
 
           <td> {{ candidat.nom }} </td>
           <td> {{ candidat.prenom }} </td>
           <td> {{ candidat.email }} </td>
           <td> {{ candidat.tel }}</td>
-          <td> {{ candidat.dateNaissance }}</td>
+          <td> {{ candidat.dateNaissance | date: 'dd/MM/yyyy' }}</td>
           <td>
             <button (click)="update(candidat.idCandidat)" class="btn btn-outline-warning"
                     style="margin-left:20px;margin-right: 10px"><i class="bi bi-pen-fill"></i></button>
