@@ -1,5 +1,7 @@
 <div class="container">
+
   <div class="table-responsive">
+
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
@@ -8,35 +10,38 @@
           </div>
         </div>
       </div>
-  
-        
-        <input class="form-control" type="text" id="search" [(ngModel)]="searchValue"  
-        placeholder="chercher candidat">
-      
-      <br>
-      <button (click)="create()" class="btn btn-outline-info"
-              style="float: right;margin-left: 10px;width:45px;height:40px"><i class="bi bi-plus-circle-fill"></i>
-      </button>
-      <button (click)="exportpdf()" class="btn btn-outline-secondary"
-              style="float: right;margin-left: 10px;width:45px;height:40px">
-        <i class="bi bi-file-pdf-fill"></i>
-      </button>
-      
-      <br> <br>
-      <table id="candidat-table" class="table">
+
+      <div class="input-group mb-3">
+        <input [(ngModel)]="searchValue" class="form-control" id="search" placeholder="Chercher candidat - Nom Candidat"
+               type="text">
+
+        <br>
+        <div class="input-group-prepend">
+          <button (click)="create()" class="btn btn-outline-info"
+                  style="float: right;margin-left: 10px;width:45px;height:40px"><i class="bi bi-plus-circle-fill"></i>
+          </button>
+          <button (click)="exportpdf()" class="btn btn-outline-secondary"
+                  style="float: right;margin-left: 10px;width:45px;height:40px">
+            <i class="bi bi-file-pdf-fill"></i>
+          </button>
+          <br> <br>
+        </div>
+      </div>
+      <table *ngIf="totalLength" class="table" id="candidat-table">
         <thead>
         <tr>
 
           <th (click)="sort('nom')"> Nom <i class="bi bi-sort-down"></i></th>
           <th (click)="sort('prenom')">Prenom <i class="bi bi-sort-down"></i></th>
-          <th> Email <i class="bi bi-sort-down"></i></th>
-          <th> Tel <i class="bi bi-sort-down"></i></th>
-          <th>Date Naissance <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('email')"> E-mail <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('tel')"> Téléphone <i class="bi bi-sort-down"></i></th>
+          <th (click)="sort('date')">Date de naissance <i class="bi bi-sort-down"></i></th>
           <th> Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let candidat of candidats|searchfilter:searchValue| orderBy: key: reverse  | paginate:{itemsPerPage:5,currentPage:p}">
+        <tr
+          *ngFor="let candidat of candidats|searchfilter:searchValue| orderBy: key: reverse  | paginate:{itemsPerPage:5,currentPage:p}">
 
           <td> {{ candidat.nom }} </td>
           <td> {{ candidat.prenom }} </td>
@@ -54,8 +59,11 @@
         </tr>
         </tbody>
       </table>
+      <div *ngIf="totalLength==0" class="alert alert-danger" role="alert">
+        Pas de candidats!
+      </div>
     </div>
   </div>
 </div>
-  <pagination-controls class="text-center" (pageChange)="p=$event"></pagination-controls>
+<pagination-controls *ngIf="totalLength" (pageChange)="p=$event" class="text-center"></pagination-controls>
 

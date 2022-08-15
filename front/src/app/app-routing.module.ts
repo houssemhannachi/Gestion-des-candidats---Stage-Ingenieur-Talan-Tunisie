@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'manager', component: ManagerListComponent },
+  { path: 'manager', component: BoardManagerComponent  },
   { path: 'rh', component: BoardRhComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

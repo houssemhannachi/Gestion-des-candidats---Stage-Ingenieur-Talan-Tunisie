@@ -1,7 +1,6 @@
 <div id="app">
-
-  
   <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <img class="img-responsive" *ngIf="!isLoggedIn" style="margin-left:25px;height: 50px;width: auto" src="assets/images/logo.png">
   <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
     <li class="nav-item">
       <a href="/register" class="nav-link" routerLink="register"><i class="bi bi-person-plus-fill"></i></a>
@@ -10,7 +9,7 @@
       <a href="/login" class="nav-link" routerLink="login"><i class="bi bi-person-workspace"></i></a>
     </li>
   </ul>
-    
+
   <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
     <li class="nav-item">
       <a href="/profile" class="nav-link" routerLink="profile"><i class="bi bi-person-square"></i>  {{ name }}</a>
@@ -21,7 +20,7 @@
   </ul>
 </nav>
 
-<div class="sidebar">
+<div class="sidebar" *ngIf="isLoggedIn">
   <img class="img-responsive" style="margin-left:25px;" src="assets/images/logoA.png"><br><br><br><br>
   <ul class="navbar-nav " routerLinkActive="active" style="margin-left:20px;">
     <li class="nav-item">
@@ -54,7 +53,7 @@
   </ul>
 </div>
 
-<div class="container" style="float: right;margin-left:30px;">
+<div class="container" [ngStyle]="{'float':isLoggedIn?'right':''}">
   <router-outlet></router-outlet>
   <lib-ng-toast></lib-ng-toast>
 </div>

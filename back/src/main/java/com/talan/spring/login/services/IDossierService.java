@@ -19,4 +19,5 @@ public interface IDossierService {
     void update(int id, DossierCandidature d);
 
 
+    long count();
 }

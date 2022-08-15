@@ -31,4 +31,8 @@ export class DossierService {
   delete(id: number): Observable<Object>{
     return this.httpClient.delete(`/server/api/dossier/deleteDossier/${id}`);
   }
+
+  countDossiers() {
+    return this.httpClient.get(`/server/api/dossier/count`);
+  }
 }

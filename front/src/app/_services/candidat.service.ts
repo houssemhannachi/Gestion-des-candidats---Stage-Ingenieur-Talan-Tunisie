@@ -36,7 +36,7 @@ export class CandidatService {
   }
 
 
-  countPostss() {
+  countCandidats() {
     return this.httpClient.get(`/server/api/candidat/count`);
   }
 

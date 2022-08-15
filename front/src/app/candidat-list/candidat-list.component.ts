@@ -29,13 +29,15 @@ export class CandidatListComponent implements OnInit {
   private getCandidats(){
     this.candidatService.getList().subscribe(data => {
       this.candidats = data;
-     
+      this.totalLength=this.candidats.length;
+
     });
   }
 
- 
+
    key : string = 'nom';
   reverse: boolean = false;
+  totalLength: number | undefined;
   sort(key: any) {
     this.key = key;
     this.reverse = !this.reverse;

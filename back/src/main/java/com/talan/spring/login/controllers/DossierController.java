@@ -50,4 +50,9 @@ public class DossierController {
 
 
     }
+
+    @GetMapping("/count")
+    public long count() {
+        return dossierService.count();
+    }
 }

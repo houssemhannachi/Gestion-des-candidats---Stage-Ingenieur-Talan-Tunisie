@@ -4,7 +4,7 @@
       <div class="col-xs-6">
         <h2>RH Dashboard</h2><br>
       </div>
-      
+
     </div>
 
   </div>
@@ -14,21 +14,21 @@
       <div class="col-md-3">
         <div class="card-counter success">
           <i class="fa fa-database"></i>
-          <span class="count-numbers">11</span>
+          <span class="count-numbers">{{countManagers}}</span>
           <a routerLink="/managerList" routerLinkActive="active" class="count-name">Manager</a>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card-counter danger">
           <i class="fa fa-ticket"></i>
-          <span class="count-numbers">22</span>
+          <span class="count-numbers">{{countDossiers}}</span>
           <a routerLink="/dossier" routerLinkActive="active" class="count-name">Dossiers de candidature</a>
         </div>
       </div>
       <div class="col-md-3">
         <div class="card-counter info">
           <i class="fa fa-users"></i>
-          <span class="count-numbers">{{count}}35</span>
+          <span class="count-numbers">{{countCandidats}}</span>
           <a routerLink="/candidats" routerLinkActive="active" class="count-name">Candidats</a>
         </div>
       </div>

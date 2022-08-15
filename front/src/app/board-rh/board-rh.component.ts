@@ -3,6 +3,7 @@ import { UserService } from '../_services/user.service';
 import {AppRoutingModule} from "../app-routing.module";
 import {AppComponent} from "../app.component";
 import { CandidatService } from '../_services/candidat.service';
+import {DossierService} from "../_services/dossier.service";
 
 
 @Component({
@@ -13,9 +14,11 @@ import { CandidatService } from '../_services/candidat.service';
 export class BoardRhComponent implements OnInit {
   content?: string;
   public count!: number;
-  
-
-  constructor(private userService: UserService,private candidatService: CandidatService,) { }
+  countCandidats: any;
+  countManagers:any;
+  countDossiers:any;
+  private totalLength: number|undefined;
+  constructor(private userService: UserService,private candidatService: CandidatService,private dossierService:DossierService) { }
 
   ngOnInit(): void {
     this.userService.getRhBoard().subscribe({
@@ -35,9 +38,29 @@ export class BoardRhComponent implements OnInit {
         }
       }
     });
+    this.counterCandidats();
+    this.counterDossiers();
+    this.counterManagers()
+  }
+
+   counterCandidats() {
+    this.candidatService.countCandidats().subscribe(data => {
+      this.countCandidats = data;
+    });
+  }
+  counterDossiers() {
+    this.dossierService.countDossiers().subscribe(data => {
+      this.countDossiers = data;
+    });
+  }
+
+  counterManagers() {
+    this.userService.getUsersByRole("ROLE_MANAGER")
+      .subscribe(data => {
+        this.countManagers=data.length;
+      });;
   }
 
 
-  
-  
+
 }

@@ -42,6 +42,11 @@ public class DossierServiceImpl implements IDossierService {
         dossierCandidatureRepository.saveAndFlush(dossier);
     }
 
+    @Override
+    public long count() {
+        return dossierCandidatureRepository.count();
+    }
+
 
     @Override
     public void deleteDossierCandidature(int id) {
