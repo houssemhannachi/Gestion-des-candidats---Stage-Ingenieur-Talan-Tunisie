@@ -20,6 +20,7 @@ export class DossierListComponent implements OnInit {
   dateValidation:Date=new Date();
   dateCreation :Date=new Date();
   searchValue!:String;
+  totalLength: any;
 
   constructor(private DossierService: DossierService,private router: Router) { }
 
@@ -27,15 +28,17 @@ export class DossierListComponent implements OnInit {
     this.getdossier();
   }
 
-  
+
   private getdossier(){
     this.DossierService.getList().subscribe(data => {
       this.dossiers = data;
-      console.log(data);
+      this.totalLength=data.length;
         });
+
+
   }
 
- 
+
   key : string = 'intitule';
   reverse: boolean = false;
   sort(key: any) {

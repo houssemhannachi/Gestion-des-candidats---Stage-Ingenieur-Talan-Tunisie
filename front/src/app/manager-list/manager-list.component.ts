@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../_services/user.service";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -12,11 +12,13 @@ import Swal from "sweetalert2";
   styleUrls: ['./manager-list.component.css']
 })
 export class ManagerListComponent implements OnInit {
-  totalLength:number=0;
-  p:number=1;
-  managers:any;
-  constructor(private userService:UserService,
-              private router:Router) { }
+  totalLength: number = 0;
+  p: number = 1;
+  managers: any;
+
+  constructor(private userService: UserService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getAllManager()
@@ -26,16 +28,17 @@ export class ManagerListComponent implements OnInit {
     this.userService.getUsersByRole("ROLE_MANAGER")
       .subscribe(data => {
         this.managers = data;
-        this.totalLength=this.managers.length;
+        this.totalLength = this.managers.length;
         console.log(this.totalLength)
-      });;
+      });
+    ;
   }
 
-  create(){
+  create() {
     this.router.navigate(['add-manager']);
   }
 
-  exportpdf():void{
+  exportpdf(): void {
     let DATA: any = document.getElementById('manager-table');
     html2canvas(DATA).then((canvas) => {
       let fileWidth = 208;
@@ -49,25 +52,24 @@ export class ManagerListComponent implements OnInit {
     });
   }
 
-  managerDetails(id: number){
+  managerDetails(id: number) {
     this.router.navigate(['manager-details', id]);
   }
 
-  update(id: number){
+  update(id: number) {
     this.router.navigate(['manager-candidat', id]);
   }
 
-  delete(id: number){
+  delete(id: number) {
     this.userService.delete(id)
       .pipe(first())
       .subscribe(
         success => console.log('candidat supprimé'),
         error2 => console.error(' suppression du candidat annulé')
-
       );
   }
 
-  open(id:number) {
+  open(id: number) {
     Swal.fire({
       title: 'Supprimer',
       text: 'Voulez-vous supprimer ce manager?',
@@ -80,13 +82,14 @@ export class ManagerListComponent implements OnInit {
       if (result.value) {
         this.delete(id);
         Swal.fire({
-          title: 'Supprimé!',
-          text:'Ce manager a été supprimé.',
-          icon: 'success',
-          confirmButtonColor:'#435D7D',
-          timer: 2000,
-          showCancelButton: false,
-          showConfirmButton: false}
+            title: 'Supprimé!',
+            text: 'Ce manager a été supprimé.',
+            icon: 'success',
+            confirmButtonColor: '#435D7D',
+            timer: 2000,
+            showCancelButton: false,
+            showConfirmButton: false
+          }
         )
         window.location.reload();
       } else if (result.dismiss === Swal.DismissReason.cancel) {

@@ -14,8 +14,8 @@
         <i class="bi bi-file-pdf-fill"></i>
       </button>
       <br> <br>
-      <table class="table " id="manager-table" *ngIf="totalLength">
-        <thead >
+      <table *ngIf="totalLength" class="table " id="manager-table">
+        <thead>
         <tr>
           <th> Nom et prénom</th>
           <th> E-mail</th>
@@ -41,5 +41,5 @@
     </div>
   </div>
 </div>
-<pagination-controls *ngIf="totalLength" (pageChange)="p=$event" class="text-center"></pagination-controls>
+<pagination-controls (pageChange)="p=$event" *ngIf="totalLength" class="text-center"></pagination-controls>
 
