@@ -8,22 +8,29 @@
           </div>
         </div>
       </div>
-      <br>
-      <button (click)="exportpdf()" class="btn btn-outline-secondary"
-              style="float: right;margin-left: 10px;width:45px;height:40px">
-        <i class="bi bi-file-pdf-fill"></i>
-      </button>
-      <br> <br>
+      <div class="input-group mb-3">
+        <input [(ngModel)]="searchValue" class="form-control" id="search" placeholder="Chercher manager - Nom Manager"
+               type="text">
+
+        <br>
+        <div class="input-group-prepend">
+          <button (click)="exportpdf()" class="btn btn-outline-secondary"
+                  style="float: right;margin-left: 10px;width:45px;height:40px">
+            <i class="bi bi-file-pdf-fill"></i>
+          </button>
+          <br> <br>
+        </div>
+      </div>
       <table *ngIf="totalLength" class="table " id="manager-table">
         <thead>
         <tr>
-          <th> Nom et prénom</th>
+          <th (click)="sort('name')"> Nom et prénom</th>
           <th> E-mail</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let manager of managers | paginate:{itemsPerPage:5,currentPage:p}">
+        <tr *ngFor="let manager of managers|searchfilter:searchValue| orderBy: key: reverse | paginate:{itemsPerPage:5,currentPage:p}">
 
           <td> {{ manager.name }} </td>
           <td> {{ manager.email }} </td>

@@ -18,6 +18,7 @@ import {UpdateDossierComponent} from "./update-dossier/update-dossier.component"
 import {DossierDetailsComponent} from "./dossier-details/dossier-details.component";
 import { AddCalendarComponent } from './add-calendar/add-calendar.component';
 import {ManagerListComponent} from "./manager-list/manager-list.component";
+import {EntretienComponent} from "./entretien/entretien.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'dossier-details/:id', component: DossierDetailsComponent},
   {path: 'calendar', component: AddCalendarComponent},
   {path:'managerList',component:ManagerListComponent},
+  {path:'entretien/:id',component:EntretienComponent}
 
 ];
 

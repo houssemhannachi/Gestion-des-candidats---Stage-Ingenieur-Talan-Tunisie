@@ -24,4 +24,8 @@ export class FileUploadService {
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}/files`);
   }
+
+  getFile(id:number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/files/${id}`);
+  }
 }

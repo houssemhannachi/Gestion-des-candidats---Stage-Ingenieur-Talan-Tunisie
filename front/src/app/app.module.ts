@@ -38,6 +38,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { SearchfilterPipe } from './searchfilter.pipe';
 import { SearchPipe } from './search.pipe';
+import { EntretienComponent } from './entretien/entretien.component';
+import {DayPilotModule} from "@daypilot/daypilot-lite-angular";
 
 
 
@@ -68,25 +70,26 @@ FullCalendarModule.registerPlugins([
     AddCalendarComponent,
     FileUploadComponent,
     SearchfilterPipe,
-    SearchPipe
+    SearchPipe,
+    EntretienComponent
    ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
 
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
-    FullCalendarModule,
-    NgToastModule,
-    CalendarModule,
-    //Ng2SearchPipeModule,
-    Ng2OrderModule
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NgxPaginationModule,
+        FullCalendarModule,
+        NgToastModule,
+        CalendarModule,
+        //Ng2SearchPipeModule,
+        Ng2OrderModule,
+        DayPilotModule
 
 
-
-  ],
+    ],
   providers: [
     CandidatService,
     httpInterceptorProviders],

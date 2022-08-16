@@ -296,3 +296,12 @@ table.table .avatar {
   background-color: #ff2600;
   color: #ffffff;
 }
+
+table tbody tr:hover {
+  background: #f5f5f5;
+}
+table.table th i {
+  font-size: 13px;
+  margin: 0 5px;
+  cursor: pointer;
+}

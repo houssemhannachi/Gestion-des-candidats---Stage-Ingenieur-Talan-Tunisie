@@ -22,7 +22,6 @@ export class AddCandidatComponent implements OnInit {
 
   save(){
     this.candidatService.create(this.candidat).subscribe( data =>{
-      console.log(data);
       this.goToList();
     },
     error => console.log(error));
@@ -34,7 +33,6 @@ export class AddCandidatComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.candidat);
     this.save();
   }
 

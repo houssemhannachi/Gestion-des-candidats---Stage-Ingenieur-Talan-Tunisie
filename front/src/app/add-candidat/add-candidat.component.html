@@ -37,7 +37,7 @@
               >
             </div>
             <div class="form-group">
-              <label><b>Date de naissance</b></label>
+              <label><b>Date de naissance</b> *</label>
               <input type="date" class="form-control" id="dateNaissance"
                      [(ngModel)]="candidat.dateNaissance" name="dateNaissance"
                      placeholder="Entrer la date de naissance">
@@ -45,12 +45,13 @@
 
 
             <div class="form-group">
+              <label><b>Curriculum vitæ</b></label>
               <app-file-upload (cv)="setCv($event)"></app-file-upload>
               <input type="hidden" >
           </div>
 
             <div class="form-group boutton">
-              <button class="btn btn-primary btn-block"  type="submit">
+              <button class="btn btn-primary btn-block btnSubmit"  type="submit">
                 Ajouter
               </button>
             </div>

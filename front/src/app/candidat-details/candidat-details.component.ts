@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {CandidatService} from "../_services/candidat.service";
 import {Candidat} from "../_services/candidat";
+import {FileUploadService} from "../_services/file-upload.service";
 
 @Component({
   selector: 'app-candidat-details',
@@ -12,7 +13,9 @@ export class CandidatDetailsComponent implements OnInit {
 
   id: number | undefined;
   candidat: any ;
-  constructor(private candidatService: CandidatService,private route: ActivatedRoute) { }
+  fileURL:any;
+  fileInfos: any;
+  constructor(private candidatService: CandidatService,private route: ActivatedRoute, private uploadService:FileUploadService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -20,6 +23,9 @@ export class CandidatDetailsComponent implements OnInit {
     this.candidat = new Candidat();
     this.candidatService.getCandidatById(this.id).subscribe(data => {
       this.candidat = data;
+      this.fileInfos = this.uploadService.getFiles();
+      var file = new Blob([this.candidat.fileDB.data], {type: 'application/pdf'});
+      this.fileURL = window.URL.createObjectURL(file);
 
     });
   }

@@ -1,5 +1,5 @@
 <section>
-  <div class="container py-5">
+  <div class="container py-4">
     <div class="row">
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
@@ -16,13 +16,15 @@
           <div class="card-body text-center">
             <img class="rounded-circle img-fluid"
                  src="../../assets/images/dossier.png" style="width: 150px;">
-            
+
             <h5 class="my-3">{{ dossier.intitule }}</h5>
             <p class="text-muted mb-1">{{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</p>
-           
+
 
           </div>
+
         </div>
+        <a routerLink="/entretien/{{dossier.idDossier}}">Planifier un entretien</a>
       </div>
       <div class="col-lg-8">
         <div class="card mb-4">

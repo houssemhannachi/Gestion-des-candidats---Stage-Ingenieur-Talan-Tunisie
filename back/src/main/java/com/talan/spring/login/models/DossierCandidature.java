@@ -10,8 +10,6 @@ import java.util.*;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class DossierCandidature implements Serializable {
 
 
@@ -39,10 +37,10 @@ public class DossierCandidature implements Serializable {
     @JoinColumn(name = "user", referencedColumnName = "id")
     private User user;
 
-    public DossierCandidature(int idDossier, String intitule) {
+    public DossierCandidature(int idDossier) {
         this.idDossier = idDossier;
-        this.intitule = intitule;
     }
 
-
+    public DossierCandidature() {
+    }
 }

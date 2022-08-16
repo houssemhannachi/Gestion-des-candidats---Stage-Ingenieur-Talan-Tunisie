@@ -1,4 +1,4 @@
-import {DataService} from "./data.service";
+import {DataService} from "../_services/data.service";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
