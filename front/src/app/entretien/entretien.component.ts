@@ -34,7 +34,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   entretienDossier: Entretien| undefined;
 
   ngOnInit(): void {
-    this.getEntretien(3);  }
+    this.getDossier();  }
 
   @ViewChild("day") day!: DayPilotCalendarComponent;
   @ViewChild("week") week!: DayPilotCalendarComponent;
@@ -133,8 +133,16 @@ export class EntretienComponent implements OnInit, AfterViewInit {
 
   save() {
     this.entretienService.save(this.entretien).subscribe(result => this.listEntretiens());
+
   }
 
+  getDossier() :any{
+    this.id = this.route.snapshot.params['id'];
+    this.dossier = new DossierCandidature();
+    this.dossierService.getDossierById(this.id).subscribe(data => {
+      this.dossier = data;
+    });
+  }
 
   getEntretien(id:any) {
     this.id = this.route.snapshot.params['id'];
@@ -147,6 +155,13 @@ export class EntretienComponent implements OnInit, AfterViewInit {
 
 
   private listEntretiens() {
+    setTimeout( () => {
+      this.reloadPage();
+    }, 10);
     this.router.navigate(['/dossier']);
+  }
+
+  reloadPage(): void{
+    window.location.reload();
   }
 }
