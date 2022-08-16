@@ -34,7 +34,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   entretienDossier: Entretien| undefined;
 
   ngOnInit(): void {
-    this.getDossier();  }
+    this.getDossier(); this.getEntretien() }
 
   @ViewChild("day") day!: DayPilotCalendarComponent;
   @ViewChild("week") week!: DayPilotCalendarComponent;
@@ -144,7 +144,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
     });
   }
 
-  getEntretien(id:any) {
+  getEntretien() {
     this.id = this.route.snapshot.params['id'];
     this.entretienService.getEntretienByIdDossier(this.id).subscribe(data => {
       this.entretienDossier = data;
