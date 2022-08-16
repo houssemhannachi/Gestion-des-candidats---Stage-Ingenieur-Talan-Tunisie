@@ -34,16 +34,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   entretienDossier: Entretien| undefined;
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.dossier = new DossierCandidature();
-    this.dossierService.getDossierById(this.id).subscribe(data => {
-      this.dossier = data;
-    });
-    this.entretienService.getEntretienByIdDossier(9).subscribe(data => {
-      this.entretienDossier = data;
-      console.log(data)
-    });
-  }
+    this.getEntretien(3);  }
 
   @ViewChild("day") day!: DayPilotCalendarComponent;
   @ViewChild("week") week!: DayPilotCalendarComponent;
@@ -145,6 +136,13 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   }
 
 
+  getEntretien(id:any) {
+    this.id = this.route.snapshot.params['id'];
+    this.entretienService.getEntretienByIdDossier(this.id).subscribe(data => {
+      this.entretienDossier = data;
+      console.log(data)
+    });
+  }
 
 
 

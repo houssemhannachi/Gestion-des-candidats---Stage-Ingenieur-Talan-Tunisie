@@ -8,6 +8,8 @@ import com.talan.spring.login.services.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.*;
+
 @CrossOrigin(origins = "http://localhost:4200",allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/entretien")
@@ -30,7 +32,7 @@ public class EntretienController {
 
     @GetMapping("/getEntretien/{id}")
     @ResponseBody
-    public Entretien getEntretienById(@PathVariable("id") int id) {
+    public List<Entretien> getEntretienById(@PathVariable("id") int id) {
         return entretienService.getEntretienById(id);
 
     }

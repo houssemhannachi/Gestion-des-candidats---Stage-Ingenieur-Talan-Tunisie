@@ -5,6 +5,8 @@ import com.talan.spring.login.repository.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
+import java.util.*;
+
 @Service
 public class EntretienServiceImpl implements IEntretienService {
 
@@ -17,7 +19,7 @@ public class EntretienServiceImpl implements IEntretienService {
     }
 
     @Override
-    public Entretien getEntretienById(int id) {
-        return entretienRepository.findById(id).get();
+    public List<Entretien> getEntretienById(int id) {
+        return entretienRepository.findEntretienByDossierCandidature_IdDossier(id);
     }
 }
