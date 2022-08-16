@@ -10,7 +10,7 @@ import java.util.*;
 public class Entretien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String text;
 
