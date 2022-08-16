@@ -31,12 +31,17 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   dossier: any;
   public entretiens: any = [];
   public entretien: Entretien | undefined;
+  entretienDossier: Entretien| undefined;
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.dossier = new DossierCandidature();
     this.dossierService.getDossierById(this.id).subscribe(data => {
       this.dossier = data;
+    });
+    this.entretienService.getEntretienByIdDossier(9).subscribe(data => {
+      this.entretienDossier = data;
+      console.log(data)
     });
   }
 
@@ -137,8 +142,11 @@ export class EntretienComponent implements OnInit, AfterViewInit {
 
   save() {
     this.entretienService.save(this.entretien).subscribe(result => this.listEntretiens());
-    ;
   }
+
+
+
+
 
   private listEntretiens() {
     this.router.navigate(['/dossier']);

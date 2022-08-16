@@ -15,4 +15,9 @@ public class EntretienServiceImpl implements IEntretienService {
     public Entretien addEntretien(Entretien entretien) {
         return entretienRepository.save(entretien);
     }
+
+    @Override
+    public Entretien getEntretienById(int id) {
+        return entretienRepository.findById(id).get();
+    }
 }

@@ -69,9 +69,6 @@ export class AddDossierComponent implements OnInit {
     }
 
 
-  selectManager(target: EventTarget|null) {
-    console.log((target as HTMLInputElement).value)
-  }
 }
 
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Entretien} from "./entretien";
+import {DossierCandidature} from "./dossier.candidature";
 const API_URL = 'http://localhost:8080/api/entretien/';
 
 const httpOptions = {
@@ -16,5 +17,9 @@ export class EntretienService {
 
   save(entretien: Entretien | undefined): Observable<any> {
     return this.http.post('/server/api/entretien/AddEntretien', entretien, httpOptions)
+  }
+
+  getEntretienByIdDossier(id: number | undefined): Observable<Entretien> {
+    return this.http.get<Entretien>(`/server/api/entretien/getEntretien/${id}`)
   }
 }

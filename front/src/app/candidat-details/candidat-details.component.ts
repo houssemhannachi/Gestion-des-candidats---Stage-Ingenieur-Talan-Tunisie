@@ -24,8 +24,6 @@ export class CandidatDetailsComponent implements OnInit {
     this.candidatService.getCandidatById(this.id).subscribe(data => {
       this.candidat = data;
       this.fileInfos = this.uploadService.getFiles();
-      var file = new Blob([this.candidat.fileDB.data], {type: 'application/pdf'});
-      this.fileURL = window.URL.createObjectURL(file);
 
     });
   }

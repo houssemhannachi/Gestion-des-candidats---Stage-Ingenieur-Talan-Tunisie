@@ -64,14 +64,15 @@
           </div>
         </div>
       </div>
-      <div class="card mt-3">
-        <div class="card-header">Curriculum vitæ
-        </div>
-
-          <li class="list-group-item">
-            <a class="view-btn-attach" *ngIf="candidat.fileDB" [href]="fileURL" target="_blank">{{candidat.fileDB.name}}</a>
-          </li>
-      </div>
+      <div class="card-header">List of Files</div>
+      <ul
+        class="list-group list-group-flush"
+        *ngFor="let file of fileInfos | async"
+      >
+        <li class="list-group-item">
+          <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+      </ul>
     </div>
   </div>
 </section>

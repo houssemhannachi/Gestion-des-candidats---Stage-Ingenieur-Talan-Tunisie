@@ -28,4 +28,11 @@ public class EntretienController {
         return entretienService.addEntretien(entretien);
     }
 
+    @GetMapping("/getEntretien/{id}")
+    @ResponseBody
+    public Entretien getEntretienById(@PathVariable("id") int id) {
+        return entretienService.getEntretienById(id);
+
+    }
+
 }
