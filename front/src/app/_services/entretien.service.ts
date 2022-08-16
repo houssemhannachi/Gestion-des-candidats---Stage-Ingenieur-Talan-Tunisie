@@ -19,7 +19,7 @@ export class EntretienService {
     return this.http.post('/server/api/entretien/AddEntretien', entretien, httpOptions)
   }
 
-  getEntretienByIdDossier(id: number | undefined): Observable<Entretien> {
-    return this.http.get<Entretien>(`/server/api/entretien/getEntretien/${id}`)
+  getEntretienByIdDossier(id: number | undefined): Observable<any> {
+    return this.http.get<any>(`/server/api/entretien/getEntretien/${id}`)
   }
 }

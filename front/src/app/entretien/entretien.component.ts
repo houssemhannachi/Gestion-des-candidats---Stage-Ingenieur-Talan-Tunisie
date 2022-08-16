@@ -31,10 +31,11 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   dossier: any;
   public entretiens: any = [];
   public entretien: Entretien | undefined;
-  entretienDossier: Entretien| undefined;
+  entretienDossier: Entretien | undefined;
 
   ngOnInit(): void {
-    this.getDossier(); this.getEntretien() }
+    this.getDossier();
+  }
 
   @ViewChild("day") day!: DayPilotCalendarComponent;
   @ViewChild("week") week!: DayPilotCalendarComponent;
@@ -85,6 +86,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       dp.events.add(event);
       this.entretien = new Entretien(this.dossier.idDossier, event.data);
     }
+
   };
 
   configMonth: DayPilot.MonthConfig = {};
@@ -98,7 +100,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.loadEvents();
+    this.getEntretien();
   }
 
   loadEvents(): void {
@@ -136,7 +138,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
 
   }
 
-  getDossier() :any{
+  getDossier(): any {
     this.id = this.route.snapshot.params['id'];
     this.dossier = new DossierCandidature();
     this.dossierService.getDossierById(this.id).subscribe(data => {
@@ -147,21 +149,27 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   getEntretien() {
     this.id = this.route.snapshot.params['id'];
     this.entretienService.getEntretienByIdDossier(this.id).subscribe(data => {
-      this.entretienDossier = data;
-      console.log(data)
+      data.forEach((d: { dateDebut: any; dateFin: any; text: any; }) => {
+        let event = new DayPilot.Event({
+          start: d.dateDebut,
+          end: d.dateFin,
+          id: DayPilot.guid(),
+          text: d.text,
+        });
+        this.events.push(event.data)
+      });
     });
   }
 
 
-
   private listEntretiens() {
-    setTimeout( () => {
+    setTimeout(() => {
       this.reloadPage();
     }, 10);
     this.router.navigate(['/dossier']);
   }
 
-  reloadPage(): void{
+  reloadPage(): void {
     window.location.reload();
   }
 }
