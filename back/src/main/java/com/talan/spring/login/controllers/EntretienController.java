@@ -34,7 +34,6 @@ public class EntretienController {
     @ResponseBody
     public List<Entretien> getEntretienById(@PathVariable("id") int id) {
         return entretienService.getEntretienById(id);
-
     }
 
 }

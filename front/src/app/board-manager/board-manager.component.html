@@ -1,5 +1,16 @@
 <div class="container">
   <header class="jumbotron">
     <p>{{ content }}</p>
+
   </header>
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="card-counter danger">
+        <i class="fa fa-ticket"></i>
+        <span class="count-numbers">{{totalLength}}</span>
+        <a routerLink="/dossierCandidatureList" routerLinkActive="active" class="count-name">Dossiers De candidature</a>
+      </div>
+    </div>
+  </div>
 </div>

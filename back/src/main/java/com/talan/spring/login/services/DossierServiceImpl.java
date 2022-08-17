@@ -51,4 +51,9 @@ public class DossierServiceImpl implements IDossierService {
     public void deleteDossierCandidature(int id) {
         dossierCandidatureRepository.deleteById(id);
     }
+
+    @Override
+    public List<DossierCandidature> getDossierCandidatureByManager(long id) {
+        return dossierCandidatureRepository.findDossierCandidatureByUser_Id(id);
+    }
 }

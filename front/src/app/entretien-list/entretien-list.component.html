@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-xs-6">
+            <h2>Liste des entretiens</h2>
+          </div>
+        </div>
+      </div>
+
+      <table *ngIf="totalLength" class="table" id="table">
+        <thead>
+        <tr>
+          <th>Intitulé</th>
+          <th>Heure de début</th>
+          <th>Heure de fin</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let entretien of entretiens ">
+
+          <td> {{ entretien.text }} </td>
+          <td>{{entretien.dateDebut| date: 'h:mm a'}}</td>
+          <td>{{entretien.dateFin| date: 'h:mm a'}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div *ngIf="totalLength==0" class="alert alert-danger" role="alert">
+        Pas des entretiens!
+      </div>
+    </div>
+  </div>
+</div>
+
+<pagination-controls (pageChange)="p=$event" *ngIf="totalLength" class="text-center"></pagination-controls>
+
+

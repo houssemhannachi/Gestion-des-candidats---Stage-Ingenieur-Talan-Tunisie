@@ -35,4 +35,8 @@ export class DossierService {
   countDossiers() {
     return this.httpClient.get(`/server/api/dossier/count`);
   }
+
+  getDossierByManager(id: any): Observable<any>{
+    return this.httpClient.get(`/server/api/dossier/getDossierByManager/${id}`);
+  }
 }

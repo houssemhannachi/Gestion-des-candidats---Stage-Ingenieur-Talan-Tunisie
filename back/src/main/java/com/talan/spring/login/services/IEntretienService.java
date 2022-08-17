@@ -9,4 +9,5 @@ public interface IEntretienService {
     Entretien addEntretien(Entretien entretien);
 
     List<Entretien> getEntretienById(int id);
+
 }

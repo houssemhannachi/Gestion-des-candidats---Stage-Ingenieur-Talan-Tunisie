@@ -172,4 +172,5 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   reloadPage(): void {
     window.location.reload();
   }
+
 }

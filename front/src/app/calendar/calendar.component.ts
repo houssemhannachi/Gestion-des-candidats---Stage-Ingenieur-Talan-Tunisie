@@ -6,64 +6,29 @@ import {
   DayPilotNavigatorComponent
 } from "@daypilot/daypilot-lite-angular";
 import {DataService} from "../_services/data.service";
+import {Entretien} from "../_services/entretien";
+import {DossierService} from "../_services/dossier.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {EntretienService} from "../_services/entretien.service";
+import {StorageService} from "../_services/storage.service";
 
 @Component({
   selector: 'calendar-component',
-  template: `
-    <div class="container">
-      <div class="navigator">
-        <daypilot-navigator [config]="configNavigator" [events]="events" [(date)]="date" (dateChange)="changeDate($event)" #navigator></daypilot-navigator>
-      </div>
-      <div class="content">
-        <div class="buttons">
-        <button (click)="viewDay()" [class]="this.configNavigator.selectMode == 'Day' ? 'selected' : ''">Day</button>
-        <button (click)="viewWeek()" [class]="this.configNavigator.selectMode == 'Week' ? 'selected' : ''">Week</button>
-        <button (click)="viewMonth()" [class]="this.configNavigator.selectMode == 'Month' ? 'selected' : ''">Month</button>
-        </div>
-
-        <daypilot-calendar [config]="configDay" [events]="events" #day></daypilot-calendar>
-        <daypilot-calendar [config]="configWeek" [events]="events" #week></daypilot-calendar>
-        <daypilot-month [config]="configMonth" [events]="events" #month></daypilot-month>
-      </div>
-    </div>
-
-  `,
-  styles: [`
-    .container {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .navigator {
-      margin-right: 15px;
-    }
-
-    .content {
-      flex-grow: 1;
-    }
-
-    .buttons {
-      margin-bottom: 10px;
-    }
-
-    button {
-      background-color: #3c78d8;
-      color: white;
-      border: 0;
-      padding: .5rem 1rem;
-      width: 80px;
-      font-size: 14px;
-      cursor: pointer;
-      margin-right: 5px;
-    }
-
-    button.selected {
-      background-color: #1c4587;
-    }
-
-  `]
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements AfterViewInit {
+  id: any;
+  dossier: any;
+  public entretiens: any = new Array();
+  public entretien: Entretien | undefined;
+  entretienDossier: Entretien | undefined;
+  currentUser: any;
+  dossiers: any;
+
+  ngOnInit(): void {
+    this.getEntretien();
+  }
 
   @ViewChild("day") day!: DayPilotCalendarComponent;
   @ViewChild("week") week!: DayPilotCalendarComponent;
@@ -94,8 +59,7 @@ export class CalendarComponent implements AfterViewInit {
 
   }
 
-  configDay: DayPilot.CalendarConfig = {
-  };
+  configDay: DayPilot.CalendarConfig = {};
 
   configWeek: DayPilot.CalendarConfig = {
     viewType: "Week",
@@ -103,27 +67,34 @@ export class CalendarComponent implements AfterViewInit {
       const modal = await DayPilot.Modal.prompt("Ajouter un evenement:", "Event 1");
       const dp = args.control;
       dp.clearSelection();
-      if (!modal.result) { return; }
-      dp.events.add(new DayPilot.Event({
+      if (!modal.result) {
+        return;
+      }
+      let event = new DayPilot.Event({
         start: args.start,
         end: args.end,
         id: DayPilot.guid(),
-        text: modal.result
-      }));
+        text: modal.result,
+      })
+      dp.events.add(event);
+      this.entretien = new Entretien(this.dossier.idDossier, event.data);
     }
-  };
-
-  configMonth: DayPilot.MonthConfig = {
 
   };
 
-  constructor(private ds: DataService) {
+  configMonth: DayPilot.MonthConfig = {};
+
+  constructor(private ds: DataService, private dossierService: DossierService,
+              private route: ActivatedRoute,
+              private entretienService: EntretienService,
+              private router: Router,
+              private storageService: StorageService) {
     this.viewWeek();
 
   }
 
   ngAfterViewInit(): void {
-    this.loadEvents();
+    this.loadEntretiens()
   }
 
   loadEvents(): void {
@@ -134,27 +105,52 @@ export class CalendarComponent implements AfterViewInit {
     });
   }
 
-  viewDay():void {
+  viewDay(): void {
     this.configNavigator.selectMode = "Day";
     this.configDay.visible = true;
     this.configWeek.visible = false;
     this.configMonth.visible = false;
   }
 
-  viewWeek():void {
+  viewWeek(): void {
     this.configNavigator.selectMode = "Week";
     this.configDay.visible = false;
     this.configWeek.visible = true;
     this.configMonth.visible = false;
   }
 
-  viewMonth():void {
+  viewMonth(): void {
     this.configNavigator.selectMode = "Month";
     this.configDay.visible = false;
     this.configWeek.visible = false;
     this.configMonth.visible = true;
   }
 
+  private getDossier() {
 
+  }
+
+  private getEntretien() {
+    this.currentUser = this.storageService.getUser();
+    this.dossierService.getDossierByManager(this.currentUser.id).subscribe(data => {
+      this.dossiers = data;
+
+      this.dossiers.map((d: { entretiens: any; }) => d.entretiens).forEach(
+        (p: any) => this.entretiens = this.entretiens.concat(p)
+      );
+    })
+  }
+
+  private loadEntretiens() {
+      this.entretiens.forEach((d: { dateDebut: any; dateFin: any; text: any; }) => {
+        let event = new DayPilot.Event({
+          start: d.dateDebut,
+          end: d.dateFin,
+          id: DayPilot.guid(),
+          text: d.text,
+        });
+        this.events.push(event.data)
+      });
+    }
 }
 

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-xs-6">
+            <h2>Liste des dossiers de candidature</h2>
+          </div>
+        </div>
+      </div>
+
+      <table *ngIf="totalLength" class="table" id="table">
+        <thead>
+        <tr>
+          <th>Intitulé</th>
+          <th>Candidat</th>
+          <th>Date de création</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let dossier of dossiers ">
+
+          <td> {{ dossier.intitule }} </td>
+          <td>{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</td>
+          <td> {{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</td>
+          <td> {{ dossier.statut}}</td>
+
+        </tr>
+        </tbody>
+      </table>
+      <div *ngIf="totalLength==0" class="alert alert-danger" role="alert">
+        Pas de dossier de candidature!
+      </div>
+    </div>
+  </div>
+</div>
+
+<pagination-controls (pageChange)="p=$event" *ngIf="totalLength" class="text-center"></pagination-controls>
+
+

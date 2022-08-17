@@ -1,6 +1,8 @@
 package com.talan.spring.login.models;
 
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 import java.time.*;
 import java.util.*;
@@ -18,6 +20,7 @@ public class Entretien {
 
     private Date dateFin;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dossier", referencedColumnName = "idDossier")
     private DossierCandidature dossierCandidature;

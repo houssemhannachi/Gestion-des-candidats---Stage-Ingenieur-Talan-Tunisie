@@ -37,6 +37,10 @@ public class DossierCandidature implements Serializable {
     @JoinColumn(name = "user", referencedColumnName = "id")
     private User user;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy="dossierCandidature",fetch = FetchType.EAGER)
+    private List<Entretien> entretiens;
+
     public DossierCandidature(int idDossier) {
         this.idDossier = idDossier;
     }

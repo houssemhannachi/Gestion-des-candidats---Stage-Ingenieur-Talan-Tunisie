@@ -39,7 +39,13 @@
       <a href="/manager" class="nav-link" *ngIf="showManagerBoard" routerLink="manager"><i class="bi bi-person-fill"></i>  Manager</a>
     </li>
     <li class = "nav-item" *ngIf="showManagerBoard">
-      <a routerLink="/calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar-check"></i>  Calendrier</a>
+      <a routerLink="/calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar2-day"></i>  Calendrier</a>
+    </li>
+    <li class="nav-item">
+      <a href="/dossierCandidatureList" class="nav-link" *ngIf="showManagerBoard" routerLink="dossierCandidatureList"><i class="bi bi-folder"></i> Dossiers</a>
+    </li>
+    <li class="nav-item">
+      <a href="/entretienList" class="nav-link" *ngIf="showManagerBoard" routerLink="entretienList"><i class="bi bi-calendar-event"></i> Entretiens</a>
     </li>
     <li class = "nav-item" *ngIf="showRhBoard">
       <a routerLink="/calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar-check"></i>  Calendrier</a>

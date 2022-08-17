@@ -47,12 +47,15 @@ public class DossierController {
     public void updateCandidat(@PathVariable int id, @RequestBody DossierCandidature d) {
 
         dossierService.update(id, d);
-
-
     }
 
     @GetMapping("/count")
     public long count() {
         return dossierService.count();
+    }
+
+    @GetMapping("/getDossierByManager/{id}")
+    public List<DossierCandidature>  getDossier(@PathVariable long id) {
+        return dossierService.getDossierCandidatureByManager(id);
     }
 }
