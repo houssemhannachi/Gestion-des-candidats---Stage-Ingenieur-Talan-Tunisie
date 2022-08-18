@@ -115,6 +115,9 @@ export class DossierListComponent implements OnInit {
     if(statut=="En_attente") {
       return "bi bi-pause-circle";
     }
+    else if((statut=="En_cours")) {
+      return "bi bi-pause-circle"
+    }
     else {
       return ""
     }
@@ -122,6 +125,9 @@ export class DossierListComponent implements OnInit {
   checkstatut(statut:string) : string{
     if(statut=="En_attente") {
       return "En attente";
+    }
+    else if(statut=="En_cours") {
+      return "En cours"
     }
     else {
       return ""

@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DossierCandidature} from "../_services/dossier.candidature";
 import {EntretienService} from "../_services/entretien.service";
 import {Entretien} from "../_services/entretien";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-entretien',
@@ -19,14 +20,6 @@ import {Entretien} from "../_services/entretien";
   styleUrls: ['./entretien.component.css']
 })
 export class EntretienComponent implements OnInit, AfterViewInit {
-  form = [
-    {
-      name: 'Description',
-      id: 'description',
-      type: 'text',
-    }
-  ];
-  data = {};
   id: any;
   dossier: any;
   public entretiens: any = [];
@@ -41,6 +34,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   @ViewChild("week") week!: DayPilotCalendarComponent;
   @ViewChild("month") month!: DayPilotMonthComponent;
   @ViewChild("navigator") nav!: DayPilotNavigatorComponent;
+
 
   events: DayPilot.EventData[] = [];
 
@@ -85,8 +79,17 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       })
       dp.events.add(event);
       this.entretien = new Entretien(this.dossier.idDossier, event.data);
-    }
-
+    },
+    contextMenu: new DayPilot.Menu({
+      items: [
+        { text: "Supprimer",
+          onClick: args => {
+            const e = args.source;
+            this.week.control.events.remove(e);
+          }
+        }
+      ]
+    }),
   };
 
   configMonth: DayPilot.MonthConfig = {};
@@ -135,7 +138,6 @@ export class EntretienComponent implements OnInit, AfterViewInit {
 
   save() {
     this.entretienService.save(this.entretien).subscribe(result => this.listEntretiens());
-
   }
 
   getDossier(): any {
@@ -166,11 +168,39 @@ export class EntretienComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.reloadPage();
     }, 10);
-    this.router.navigate(['/dossier']);
+    this.router.navigate(['/dossier-details',this.dossier.idDossier]);
   }
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  open() {
+    Swal.fire({
+      title: 'Enregistrer',
+      text: 'Voulez-vous enregistrer vos modifications?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmer',
+      confirmButtonColor: '#435D7D',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.value) {
+        this.save()
+        Swal.fire({
+          title: 'Enregistré!',
+          text:'Vos modifications ont été enregistrées.',
+          icon: 'success',
+          confirmButtonColor:'#435D7D',
+          timer: 2000,
+          showCancelButton: false,
+          showConfirmButton: false}
+
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+      }
+    })
   }
 
 }

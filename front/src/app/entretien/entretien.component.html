@@ -1,35 +1,42 @@
 <section>
   <div class="container py-4">
     <div class="row">
-        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item">Gérer les dossiers</li>
-            <li class="breadcrumb-item">Details d'un dossier</li>
-            <li class="breadcrumb-item active">Planification d'entretien</li>
-          </ol>
-        </nav>
+      <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item">Gérer les dossiers</li>
+          <li class="breadcrumb-item">Details d'un dossier</li>
+          <li class="breadcrumb-item active">Planification d'entretien</li>
+        </ol>
+      </nav>
     </div>
   </div>
   <div class="container py-2">
-      <div class="navigator">
-        <daypilot-navigator #navigator (dateChange)="changeDate($event)" [(date)]="date"
-                            [config]="configNavigator" [events]="events"></daypilot-navigator>
+    <div class="navigator">
+      <daypilot-navigator #navigator (dateChange)="changeDate($event)" [(date)]="date"
+                          [config]="configNavigator" [events]="events"></daypilot-navigator>
+    </div>
+    <div class="content">
+      <div class="buttons">
+        <button (click)="viewDay()" [class]="this.configNavigator.selectMode == 'Day' ? 'selected' : ''" class="button">
+          Jour
+        </button>
+        <button (click)="viewWeek()" [class]="this.configNavigator.selectMode == 'Week' ? 'selected' : ''"
+                class="button">Semaine
+        </button>
+        <button (click)="viewMonth()" [class]="this.configNavigator.selectMode == 'Month' ? 'selected' : ''"
+                class="button">Année
+        </button>
+        <button (click)="open()" class="btn btn-success" style="float: right">Confirmer
+        </button>
+        <button (click)="reloadPage()" class="btn btn-danger" style="float: right">Annuler
+        </button>
       </div>
-      <div class="content">
-        <div class="buttons">
-          <button class="button" (click)="viewDay()" [class]="this.configNavigator.selectMode == 'Day' ? 'selected' : ''">Jour</button>
-          <button class="button" (click)="viewWeek()" [class]="this.configNavigator.selectMode == 'Week' ? 'selected' : ''">Semaine
-          </button>
-          <button class="button"(click)="viewMonth()" [class]="this.configNavigator.selectMode == 'Month' ? 'selected' : ''">Année
-          </button>
-          <button class="btn btn-success" style="float: right" (click)="save()">Confirmer
-          </button>
-        </div>
 
-        <daypilot-calendar #day [config]="configDay" [events]="events"></daypilot-calendar>
-        <daypilot-calendar #week [config]="configWeek" [events]="events"></daypilot-calendar>
-        <daypilot-month #month [config]="configMonth" [events]="events"></daypilot-month>
-      </div>
+      <daypilot-calendar #day [config]="configDay" [events]="events"></daypilot-calendar>
+      <daypilot-calendar #week [config]="configWeek" [events]="events"></daypilot-calendar>
+      <daypilot-month #month [config]="configMonth" [events]="events"></daypilot-month>
+    </div>
   </div>
 
 </section>
+
