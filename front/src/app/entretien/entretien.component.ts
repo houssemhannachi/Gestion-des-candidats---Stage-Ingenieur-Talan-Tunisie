@@ -65,7 +65,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   configWeek: DayPilot.CalendarConfig = {
     viewType: "Week",
     onTimeRangeSelected: async (args) => {
-      const modal = await DayPilot.Modal.prompt("Ajouter un evenement:", "Event 1");
+      const modal = await DayPilot.Modal.prompt("Planifier votre entretien:", "Entretien : , Salle :");
       const dp = args.control;
       dp.clearSelection();
       if (!modal.result) {

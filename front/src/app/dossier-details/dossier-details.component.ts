@@ -22,5 +22,16 @@ ngOnInit(): void {
     this.dossier = data;
   });
 }
+  checkstatut(statut:string) : string{
+    if(statut=="En_attente") {
+      return "En attente";
+    }
+    else if(statut=="En_cours") {
+      return "En cours"
+    }
+    else {
+      return ""
+    }
+  }
 
 }

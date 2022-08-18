@@ -20,7 +20,7 @@ a{
 }
 
 .sidebar {
-  height: 700px;
+  height: 100%;
   width: 230px;
   position: fixed;
   top: 0;

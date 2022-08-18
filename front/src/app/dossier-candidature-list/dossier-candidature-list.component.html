@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let dossier of dossiers ">
+        <tr *ngFor="let dossier of dossiers | paginate:{itemsPerPage:5,currentPage:p} ">
 
           <td> {{ dossier.intitule }} </td>
           <td>{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</td>
