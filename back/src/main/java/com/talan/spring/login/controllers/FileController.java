@@ -42,6 +42,7 @@ public class FileController {
                     .path(dbFile.getId().toString())
                     .toUriString();
             return new ResponseFile(
+                    dbFile.getId(),
                     dbFile.getName(),
                     fileDownloadUri,
                     dbFile.getType(),
@@ -51,7 +52,23 @@ public class FileController {
     }
 
     @GetMapping("/api/files/{id}")
-    public ResponseEntity<byte[]> getFile(@PathVariable long id) {
+    public ResponseEntity<ResponseFile> getFile(@PathVariable long id) {
+        FileDB fileDB = storageService.getFile(id);
+        String fileDownloadUri = ServletUriComponentsBuilder
+                .fromCurrentContextPath()
+                .path("/api/files/download/")
+                .path(fileDB.getId().toString())
+                .toUriString();
+        ResponseFile file = new ResponseFile(
+                fileDB.getId(),
+                fileDB.getName(),
+                fileDownloadUri,
+                fileDB.getType(),
+                fileDB.getData().length);
+        return ResponseEntity.status(HttpStatus.OK).body(file);
+    }
+    @GetMapping("/api/files/download/{id}")
+    public ResponseEntity<byte[]> downloadFile(@PathVariable long id) {
         FileDB fileDB = storageService.getFile(id);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")

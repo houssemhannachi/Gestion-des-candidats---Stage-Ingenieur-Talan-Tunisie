@@ -69,10 +69,9 @@
       <div *ngIf="fileInfos">
       <ul
         class="list-group list-group-flush"
-        *ngFor="let file of fileInfos|async"
       >
-        <li class="list-group-item" *ngIf="file||candidat.fileDB">
-          <a  *ngIf="file.name==candidat.fileDB.name" href="{{ file.url }}">{{ candidat.fileDB.name }}</a>
+        <li class="list-group-item">
+          <a  href="{{ fileInfos.url }}">{{ candidat.fileDB.name }}</a>
         </li>
       </ul>
       </div>
