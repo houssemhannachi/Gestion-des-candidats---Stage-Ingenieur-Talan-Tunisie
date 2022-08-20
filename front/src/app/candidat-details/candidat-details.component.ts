@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {CandidatService} from "../_services/candidat.service";
 import {Candidat} from "../_services/candidat";
 import {FileUploadService} from "../_services/file-upload.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-candidat-details',
@@ -23,8 +24,12 @@ export class CandidatDetailsComponent implements OnInit {
     this.candidat = new Candidat();
     this.candidatService.getCandidatById(this.id).subscribe(data => {
       this.candidat = data;
-      this.fileInfos = this.uploadService.getFiles();
+      this.uploadService.getFile(16).subscribe(file=>{
+        this.fileInfos=file;
+        console.log(this.fileInfos)
+      });
 
-    });
+      });
+
   }
 }
