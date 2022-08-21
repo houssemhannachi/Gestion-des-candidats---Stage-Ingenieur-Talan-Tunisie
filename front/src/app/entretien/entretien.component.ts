@@ -137,7 +137,9 @@ export class EntretienComponent implements OnInit, AfterViewInit {
 
 
   save() {
+    this.dossier.statut="En_cours"
     this.entretienService.save(this.entretien).subscribe(result => this.listEntretiens());
+    this.dossierService.update(this.dossier.idDossier,this.dossier).subscribe(result => this.listEntretiens());
   }
 
   getDossier(): any {
