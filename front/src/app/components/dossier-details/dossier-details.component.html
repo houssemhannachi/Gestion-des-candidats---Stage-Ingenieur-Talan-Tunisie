@@ -1,0 +1,107 @@
+<section>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">Gérer les dossiers</li>
+            <li class="breadcrumb-item">Détails d'un dossier</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="workflow center">
+      <div id="progress">
+        <div id="progress-bar"></div>
+        <ul id="progress-num">
+          <li class="step" [ngClass]="{'active': dossier.statut=='En_attente'}"style="margin-right=60px">1</li>
+          <li class="step" [ngClass]="{'active': dossier.statut=='En_cours'}">2</li>
+          <li class="step">3</li>
+        </ul>
+        </div>
+      <ul id="progress-details">
+        <li class="step" [ngClass]="{'bold': dossier.statut=='En_attente'}">En attente</li>
+        <li class="step" [ngClass]="{'bold': dossier.statut=='En_cours'}">En cours</li>
+        <li class="step">Résultat</li>
+      </ul>
+    </div>
+<div class="row" style="justify-content:right; padding-right: 20px">
+  <a class="leBouton" routerLink="/entretien/{{dossier.idDossier}}"><i class="bi bi-alarm"></i> Planifier un entretien</a>
+</div>
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img class="rounded-circle img-fluid"
+                 src="../../../assets/images/dossier.png" style="width: 150px;">
+
+            <h5 class="my-3">{{ dossier.intitule }}</h5>
+            <p class="text-muted mb-1">{{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</p>
+
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Intitulé de poste</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ dossier.intitule }} </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Date de Creation</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ dossier.dateCreation | date: 'dd/MM/yyyy'}} </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Candidat</p>
+              </div>
+              <div *ngIf="dossier.candidat" class="col-sm-9">
+                <a class="text-muted mb-0"
+                   routerLink="/candidat-details/{{dossier.candidat.idCandidat}}">{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Manager</p>
+              </div>
+              <div *ngIf="dossier.user" class="col-sm-9">
+                <p class="text-muted mb-0">{{ dossier.user.name }} </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Description</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{dossier.description}} </p>
+              </div>
+            </div>
+            <br>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
