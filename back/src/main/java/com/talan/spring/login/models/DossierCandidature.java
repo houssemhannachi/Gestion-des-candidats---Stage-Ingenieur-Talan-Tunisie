@@ -38,7 +38,7 @@ public class DossierCandidature implements Serializable {
     private User user;
 
     @JsonManagedReference
-    @OneToMany(mappedBy="dossierCandidature",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="dossierCandidature",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Entretien> entretiens;
 
     public DossierCandidature(int idDossier) {

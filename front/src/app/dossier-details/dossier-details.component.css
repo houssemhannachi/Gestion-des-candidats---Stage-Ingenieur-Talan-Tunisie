@@ -77,12 +77,13 @@
 
 a.leBouton {
   text-decoration: none;
-  width: 100px;
-  background-color:  #0582a8; 
+  width: auto;
+  height: 40px;
+  background-color:  rgb(0 74 158 / 89%) !important;
   color: white;
-  margin:5px;
+  margin-bottom: 10px;
   border: 1px solid;
-  border-style:inset;
   border-radius: 12px;
+
 
   }
