@@ -60,20 +60,13 @@ export class ManagerListComponent implements OnInit {
     });
   }
 
-  managerDetails(id: number) {
-    this.router.navigate(['manager-details', id]);
-  }
-
-  update(id: number) {
-    this.router.navigate(['manager-candidat', id]);
-  }
-
+ 
   delete(id: number) {
     this.userService.delete(id)
       .pipe(first())
       .subscribe(
-        success => console.log('candidat supprimé'),
-        error2 => console.error(' suppression du candidat annulé')
+        success => console.log('manager supprimé'),
+        error2 => console.error(' suppression du manager annulé')
       );
   }
 
@@ -105,6 +98,7 @@ export class ManagerListComponent implements OnInit {
       }
     })
   }
+
 
 
 }

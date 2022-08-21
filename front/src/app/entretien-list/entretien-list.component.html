@@ -20,12 +20,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let entretien of entretiens | paginate:{itemsPerPage:6,currentPage:p} ">
+        <tr *ngFor="let entretien of entretiens | paginate:{itemsPerPage:5,currentPage:p} ">
 
           <td> {{ entretien.text }} </td>
           <td>{{entretien.dateDebut| date: 'h:mm a'}}</td>
           <td>{{entretien.dateFin| date: 'h:mm a'}}</td>
           <td>{{entretien.dateFin| date: 'EEEE, MMMM d, y'}}</td>
+          
+         <td>
+            
+            <button  class="btn btn-success" style="margin-left: 10px;"><i class="bi bi-check-square-fill"></i>
+            </button>
+            <button  class="btn btn-danger" style="margin-left: 10px;" ><i class="bi bi-x-square-fill"></i>
+            </button>
+
+          </td>
 
         </tr>
         </tbody>

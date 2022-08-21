@@ -4,7 +4,7 @@
 }
 #progress-bar {
   position: absolute;
-  background: lightseagreen;
+  background: rgb(27, 110, 106);;
   height: 5px;
   width: 0%;
   top: 50%;
@@ -27,7 +27,7 @@
 }
 #progress-num::before {
   content: "";
-  background-color: lightgray;
+  background-color: rgb(243, 241, 241);
   position: absolute;
   top: 50%;
   left: 0;
@@ -36,21 +36,21 @@
   z-index: -1;
 }
 #progress-num .step {
-  border: 3px solid lightgray;
+  border: 1.5px solid rgb(243, 241, 241);
   border-radius: 100%;
   width: 25px;
   height: 25px;
   line-height: 25px;
   text-align: center;
-  background-color: #fff;
+  background-color: rgb(243, 241, 241);
   font-family: sans-serif;
   font-size: 14px;
   position: relative;
   z-index: 1;
 }
 #progress-num .step.active {
-  border-color: lightseagreen;
-  background-color: lightseagreen;
+  border-color: rgb(17, 92, 35);;
+  background-color: rgb(17, 92, 35);
   color: #fff;
 }
 .btn {
@@ -74,3 +74,15 @@
 .bold {
   font-weight: bold;
 }
+
+a.leBouton {
+  text-decoration: none;
+  width: 100px;
+  background-color:  #0582a8; 
+  color: white;
+  margin:5px;
+  border: 1px solid;
+  border-style:inset;
+  border-radius: 12px;
+
+  }

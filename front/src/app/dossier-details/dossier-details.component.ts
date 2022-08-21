@@ -34,7 +34,17 @@ ngOnInit(): void {
       return ""
     }
   }
-
-
+ 
+  checkstyle(statut:string) : string{
+    if(statut=="En_attente") {
+      return "bi bi-pause-circle";
+    }
+    else if((statut=="En_cours")) {
+      return "bi bi-play"
+    }
+    else {
+      return ""
+    }
+  }
 
 }

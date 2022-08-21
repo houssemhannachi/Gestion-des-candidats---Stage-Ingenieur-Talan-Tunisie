@@ -116,7 +116,7 @@ export class DossierListComponent implements OnInit {
       return "bi bi-pause-circle";
     }
     else if((statut=="En_cours")) {
-      return "bi bi-pause-circle"
+      return "bi bi-play"
     }
     else {
       return ""

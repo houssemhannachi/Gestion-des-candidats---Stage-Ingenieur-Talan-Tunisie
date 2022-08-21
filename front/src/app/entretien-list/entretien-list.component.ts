@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StorageService} from "../_services/storage.service";
 import {DossierService} from "../_services/dossier.service";
 import {EntretienService} from "../_services/entretien.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-entretien-list',
@@ -34,5 +35,7 @@ export class EntretienListComponent implements OnInit {
       })
   }
 
+  
+  
 
 }
