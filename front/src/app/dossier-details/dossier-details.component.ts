@@ -20,6 +20,7 @@ ngOnInit(): void {
   this.dossier = new DossierCandidature();
   this.dossierService.getDossierById(this.id).subscribe(data => {
     this.dossier = data;
+    console.log(this.dossier)
   });
 }
   checkstatut(statut:string) : string{
@@ -33,5 +34,7 @@ ngOnInit(): void {
       return ""
     }
   }
+
+
 
 }

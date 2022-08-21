@@ -5,10 +5,25 @@
         <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item">Gérer les dossiers</li>
-            <li class="breadcrumb-item">Details d'un dossier</li>
+            <li class="breadcrumb-item">Détails d'un dossier</li>
           </ol>
         </nav>
       </div>
+    </div>
+    <div class="workflow center">
+      <div id="progress">
+        <div id="progress-bar"></div>
+        <ul id="progress-num">
+          <li class="step" [ngClass]="{'active': dossier.statut=='En_attente'}">1</li>
+          <li class="step" [ngClass]="{'active': dossier.statut=='En_cours'}">2</li>
+          <li class="step">3</li>
+        </ul>
+        </div>
+      <ul id="progress-details">
+        <li class="step" [ngClass]="{'bold': dossier.statut=='En_attente'}">En attente</li>
+        <li class="step" [ngClass]="{'bold': dossier.statut=='En_cours'}">En cours</li>
+        <li class="step">Résultat</li>
+      </ul>
     </div>
     <div class="row">
       <div class="col-lg-4">
@@ -54,7 +69,7 @@
               </div>
               <div *ngIf="dossier.candidat" class="col-sm-9">
                 <a class="text-muted mb-0"
-                   routerLink="/candidat-details/{{dossier.candidat.idCandidat}}" >{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a>
+                   routerLink="/candidat-details/{{dossier.candidat.idCandidat}}">{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</a>
               </div>
             </div>
             <hr>
@@ -63,7 +78,7 @@
               <div class="col-sm-3">
                 <p class="mb-0">Manager</p>
               </div>
-              <div class="col-sm-9" *ngIf="dossier.user">
+              <div *ngIf="dossier.user" class="col-sm-9">
                 <p class="text-muted mb-0">{{ dossier.user.name }} </p>
               </div>
             </div>
