@@ -118,6 +118,11 @@ export class DossierListComponent implements OnInit {
     else if((statut=="En_cours")) {
       return "bi bi-play"
     }
+    else if(statut=="Accepte") {
+      return "bi bi-check2-circle"
+    }
+    else if(statut=="Refuse") {
+      return "bi bi-x-circle-fill"}
     else {
       return ""
     }
@@ -129,6 +134,11 @@ export class DossierListComponent implements OnInit {
     else if(statut=="En_cours") {
       return "En cours"
     }
+    else if(statut=="Accepte") {
+      return "Accepté"
+    }
+    else if(statut=="Refuse") {
+      return "Refusé"}
     else {
       return ""
     }

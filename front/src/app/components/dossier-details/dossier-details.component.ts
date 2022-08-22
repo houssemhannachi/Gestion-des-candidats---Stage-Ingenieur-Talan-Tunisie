@@ -30,6 +30,11 @@ ngOnInit(): void {
     else if(statut=="En_cours") {
       return "En cours"
     }
+    else if(statut=="Accepte") {
+      return "Accepté"
+    }
+    else if(statut=="Refuse") {
+      return "Refusé"}
     else {
       return ""
     }
