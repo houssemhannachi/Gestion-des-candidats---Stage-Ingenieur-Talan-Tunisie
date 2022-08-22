@@ -24,7 +24,7 @@ export class CandidatDetailsComponent implements OnInit {
     this.candidat = new Candidat();
     this.candidatService.getCandidatById(this.id).subscribe(data => {
       this.candidat = data;
-      this.uploadService.getFile(16).subscribe(file=>{
+      this.uploadService.getFile(this.candidat.fileDB.id).subscribe(file=>{
         this.fileInfos=file;
         console.log(this.fileInfos)
       });
