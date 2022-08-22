@@ -2,5 +2,5 @@ package com.talan.spring.login.models;
 
 public enum State {
 
-    En_attente, refuse, accepte, En_cours
+    En_attente, Refuse, Accepte, En_cours
 }

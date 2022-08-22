@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StorageService} from "../../_services/storage.service";
 import {DossierService} from "../../_services/dossier.service";
 import {EntretienService} from "../../_services/entretien.service";
-import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-entretien-list',
@@ -11,12 +11,16 @@ import Swal from "sweetalert2";
 })
 export class EntretienListComponent implements OnInit {
   dossiers: any;
+  dossier:any;
   currentUser?: any;
   totalLength: any;
   p: number | undefined;
   entretiens: any = new Array();
 
-  constructor(private storageService: StorageService, private dossierService: DossierService, private entretienService: EntretienService) {
+  constructor(private router:Router,
+              private storageService: StorageService,
+              private dossierService: DossierService,
+              private entretienService: EntretienService) {
   }
 
   ngOnInit(): void {
@@ -24,11 +28,18 @@ export class EntretienListComponent implements OnInit {
     this.dossierService.getDossierByManager(this.currentUser.id).subscribe(data => {
         this.dossiers = data;
 
-        this.dossiers.map((d: { entretiens: any; }) => d.entretiens).forEach(
-            (p: any)=>this.entretiens=this.entretiens.concat(p)
-        );
+        this.dossiers.forEach(
+          ((d: { entretiens: any; idDossier: any; }) =>{
+            d.entretiens.forEach(
+                (p: {
+                  dossiers: { entretiens: any; idDossier: any };
+                  entretiens: any; })=>{
+                p.dossiers=d;
+                this.entretiens=this.entretiens.concat(p);
+              }
+            )}));
         this.totalLength = this.entretiens.length;
-        console.log(this.totalLength)
+        console.log(this.entretiens)
       },
       err => {
         console.error(err)
@@ -36,6 +47,28 @@ export class EntretienListComponent implements OnInit {
   }
 
 
+  accepter(id: any) {
+    this.dossier=this.dossierService.getDossierById(id);
+    this.dossier.statut="Accepte"
+    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
+  }
+
+  private listDossier() {
+    setTimeout(() => {
+      this.reloadPage();
+    }, 0);
+    this.router.navigate(['/dossierCandidatureList']);
+  }
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+
+  refuser(id:any) {
+    this.dossier=this.dossierService.getDossierById(id);
+    this.dossier.statut="Refuse"
+    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
+  }
 
 
 }
