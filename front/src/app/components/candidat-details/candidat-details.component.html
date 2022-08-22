@@ -18,7 +18,7 @@
             <img src="../../../assets/images/avatar.png" alt="avatar"
                  class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{candidat.nom}} {{candidat.prenom}}</h5>
-            <p class="text-muted mb-1"><i class="bi bi-telephone"></i>+216 {{candidat.tel}}</p>
+            <p class="text-muted mb-1"><i class="bi bi-telephone"></i>  +216 {{candidat.tel}}</p>
 
           </div>
         </div>
@@ -61,20 +61,26 @@
                 <p class="text-muted mb-0">{{candidat.dateNaissance}}</p>
               </div>
             </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"><i class="bi bi-filetype-pdf"></i></p>
+              </div>
+              <div class="col-sm-9" *ngIf="fileInfos">
+                <ul
+                  class="list-group list-group-flush"
+                >
+                  <li class="list-group-item">
+                    <a  href="{{ fileInfos.url }}">{{ candidat.fileDB.name }}</a>
+                  </li>
+                </ul>
+                </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="card-header">Curriculum vitæ
-      </div>
-      <div *ngIf="fileInfos">
-      <ul
-        class="list-group list-group-flush"
-      >
-        <li class="list-group-item">
-          <a  href="{{ fileInfos.url }}">{{ candidat.fileDB.name }}</a>
-        </li>
-      </ul>
-      </div>
+     
+      
     </div>
   </div>
 </section>

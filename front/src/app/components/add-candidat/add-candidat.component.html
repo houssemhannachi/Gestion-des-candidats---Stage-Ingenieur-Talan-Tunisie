@@ -8,51 +8,68 @@
         </div>
       </div>
       <div class="card-body">
-        <form (ngSubmit)="onSubmit()">
+        <form #f="ngForm" (ngSubmit)="onSubmit()">
 
           <div class="form-group">
             <label><b>Nom</b> *</label>
             <input [(ngModel)]="candidat.nom" class="form-control" id="nom" name="nom"
-                   placeholder="Entrer le nom"
+                   placeholder="Entrer le nom" #n="ngModel"
                    type="text"
-                   required
-                  minlength="4">
+                   required>
+          </div>
+          <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+            le champ est obligatoire
           </div>
 
           <div class="form-group">
             <label><b>Prénom</b> *</label>
             <input [(ngModel)]="candidat.prenom" class="form-control" id="prenom" name="prenom"
-                   placeholder="Entrer le prénom"
-                   type="text">
+                   placeholder="Entrer le prénom" #l="ngModel"
+                   type="text"
+                   required
+                   pattern="[a-zA-Z]+"
+                  >
+          </div>
+          <div class="alert alert-danger" *ngIf="l.invalid && l.touched">
+            le champ est obligatoire
           </div>
           <div class="form-group">
             <label><b>E-mail</b> * </label>
             <input [(ngModel)]="candidat.email" class="form-control" id="email" name="email"
-                   placeholder="Entrer l'e-mail"
+                   placeholder="Entrer l'e-mail" #e="ngModel" 
+                   required 
+                   pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}"
                    type="email">
+          </div>
+          <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
+            le champ doit respecter les conditions
           </div>
           <div class="form-group">
             <label><b>Numéro de téléphone</b> *</label>
             <input [(ngModel)]="candidat.tel" class="form-control" id="tel" name="tel"
-                   placeholder="Entrer le numéro de téléphone"
-                   type="tel"
+                   placeholder="Entrer le numéro de téléphone" #t="ngModel"
+                   type="tel" required pattern="[0-9]{8}"
             >
+          </div>
+          <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+            le champ doit respecter les conditions
           </div>
           <div class="form-group">
             <label><b>Date de naissance</b> *</label>
             <input [(ngModel)]="candidat.dateNaissance" class="form-control" id="dateNaissance"
                    name="dateNaissance" placeholder="Entrer la date de naissance"
-                   type="date">
+                   type="date" required #d="ngModel">
           </div>
-
-
+          <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+            le champ est obligatoire
+          </div>
           <div class="form-group">
-            <label><b>Curriculum vitæ</b></label>
+            <label><b>Curriculum vitea</b></label>
             <app-file-upload (cv)="setCv($event)"></app-file-upload>
           </div>
 
           <div class="form-group boutton">
-            <button class="btn btn-primary btn-block btnSubmit" type="submit">
+            <button class="btn btn-primary btn-block btnSubmit" type="submit" [disabled]="f.invalid">
               Ajouter
             </button>
           </div>

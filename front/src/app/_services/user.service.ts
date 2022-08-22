@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Candidat} from "./candidat";
 import {Obj} from "@popperjs/core";
 
-const API_URL = 'http://localhost:8080/api/test/';
+const API_URL = 'http://localhost:8093/api/test/';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})

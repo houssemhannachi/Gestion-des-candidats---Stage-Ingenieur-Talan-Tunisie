@@ -1,49 +1,125 @@
-<div class="row">
-    <div class="card col-md-6 offset-md-3 offset-md-3">
+<div class="container">
+    <div class="row">
+      <div class="card col-md-6 offset-md-3 offset-md-3">
         <div class="row">
-            <h3 class="text-center"> Create Dossier </h3>
-            <hr />
-            <div class="card-body">
-                <form (ngSubmit)="onSubmit()">
-
-                    <div class="form-group">
-                        <label>Intitulé de poste</label>
-                        <input type="text" class="form-control" id="nom"
-                        [(ngModel)]="dossier.intitule" name="intitule">
-                    </div>
-
-                   <div class="form-group">
-                        <label> Date Creation</label>
-                        <input type="date" class ="form-control" id = "dateCreation"
-                            [(ngModel)] = "dossier.dateCreation" name = "dateCreation">
-                    </div>
-
-                    <div class="form-group">
-                        <label> Date Validation</label>
-                        <input type="date" class ="form-control" id = "dateValidation"
-                            [(ngModel)] = "dossier.dateValidation" name = "dateValidation">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="statut">Statut</label>
-                        <select
-                          id="statut"
-                         class="form-select"  name="statut" [(ngModel)]="dossier.statut"
-                          style="height: 35px;">
-                          <option value="En_attente" selected>En_attente</option>
-                          <option value="En_cours">En_cours</option>
-                          <option value="accepte">accepte</option>
-                          <option value="refuse">refuse</option>
-                        </select>
-
-                       </div>
-                    <br />
-                    <button class="btn btn-success" type="submit">Submit</button>
-
-                </form>
-            </div>
+          <div class="col-md-12 text-center">
+            <h2>Modifier un dossier de candidature</h2>
+            <span>Veuillez utiliser le formulaire ci-dessous pour <br>créer un dossier de candidature.</span>
+          </div>
         </div>
+        <div class="card-body">
+          <form #form="ngForm" (ngSubmit)="onSubmit()">
+  
+            <div class="form-group">
+              <label><b>Intitulé de poste</b> *</label>
+              <input
+                [(ngModel)]="dossier.intitule"
+                class="form-control"
+                id="intitule" name="intitule"
+                placeholder="Entrer l'intitlué de poste"
+                type="text" #i="ngModel"
+                required>
+            </div>
+            <div class="alert alert-danger" *ngIf="i.invalid && i.touched">
+              le champ est obligatoire
+            </div>
+  
+            <div class="form-group">
+              <label><b>Candidat</b> *</label>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <input
+                    #cnom
+                    class="form-control"
+                    id="candidat"
+                    name="candidat"
+                    placeholder="Nom de candidat"
+                    type="text" required 
+                    >
+                </div>
+                
+                <div class="form-group col-md-5">
+                  <input
+                    #cprenom
+                    class="form-control"
+                    id="prenom"
+                    name="prenom"
+                    placeholder="Prénom de candidat"
+                    type="text">
+                    
+                </div>
+                <button (click)="getCandidats(cnom.value,cprenom.value)" class="btn btn-outline-secondary" style="float: right;margin-left:10px;width:40px;height:40px"
+                        type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+  
+  
+              </div>
+              <div *ngIf="candidatsLength==0" class="alert alert-danger" role="alert">
+                Pas de candidats!
+              </div>
+            </div>
+            <div *ngIf="candidatsLength>0">Candidat :
+              <select [(ngModel)]="dossier.candidat" class="custom-select custom-select-sm-3"
+                      name="candidat">
+                <option *ngFor="let c of candidats" [ngValue]="c"> {{c.nom}} {{c.prenom}}</option>
+              </select>
+  
+            </div>
+  
+  
+            <div class="form-group">
+              <label for="manager"><b>Manager</b> *</label>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <input
+                    #m
+                    class="form-control"
+                    id="manager"
+                    name="manager"
+                    placeholder="Nom de manager"
+                    type="text" >
+  
+                </div>
+                
+                
+                <button (click)="getManager(m.value)" class="btn btn-outline-secondary" style="margin-left:10px;width:40px;height:40px"
+                        type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+                <select *ngIf="managersLength>0"
+                        [(ngModel)]="dossier.user"
+                        class="form-select"
+                        name="user"
+                        style="margin-left:20px;width:150px;height:40px">
+                  <option *ngFor="let m of managers " [ngValue]="m" selected> {{m.name}}</option>
+                </select>
+              </div>
+              <div *ngIf="managersLength==0" class="alert alert-danger" role="alert">
+                Pas de manager!
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label>Description</label>
+              <textarea [(ngModel)]="dossier.description" class="form-control" id="description" name="description"
+                        required type="text" #d="ngModel">
+                  </textarea>
+            </div>
+  
+            <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+              le champ est obligatoire
+            </div>
+            <div class="form-group boutton">
+              <button class="btn btn-primary btn-block btnSubmit" type="submit" [disabled]="form.invalid">
+                Modifier
+              </button>
+            </div>
+  
+          </form>
+        </div>
+      </div>
     </div>
-</div>
-
-
+  
+  </div>
+  

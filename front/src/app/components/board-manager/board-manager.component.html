@@ -1,12 +1,20 @@
 <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
+  <div class="table-title">
+    <div class="row">
+      <div class="input-group">
+      <div class="col-xs-6">
+        <h2>Dashboard Manager</h2>
+      </div>
+     
+      </div>
+    </div>
 
-  </header>
+  </div>
+  <br><br>
   <div class="row">
 
-    <div class="col-md-4">
-      <div class="card-counter danger">
+    <div class="col-md-4" style="margin-left:85px">
+      <div class="card-counter info">
         <i class="fa fa-ticket"></i>
         <span class="count-numbers">{{totalLength}}</span>
         <a routerLink="/dossierCandidatureList" routerLinkActive="active" class="count-name">Dossiers De candidature</a>

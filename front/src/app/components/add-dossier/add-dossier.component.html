@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="card-body">
-        <form (ngSubmit)="onSubmit()">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
 
           <div class="form-group">
             <label><b>Intitulé de poste</b> *</label>
@@ -17,9 +17,12 @@
               class="form-control"
               id="intitule" name="intitule"
               placeholder="Entrer l'intitlué de poste"
-              type="text">
+              type="text" #i="ngModel"
+              required>
           </div>
-
+          <div class="alert alert-danger" *ngIf="i.invalid && i.touched">
+            le champ est obligatoire
+          </div>
 
           <div class="form-group">
             <label><b>Candidat</b> *</label>
@@ -31,8 +34,10 @@
                   id="candidat"
                   name="candidat"
                   placeholder="Nom de candidat"
-                  type="text">
+                  type="text" required 
+                  >
               </div>
+              
               <div class="form-group col-md-5">
                 <input
                   #cprenom
@@ -41,7 +46,7 @@
                   name="prenom"
                   placeholder="Prénom de candidat"
                   type="text">
-
+                  
               </div>
               <button (click)="getCandidats(cnom.value,cprenom.value)" class="btn btn-outline-secondary" style="float: right;margin-left:10px;width:40px;height:40px"
                       type="button">
@@ -73,9 +78,11 @@
                   id="manager"
                   name="manager"
                   placeholder="Nom de manager"
-                  type="text">
+                  type="text" >
 
               </div>
+              
+              
               <button (click)="getManager(m.value)" class="btn btn-outline-secondary" style="margin-left:10px;width:40px;height:40px"
                       type="button">
                 <i class="bi bi-search"></i>
@@ -96,13 +103,15 @@
           <div class="form-group">
             <label>Description</label>
             <textarea [(ngModel)]="dossier.description" class="form-control" id="description" name="description"
-                      required type="text">
+                      required type="text" #d="ngModel">
                 </textarea>
           </div>
 
-
+          <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+            le champ est obligatoire
+          </div>
           <div class="form-group boutton">
-            <button class="btn btn-primary btn-block btnSubmit" type="submit">
+            <button class="btn btn-primary btn-block btnSubmit" type="submit" [disabled]="form.invalid">
               Créer
             </button>
           </div>
