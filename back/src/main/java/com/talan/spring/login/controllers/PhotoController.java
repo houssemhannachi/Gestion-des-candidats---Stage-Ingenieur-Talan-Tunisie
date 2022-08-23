@@ -21,7 +21,7 @@ public class PhotoController {
         String message = "";
         try {
             Photo photo = imageStorageService.store(file);
-            message = "Téléchargé avec succès: " + file.getName();
+            message = "Téléchargé avec succès: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new UploadFileResponse(photo.getId(), message));
         } catch (Exception e) {
             message = "Erreur de téléchargement: " + file.getOriginalFilename() + "!";
