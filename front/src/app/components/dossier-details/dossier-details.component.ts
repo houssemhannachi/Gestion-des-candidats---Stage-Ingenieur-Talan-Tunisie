@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {DossierCandidature} from "../../_services/dossier.candidature";
 import {DossierService} from "../../_services/dossier.service";
 
@@ -10,44 +10,42 @@ import {DossierService} from "../../_services/dossier.service";
 })
 export class DossierDetailsComponent implements OnInit {
 
-id: number | undefined;
-dossier: any;
-constructor(private dossierService: DossierService ,private route: ActivatedRoute) { }
+  id: number | undefined;
+  dossier: any;
 
-ngOnInit(): void {
-  this.id = this.route.snapshot.params['id'];
+  constructor(private dossierService: DossierService, private route: ActivatedRoute) {
+  }
 
-  this.dossier = new DossierCandidature();
-  this.dossierService.getDossierById(this.id).subscribe(data => {
-    this.dossier = data;
-    console.log(this.dossier)
-  });
-}
-  checkstatut(statut:string) : string{
-    if(statut=="En_attente") {
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+
+    this.dossier = new DossierCandidature();
+    this.dossierService.getDossierById(this.id).subscribe(data => {
+      this.dossier = data;
+      console.log(this.dossier)
+    });
+  }
+
+  checkstatut(statut: string): string {
+    if (statut == "En_attente") {
       return "En attente";
-    }
-    else if(statut=="En_cours") {
+    } else if (statut == "En_cours") {
       return "En cours"
-    }
-    else if(statut=="Accepte") {
+    } else if (statut == "Accepte") {
       return "Accepté"
-    }
-    else if(statut=="Refuse") {
-      return "Refusé"}
-    else {
+    } else if (statut == "Refuse") {
+      return "Refusé"
+    } else {
       return ""
     }
   }
 
-  checkstyle(statut:string) : string{
-    if(statut=="En_attente") {
+  checkstyle(statut: string): string {
+    if (statut == "En_attente") {
       return "bi bi-pause-circle";
-    }
-    else if((statut=="En_cours")) {
+    } else if ((statut == "En_cours")) {
       return "bi bi-play"
-    }
-    else {
+    } else {
       return ""
     }
   }

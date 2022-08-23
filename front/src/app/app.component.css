@@ -2,20 +2,23 @@
   height: 90px;
   width: 150px;
 }
+
 .nav-link {
   font-size: 17px;
   color: rgb(236, 236, 236);
 }
+
 .bg-dark {
- /* background-color:rgba(9, 33, 170, 0.733) !important;*/
-  background-color:rgb(0 74 158)!important;
+  /* background-color:rgba(9, 33, 170, 0.733) !important;*/
+  background-color: rgb(0 74 158) !important;
 }
 
-h1{
+h1 {
   font-family: "Poppins SemiBold";
 
 }
-a{
+
+a {
   color: rgb(236, 236, 236);
 }
 
@@ -29,11 +32,11 @@ a{
   color: rgba(239, 239, 240, 0.733);
   background-color: rgb(0 74 158 / 89%) !important;
 
-  }
+}
 
-  .sidebar div {
+.sidebar div {
   padding: 8px;
   font-size: 24px;
   display: block;
-  }
+}
 

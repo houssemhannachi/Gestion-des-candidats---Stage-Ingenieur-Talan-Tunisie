@@ -29,9 +29,11 @@
           <td>{{entretien.dossiers.candidat.nom}} {{entretien.dossiers.candidat.prenom}}</td>
           <td>
 
-            <button class="btn btn-success" (click)="accepter(entretien.dossiers.idDossier)" style="margin-left: 10px;"><i class="bi bi-check-square-fill"></i>
+            <button (click)="accepter(entretien.dossiers.idDossier)" class="btn btn-success" style="margin-left: 10px;">
+              <i class="bi bi-check-square-fill"></i>
             </button>
-            <button class="btn btn-danger" (click)="refuser(entretien.dossiers.idDossier)"  style="margin-left: 10px;"><i class="bi bi-x-square-fill"></i>
+            <button (click)="refuser(entretien.dossiers.idDossier)" class="btn btn-danger" style="margin-left: 10px;"><i
+              class="bi bi-x-square-fill"></i>
             </button>
 
           </td>

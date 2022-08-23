@@ -1,63 +1,68 @@
 <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <img class="img-responsive" *ngIf="!isLoggedIn" style="margin-left:25px;height: 50px;width: auto" src="assets/images/logo.png">
-  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-    <li class="nav-item">
-      <a href="/register" class="nav-link" routerLink="register"><i class="bi bi-person-plus-fill"></i></a>
-    </li>
-    <li class="nav-item">
-      <a href="/login" class="nav-link" routerLink="login"><i class="bi bi-person-workspace"></i></a>
-    </li>
-  </ul>
+    <img *ngIf="!isLoggedIn" class="img-responsive" src="assets/images/logo.png"
+         style="margin-left:25px;height: 50px;width: auto">
+    <ul *ngIf="!isLoggedIn" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/register" routerLink="register"><i class="bi bi-person-plus-fill"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login" routerLink="login"><i class="bi bi-person-workspace"></i></a>
+      </li>
+    </ul>
 
-  <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-    <li class="nav-item">
-      <a href="/profile" class="nav-link" routerLink="profile"><i class="bi bi-person-square"></i>  {{ name }}</a>
-    </li>
-    <li class="nav-item">
-      <a href class="nav-link" (click)="logout()"><i class="bi bi-box-arrow-right"></i></a>
-    </li>
-  </ul>
-</nav>
+    <ul *ngIf="isLoggedIn" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/profile" routerLink="profile"><i class="bi bi-person-square"></i>  {{ name }}</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="logout()" class="nav-link" href><i class="bi bi-box-arrow-right"></i></a>
+      </li>
+    </ul>
+  </nav>
 
-<div class="sidebar" *ngIf="isLoggedIn">
-  <img class="img-responsive" style="margin-left:25px;" src="assets/images/logoA.png"><br><br><br><br>
-  <ul class="navbar-nav " routerLinkActive="active" style="margin-left:20px;">
-    <li class="nav-item">
-      <a href="/home" class="nav-link" routerLink="home"><i class="bi bi-house-fill"></i>  Acceuil</a>
-    </li>
-    <li class="nav-item" *ngIf="showAdminBoard">
-      <a href="/admin" class="nav-link" routerLink="admin"><i class="bi bi-person-fill"></i>  Admin Board</a>
-    </li>
-    <li class="nav-item" *ngIf="showRhBoard">
-      <a href="/rh" class="nav-link" routerLink="rh"><i class="bi bi-briefcase"></i> Dashboard</a>
-    </li>
-    <li class="nav-item" *ngIf="showRhBoard">
-      <a class="nav-link" routerLink="/managerList"><i class="bi bi-person-fill"></i>  Managers</a>
-    </li>
-    <li class="nav-item">
-      <a href="/manager" class="nav-link" *ngIf="showManagerBoard" routerLink="manager"><i class="bi bi-person-fill"></i>  Manager</a>
-    </li>
-    <li class = "nav-item" *ngIf="showManagerBoard">
-      <a routerLink="/calendar" routerLinkActive="active" class="nav-link" ><i class="bi bi-calendar2-day"></i>  Calendrier</a>
-    </li>
-    <li class="nav-item">
-      <a href="/dossierCandidatureList" class="nav-link" *ngIf="showManagerBoard" routerLink="dossierCandidatureList"><i class="bi bi-folder"></i> Dossiers</a>
-    </li>
-    <li class="nav-item">
-      <a href="/entretienList" class="nav-link" *ngIf="showManagerBoard" routerLink="entretienList"><i class="bi bi-calendar-event"></i> Entretiens</a>
-    </li>
-    <li class = "nav-item" *ngIf="showRhBoard">
-      <a routerLink="candidats" routerLinkActive="active" class="nav-link" ><i class="bi bi-people-fill"></i>  Candidats</a>
-    </li>
-    <li class = "nav-item" *ngIf="showRhBoard">
-      <a routerLink="dossier" routerLinkActive="active" class="nav-link" ><i class="bi bi-folder"></i>  Dossiers</a>
-    </li>
-  </ul>
-</div>
+  <div *ngIf="isLoggedIn" class="sidebar">
+    <img class="img-responsive" src="assets/images/logoA.png" style="margin-left:25px;"><br><br><br><br>
+    <ul class="navbar-nav " routerLinkActive="active" style="margin-left:20px;">
+      <li class="nav-item">
+        <a class="nav-link" href="/home" routerLink="home"><i class="bi bi-house-fill"></i> Acceuil</a>
+      </li>
+      <li *ngIf="showAdminBoard" class="nav-item">
+        <a class="nav-link" href="/admin" routerLink="admin"><i class="bi bi-person-fill"></i> Admin Board</a>
+      </li>
+      <li *ngIf="showRhBoard" class="nav-item">
+        <a class="nav-link" href="/rh" routerLink="rh"><i class="bi bi-briefcase"></i> Dashboard</a>
+      </li>
+      <li *ngIf="showRhBoard" class="nav-item">
+        <a class="nav-link" routerLink="/managerList"><i class="bi bi-person-fill"></i> Managers</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="showManagerBoard" class="nav-link" href="/manager" routerLink="manager"><i
+          class="bi bi-person-fill"></i> Manager</a>
+      </li>
+      <li *ngIf="showManagerBoard" class="nav-item">
+        <a class="nav-link" routerLink="/calendar" routerLinkActive="active"><i class="bi bi-calendar2-day"></i>
+          Calendrier</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="showManagerBoard" class="nav-link" href="/dossierCandidatureList" routerLink="dossierCandidatureList"><i
+          class="bi bi-folder"></i> Dossiers</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="showManagerBoard" class="nav-link" href="/entretienList" routerLink="entretienList"><i
+          class="bi bi-calendar-event"></i> Entretiens</a>
+      </li>
+      <li *ngIf="showRhBoard" class="nav-item">
+        <a class="nav-link" routerLink="candidats" routerLinkActive="active"><i class="bi bi-people-fill"></i> Candidats</a>
+      </li>
+      <li *ngIf="showRhBoard" class="nav-item">
+        <a class="nav-link" routerLink="dossier" routerLinkActive="active"><i class="bi bi-folder"></i> Dossiers</a>
+      </li>
+    </ul>
+  </div>
 
-<div class="container" [ngStyle]="{'float':isLoggedIn?'right':''}">
-  <router-outlet></router-outlet>
-  <lib-ng-toast></lib-ng-toast>
-</div>
+  <div [ngStyle]="{'float':isLoggedIn?'right':''}" class="container">
+    <router-outlet></router-outlet>
+    <lib-ng-toast></lib-ng-toast>
+  </div>
 </div>

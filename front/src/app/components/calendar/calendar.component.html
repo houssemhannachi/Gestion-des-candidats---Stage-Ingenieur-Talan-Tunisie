@@ -10,10 +10,14 @@
     </div>
     <div class="content">
       <div class="buttons">
-        <button class="button" (click)="viewDay()" [class]="this.configNavigator.selectMode == 'Day' ? 'selected' : ''">Jour</button>
-        <button class="button" (click)="viewWeek()" [class]="this.configNavigator.selectMode == 'Week' ? 'selected' : ''">Semaine
+        <button (click)="viewDay()" [class]="this.configNavigator.selectMode == 'Day' ? 'selected' : ''" class="button">
+          Jour
         </button>
-        <button class="button"(click)="viewMonth()" [class]="this.configNavigator.selectMode == 'Month' ? 'selected' : ''">Mois
+        <button (click)="viewWeek()" [class]="this.configNavigator.selectMode == 'Week' ? 'selected' : ''"
+                class="button">Semaine
+        </button>
+        <button (click)="viewMonth()" [class]="this.configNavigator.selectMode == 'Month' ? 'selected' : ''"
+                class="button">Mois
         </button>
 
       </div>

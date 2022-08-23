@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpRequest, HttpEvent} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -35,11 +35,11 @@ export class FileUploadService {
     return this.http.get(`${this.baseUrl}/files`);
   }
 
-  getFile(id:number): Observable<any> {
+  getFile(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/files/${id}`);
   }
 
-  getImage(id:number): Observable<any> {
+  getImage(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/images/${id}`);
   }
 }

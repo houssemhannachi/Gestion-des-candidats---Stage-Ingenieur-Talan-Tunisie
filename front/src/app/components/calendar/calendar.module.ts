@@ -7,7 +7,7 @@ import {DayPilotModule} from "@daypilot/daypilot-lite-angular";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
-  imports:      [
+  imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -16,7 +16,8 @@ import {HttpClientModule} from "@angular/common/http";
   declarations: [
     CalendarComponent
   ],
-  exports:      [ CalendarComponent ],
-  providers:    [ DataService ]
+  exports: [CalendarComponent],
+  providers: [DataService]
 })
-export class CalendarModule { }
+export class CalendarModule {
+}

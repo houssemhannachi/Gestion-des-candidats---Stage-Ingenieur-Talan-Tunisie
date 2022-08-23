@@ -1,5 +1,5 @@
-import { Component, OnInit ,ViewChild,ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {Candidat} from "../../_services/candidat";
 import {CandidatService} from "../../_services/candidat.service";
 
@@ -15,38 +15,37 @@ export class AddCandidatComponent implements OnInit {
   candidat: Candidat = new Candidat();
 
 
-  constructor( private candidatService: CandidatService,private router: Router) { }
+  constructor(private candidatService: CandidatService, private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  save(){
-    this.candidatService.create(this.candidat).subscribe( data =>{
-      this.goToList();
-    },
-    error => console.log(error));
+  save() {
+    this.candidatService.create(this.candidat).subscribe(data => {
+        this.goToList();
+      },
+      error => console.log(error));
   }
 
 
-  goToList(){
+  goToList() {
     this.router.navigate(['/candidats']);
   }
 
-  onSubmit(){
+  onSubmit() {
     this.save();
   }
 
 
-
-
   setCv($event: any) {
-    this.candidat.fileDB={};
-    this.candidat.fileDB.id=$event;
+    this.candidat.fileDB = {};
+    this.candidat.fileDB.id = $event;
   }
 
   setPhoto($event: any) {
-    this.candidat.photo={};
-    this.candidat.photo .id=$event;
+    this.candidat.photo = {};
+    this.candidat.photo.id = $event;
   }
 
 }

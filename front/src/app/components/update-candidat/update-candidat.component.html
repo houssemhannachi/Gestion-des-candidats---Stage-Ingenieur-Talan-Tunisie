@@ -12,33 +12,33 @@
 
           <div class="form-group">
             <label><b>Nom</b> *</label>
-            <input type="text" class="form-control" id="nom" [(ngModel)]="candidat.nom"
-                   name="nom"
-                   placeholder="Entrer le nom">
+            <input [(ngModel)]="candidat.nom" class="form-control" id="nom" name="nom"
+                   placeholder="Entrer le nom"
+                   type="text">
           </div>
 
           <div class="form-group">
             <label><b>Prénom</b> *</label>
-            <input type="text" class="form-control" id="prenom" [(ngModel)]="candidat.prenom"
-                   name="prenom"
-                   placeholder="Entrer le prénom">
+            <input [(ngModel)]="candidat.prenom" class="form-control" id="prenom" name="prenom"
+                   placeholder="Entrer le prénom"
+                   type="text">
           </div>
           <div class="form-group">
             <label><b>E-mail</b> * </label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="candidat.email"
-                   name="email"
-                   placeholder="Entrer l'e-mail">
+            <input [(ngModel)]="candidat.email" class="form-control" id="email" name="email"
+                   placeholder="Entrer l'e-mail"
+                   type="email">
           </div>
           <div class="form-group">
             <label><b>Numéro de téléphone</b> *</label>
-            <input type="tel" class="form-control" id="tel" [(ngModel)]="candidat.tel"
-                   name="tel"
+            <input [(ngModel)]="candidat.tel" class="form-control" id="tel" name="tel"
                    placeholder="Entrer le numéro de téléphone"
+                   type="tel"
             >
           </div>
 
           <div class="form-group boutton">
-            <button class="btn btn-primary btn-block"  type="submit">
+            <button class="btn btn-primary btn-block" type="submit">
               Ajouter
             </button>
           </div>

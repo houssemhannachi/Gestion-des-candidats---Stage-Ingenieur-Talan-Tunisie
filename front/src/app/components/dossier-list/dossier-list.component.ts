@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {first} from 'rxjs/operators';
 
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import {DossierCandidature} from "../../_services/dossier.candidature";
 import {DossierService} from "../../_services/dossier.service";
 import Swal from "sweetalert2";
 
@@ -16,60 +15,48 @@ import Swal from "sweetalert2";
 export class DossierListComponent implements OnInit {
 
   dossiers: any;
-  p:number=1;
-  dateValidation:Date=new Date();
-  dateCreation :Date=new Date();
-  searchValue!:String;
+  p: number = 1;
+  dateValidation: Date = new Date();
+  dateCreation: Date = new Date();
+  searchValue!: String;
   totalLength: any;
+  key: string = 'intitule';
+  reverse: boolean = false;
 
-  constructor(private DossierService: DossierService,private router: Router) { }
+  constructor(private DossierService: DossierService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getdossier();
   }
 
-
-  private getdossier(){
-    this.DossierService.getList().subscribe(data => {
-      this.dossiers = data;
-      this.totalLength=data.length;
-        });
-
-
-  }
-
-
-  key : string = 'intitule';
-  reverse: boolean = false;
   sort(key: any) {
     this.key = key;
     this.reverse = !this.reverse;
   }
 
-  create(){
+  create() {
     this.router.navigate(['add-dossier']);
   }
-  dossierDetails(id: number){
+
+  dossierDetails(id: number) {
     this.router.navigate(['dossier-details', id]);
   }
 
-  update(id: number){
+  update(id: number) {
     this.router.navigate(['update-dossier', id]);
   }
 
-
-
-  delete(id: number){
+  delete(id: number) {
     this.DossierService.delete(id)
       .pipe(first())
       .subscribe(
         success => console.log('candidat supprimé'),
         error2 => console.error(' suppression du candidat annulé')
-
       );
   }
 
-  open(id:number) {
+  open(id: number) {
     Swal.fire({
       title: 'Supprimer',
       text: 'Voulez-vous supprimer ce dossier?',
@@ -83,13 +70,14 @@ export class DossierListComponent implements OnInit {
         this.delete(id);
 
         Swal.fire({
-          title: 'Supprimé!',
-          text:'Ce dossier a été supprimé.',
-          icon: 'success',
-          confirmButtonColor:'#435D7D',
-          timer: 2000,
-          showCancelButton: false,
-          showConfirmButton: false}
+            title: 'Supprimé!',
+            text: 'Ce dossier a été supprimé.',
+            icon: 'success',
+            confirmButtonColor: '#435D7D',
+            timer: 2000,
+            showCancelButton: false,
+            showConfirmButton: false
+          }
         )
         window.location.reload();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -98,7 +86,7 @@ export class DossierListComponent implements OnInit {
     })
   }
 
-  exportpdf():void{
+  exportpdf(): void {
     let DATA: any = document.getElementById('table');
     html2canvas(DATA).then((canvas) => {
       let fileWidth = 208;
@@ -111,39 +99,42 @@ export class DossierListComponent implements OnInit {
     });
   }
 
-  checkstyle(statut:string) : string{
-    if(statut=="En_attente") {
+  checkstyle(statut: string): string {
+    if (statut == "En_attente") {
       return "bi bi-pause-circle";
-    }
-    else if((statut=="En_cours")) {
+    } else if ((statut == "En_cours")) {
       return "bi bi-play"
-    }
-    else if(statut=="Accepte") {
+    } else if (statut == "Accepte") {
       return "bi bi-check2-circle"
-    }
-    else if(statut=="Refuse") {
-      return "bi bi-x-circle-fill"}
-    else {
-      return ""
-    }
-  }
-  checkstatut(statut:string) : string{
-    if(statut=="En_attente") {
-      return "En attente";
-    }
-    else if(statut=="En_cours") {
-      return "En cours"
-    }
-    else if(statut=="Accepte") {
-      return "Accepté"
-    }
-    else if(statut=="Refuse") {
-      return "Refusé"}
-    else {
+    } else if (statut == "Refuse") {
+      return "bi bi-x-circle-fill"
+    } else {
       return ""
     }
   }
 
+  checkstatut(statut: string): string {
+    if (statut == "En_attente") {
+      return "En attente";
+    } else if (statut == "En_cours") {
+      return "En cours"
+    } else if (statut == "Accepte") {
+      return "Accepté"
+    } else if (statut == "Refuse") {
+      return "Refusé"
+    } else {
+      return ""
+    }
+  }
+
+  private getdossier() {
+    this.DossierService.getList().subscribe(data => {
+      this.dossiers = data;
+      this.totalLength = data.length;
+    });
+
+
+  }
 
 
 }

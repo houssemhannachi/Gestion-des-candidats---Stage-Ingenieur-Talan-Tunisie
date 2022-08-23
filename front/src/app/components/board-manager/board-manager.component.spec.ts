@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BoardManagerComponent } from './board-manager.component';
+import {BoardManagerComponent} from './board-manager.component';
 
 describe('BoardManagerComponent', () => {
   let component: BoardManagerComponent;
@@ -8,9 +8,9 @@ describe('BoardManagerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardManagerComponent ]
+      declarations: [BoardManagerComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(BoardManagerComponent);
     component = fixture.componentInstance;

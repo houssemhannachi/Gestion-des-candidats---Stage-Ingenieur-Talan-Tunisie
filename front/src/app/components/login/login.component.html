@@ -1,30 +1,30 @@
 <div class="col-md-12">
   <div class="card card-container">
-   
+
     <br>
     <img
+      class="profile-img-card"
       id="profile-img"
       src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
     /><br>
     <form
+      #f="ngForm"
+      (ngSubmit)="f.form.valid && onSubmit()"
       *ngIf="!isLoggedIn"
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
       novalidate
     >
       <div class="form-group">
         <label><b>Adresse e-mail</b> *</label>
         <input
-          type="text"
+          #email="ngModel"
+          [(ngModel)]="form.email"
+          [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
           class="form-control"
           name="email"
           placeholder="Entrer l'adresse e-mail"
-          [(ngModel)]="form.email"
           required
-          #email="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+          type="text"
         />
         <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
           Adresse e-mail est nécessaire.
@@ -33,15 +33,15 @@
       <div class="form-group">
         <label><b>Mot de passe</b> *</label>
         <input
-          type="password"
+          #password="ngModel"
+          [(ngModel)]="form.password"
+          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
           class="form-control"
+          minlength="6"
           name="password"
           placeholder="Entrer le mot de passe"
-          [(ngModel)]="form.password"
           required
-          minlength="6"
-          #password="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+          type="password"
         />
         <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
           <div *ngIf="password.errors['required']">Mot de passe est nécessaire.</div>
@@ -65,10 +65,10 @@
 
     </form>
     <div class="align-self-md-center ">
-            <span class="msg" *ngIf="!isLoggedIn">Vous n'avez pas de compte ?
+            <span *ngIf="!isLoggedIn" class="msg">Vous n'avez pas de compte ?
       <a [routerLink]="['/register']">INSCRIVEZ-VOUS ICI</a></span>
     </div>
-    <div class="alert alert-success" *ngIf="isLoggedIn">
+    <div *ngIf="isLoggedIn" class="alert alert-success">
       <span>La connexion est établie avec succès.</span>
     </div>
   </div>

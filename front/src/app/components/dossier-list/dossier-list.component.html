@@ -9,7 +9,8 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <input [(ngModel)]="searchValue" class="form-control" id="search" placeholder="Chercher dossier - Intitulé de poste"
+        <input [(ngModel)]="searchValue" class="form-control" id="search"
+               placeholder="Chercher dossier - Intitulé de poste"
                type="text">
 
         <br>
@@ -24,7 +25,7 @@
 
         <br> <br>
       </div>
-      <table class="table" id="table" *ngIf="totalLength">
+      <table *ngIf="totalLength" class="table" id="table">
         <thead>
         <tr>
           <th (click)="sort('intitule')">Intitulé du poste <i class="bi bi-sort-down"></i></th>

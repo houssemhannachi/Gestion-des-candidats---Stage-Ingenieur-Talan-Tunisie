@@ -11,13 +11,13 @@ import {Router} from "@angular/router";
 })
 export class EntretienListComponent implements OnInit {
   dossiers: any;
-  dossier:any;
+  dossier: any;
   currentUser?: any;
   totalLength: any;
   p: number | undefined;
-  entretiens: any = new Array();
+  entretiens: any = [];
 
-  constructor(private router:Router,
+  constructor(private router: Router,
               private storageService: StorageService,
               private dossierService: DossierService,
               private entretienService: EntretienService) {
@@ -29,15 +29,17 @@ export class EntretienListComponent implements OnInit {
         this.dossiers = data;
 
         this.dossiers.forEach(
-          ((d: { entretiens: any; idDossier: any; }) =>{
+          ((d: { entretiens: any; idDossier: any; }) => {
             d.entretiens.forEach(
-                (p: {
-                  dossiers: { entretiens: any; idDossier: any };
-                  entretiens: any; })=>{
-                p.dossiers=d;
-                this.entretiens=this.entretiens.concat(p);
+              (p: {
+                dossiers: { entretiens: any; idDossier: any };
+                entretiens: any;
+              }) => {
+                p.dossiers = d;
+                this.entretiens = this.entretiens.concat(p);
               }
-            )}));
+            )
+          }));
         this.totalLength = this.entretiens.length;
         console.log(this.entretiens)
       },
@@ -48,8 +50,18 @@ export class EntretienListComponent implements OnInit {
 
 
   accepter(id: any) {
-    this.dossier=this.dossierService.getDossierById(id);
-    this.dossier.statut="Accepte"
+    this.dossier = this.dossierService.getDossierById(id);
+    this.dossier.statut = "Accepte"
+    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+  refuser(id: any) {
+    this.dossier = this.dossierService.getDossierById(id);
+    this.dossier.statut = "Refuse"
     this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
   }
 
@@ -58,16 +70,6 @@ export class EntretienListComponent implements OnInit {
       this.reloadPage();
     }, 0);
     this.router.navigate(['/dossierCandidatureList']);
-  }
-  reloadPage(): void {
-    window.location.reload();
-  }
-
-
-  refuser(id:any) {
-    this.dossier=this.dossierService.getDossierById(id);
-    this.dossier.statut="Refuse"
-    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
   }
 
 

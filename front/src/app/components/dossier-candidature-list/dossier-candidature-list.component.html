@@ -24,7 +24,7 @@
           <td> {{ dossier.intitule }} </td>
           <td>{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</td>
           <td> {{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</td>
-          <td> <i class="{{checkstyle(dossier.statut) }}"></i> {{checkstatut(dossier.statut)}}</td>
+          <td><i class="{{checkstyle(dossier.statut) }}"></i> {{checkstatut(dossier.statut)}}</td>
         </tr>
         </tbody>
       </table>

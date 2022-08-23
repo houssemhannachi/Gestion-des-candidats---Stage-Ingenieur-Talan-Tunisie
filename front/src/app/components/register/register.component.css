@@ -1,4 +1,4 @@
-  label {
+label {
   display: block;
   margin-top: 10px;
 }
@@ -30,25 +30,27 @@
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-  .title {
-    color:#004a9e;
-    font-weight: bold;
-    font-family: "Poppins SemiBold";
-    text-transform: uppercase;
 
-  }
+.title {
+  color: #004a9e;
+  font-weight: bold;
+  font-family: "Poppins SemiBold";
+  text-transform: uppercase;
 
-  button {
-    width: 150px;
-    background-color: #004a9e;
-    border-color: #004a9e;
-    border-radius: 30px;
+}
 
-  }
+button {
+  width: 150px;
+  background-color: #004a9e;
+  border-color: #004a9e;
+  border-radius: 30px;
 
-  .boutton {
-    text-align: -webkit-center;
-  }
-  .msg {
-    font-size: 13px;
-  }
+}
+
+.boutton {
+  text-align: -webkit-center;
+}
+
+.msg {
+  font-size: 13px;
+}

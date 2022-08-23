@@ -65,5 +65,5 @@
     </div>
   </div>
 </div>
-<pagination-controls *ngIf="totalLength" (pageChange)="p=$event" class="text-center"></pagination-controls>
+<pagination-controls (pageChange)="p=$event" *ngIf="totalLength" class="text-center"></pagination-controls>
 

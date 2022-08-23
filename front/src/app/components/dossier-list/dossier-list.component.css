@@ -4,16 +4,19 @@ body {
   font-family: 'Varela Round', sans-serif;
   font-size: 13px;
 }
+
 .table-responsive {
   margin: 30px 0;
 }
+
 .table-wrapper {
 
   background: #fff;
   padding: 20px 25px;
   border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
+
 .table-title {
   padding-bottom: 15px;
   background: whitesmoke;
@@ -22,12 +25,14 @@ body {
   margin: -20px -25px 10px;
   border-radius: 3px 3px 0 0;
 }
+
 table.table td a {
   color: black;
   display: inline-block;
   text-decoration: none;
   outline: none !important;
 }
+
 .table-title h2 {
   margin: 5px 0 0;
   font-size: 24px;

@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { StorageService } from './_services/storage.service';
-import { AuthService } from './_services/auth.service';
-import Swal from 'sweetalert2';
+import {Component} from '@angular/core';
+import {StorageService} from './_services/storage.service';
+import {AuthService} from './_services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +8,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private role: string|undefined;
   isLoggedIn = false;
   showAdminBoard = false;
   showRhBoard = false;
   showManagerBoard = false;
   name?: string;
-  title: string ='';
+  title: string = '';
+  private role: string | undefined;
 
-  constructor(private storageService: StorageService, private authService: AuthService) { }
+  constructor(private storageService: StorageService, private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -26,9 +26,9 @@ export class AppComponent {
       const user = this.storageService.getUser();
       this.role = user.role;
 
-      this.showAdminBoard = this.role==='ROLE_ADMIN';
-      this.showRhBoard = this.role==='ROLE_RH';
-      this.showManagerBoard=this.role==='ROLE_MANAGER'
+      this.showAdminBoard = this.role === 'ROLE_ADMIN';
+      this.showRhBoard = this.role === 'ROLE_RH';
+      this.showManagerBoard = this.role === 'ROLE_MANAGER'
       this.name = user.name;
     }
   }

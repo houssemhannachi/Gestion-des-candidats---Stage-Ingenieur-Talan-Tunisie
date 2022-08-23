@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Candidat} from "../../_services/candidat";
 import {CandidatService} from "../../_services/candidat.service";
 
@@ -15,9 +14,11 @@ export class UpdateCandidatComponent implements OnInit {
 
   id: any;
   candidat: Candidat = new Candidat();
+
   constructor(private CandidatService: CandidatService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+              private route: ActivatedRoute,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -27,14 +28,14 @@ export class UpdateCandidatComponent implements OnInit {
     }, error => console.log(error));
   }
 
-  onSubmit(){
-    this.CandidatService.update(this.id, this.candidat).subscribe( data =>{
-      this.goToList();
-    }
-    , error => console.log(error));
+  onSubmit() {
+    this.CandidatService.update(this.id, this.candidat).subscribe(data => {
+        this.goToList();
+      }
+      , error => console.log(error));
   }
 
-  goToList(){
+  goToList() {
     this.router.navigate(['/candidats']);
   }
 }

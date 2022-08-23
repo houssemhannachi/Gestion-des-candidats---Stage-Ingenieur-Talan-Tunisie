@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DossierListComponent } from './dossier-list.component';
+import {DossierListComponent} from './dossier-list.component';
 
 describe('DossierListComponent', () => {
   let component: DossierListComponent;
@@ -8,9 +8,9 @@ describe('DossierListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DossierListComponent ]
+      declarations: [DossierListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

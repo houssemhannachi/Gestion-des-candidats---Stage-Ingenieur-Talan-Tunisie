@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {ViewChild, AfterViewInit} from "@angular/core";
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {
   DayPilot,
   DayPilotCalendarComponent,
@@ -25,21 +24,12 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   public entretiens: any = [];
   public entretien: Entretien | undefined;
   entretienDossier: Entretien | undefined;
-
-  ngOnInit(): void {
-    this.getDossier();
-  }
-
   @ViewChild("day") day!: DayPilotCalendarComponent;
   @ViewChild("week") week!: DayPilotCalendarComponent;
   @ViewChild("month") month!: DayPilotMonthComponent;
   @ViewChild("navigator") nav!: DayPilotNavigatorComponent;
-
-
   events: DayPilot.EventData[] = [];
-
   date = DayPilot.Date.today();
-
   configNavigator: DayPilot.NavigatorConfig = {
     showMonths: 1,
     cellWidth: 25,
@@ -48,20 +38,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       this.loadEvents();
     }
   };
-
-  selectTomorrow() {
-    this.date = DayPilot.Date.today().addDays(1);
-  }
-
-  changeDate(date: DayPilot.Date): void {
-    this.configDay.startDate = date;
-    this.configWeek.startDate = date;
-    this.configMonth.startDate = date;
-
-  }
-
   configDay: DayPilot.CalendarConfig = {};
-
   configWeek: DayPilot.CalendarConfig = {
     viewType: "Week",
     onTimeRangeSelected: async (args) => {
@@ -82,7 +59,8 @@ export class EntretienComponent implements OnInit, AfterViewInit {
     },
     contextMenu: new DayPilot.Menu({
       items: [
-        { text: "Supprimer",
+        {
+          text: "Supprimer",
           onClick: args => {
             const e = args.source;
             this.week.control.events.remove(e);
@@ -91,7 +69,6 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       ]
     }),
   };
-
   configMonth: DayPilot.MonthConfig = {};
 
   constructor(private ds: DataService, private dossierService: DossierService,
@@ -99,6 +76,21 @@ export class EntretienComponent implements OnInit, AfterViewInit {
               private entretienService: EntretienService,
               private router: Router) {
     this.viewWeek();
+
+  }
+
+  ngOnInit(): void {
+    this.getDossier();
+  }
+
+  selectTomorrow() {
+    this.date = DayPilot.Date.today().addDays(1);
+  }
+
+  changeDate(date: DayPilot.Date): void {
+    this.configDay.startDate = date;
+    this.configWeek.startDate = date;
+    this.configMonth.startDate = date;
 
   }
 
@@ -137,9 +129,9 @@ export class EntretienComponent implements OnInit, AfterViewInit {
 
 
   save() {
-    this.dossier.statut="En_cours"
+    this.dossier.statut = "En_cours"
     this.entretienService.save(this.entretien).subscribe(result => this.listEntretiens());
-    this.dossierService.update(this.dossier.idDossier,this.dossier).subscribe(result => this.listEntretiens());
+    this.dossierService.update(this.dossier.idDossier, this.dossier).subscribe(result => this.listEntretiens());
   }
 
   getDossier(): any {
@@ -165,14 +157,6 @@ export class EntretienComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-  private listEntretiens() {
-    setTimeout(() => {
-      this.reloadPage();
-    }, 10);
-    this.router.navigate(['/dossier-details',this.dossier.idDossier]);
-  }
-
   reloadPage(): void {
     window.location.reload();
   }
@@ -190,19 +174,26 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       if (result.value) {
         this.save()
         Swal.fire({
-          title: 'Enregistré!',
-          text:'Vos modifications ont été enregistrées.',
-          icon: 'success',
-          confirmButtonColor:'#435D7D',
-          timer: 2000,
-          showCancelButton: false,
-          showConfirmButton: false}
-
+            title: 'Enregistré!',
+            text: 'Vos modifications ont été enregistrées.',
+            icon: 'success',
+            confirmButtonColor: '#435D7D',
+            timer: 2000,
+            showCancelButton: false,
+            showConfirmButton: false
+          }
         )
       } else if (result.dismiss === Swal.DismissReason.cancel) {
 
       }
     })
+  }
+
+  private listEntretiens() {
+    setTimeout(() => {
+      this.reloadPage();
+    }, 10);
+    this.router.navigate(['/dossier-details', this.dossier.idDossier]);
   }
 
 }

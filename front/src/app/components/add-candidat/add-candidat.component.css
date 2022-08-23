@@ -32,7 +32,7 @@ label {
 }
 
 .title {
-  color:#004a9e;
+  color: #004a9e;
   font-weight: bold;
   font-family: "Poppins SemiBold";
   text-transform: uppercase;
@@ -51,18 +51,22 @@ button {
   text-align: -webkit-center;
 }
 
-.myStyle{
-  text-align:center; margin-top: 100px;
-  }
-  .style-mat-card{
-      margin-top:10px; width: 100%;
-  }
+.myStyle {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.style-mat-card {
+  margin-top: 10px;
+  width: 100%;
+}
 
 .btnSubmit {
   background-color: rgb(0 74 158 / 89%) !important;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .btnSubmit:hover {
   background-color: rgb(0, 74, 158) !important;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

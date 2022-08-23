@@ -1,13 +1,11 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 //import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {HomeComponent} from './components/home/home.component';
@@ -28,22 +26,22 @@ import {UpdateCandidatComponent} from './components/update-candidat/update-candi
 import {UpdateDossierComponent} from './components/update-dossier/update-dossier.component';
 import {CandidatService} from "./_services/candidat.service";
 import {CalendarModule} from './components/calendar/calendar.module';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import {FullCalendarModule} from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { ManagerListComponent } from './components/manager-list/manager-list.component';
-import { AddCalendarComponent } from './components/add-calendar/add-calendar.component';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { Ng2OrderModule } from 'ng2-order-pipe';
-import { SearchfilterPipe } from './searchfilter.pipe';
-import { SearchPipe } from './search.pipe';
-import { EntretienComponent } from './components/entretien/entretien.component';
+import {ManagerListComponent} from './components/manager-list/manager-list.component';
+import {AddCalendarComponent} from './components/add-calendar/add-calendar.component';
+import {FileUploadComponent} from './components/file-upload/file-upload.component';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {SearchfilterPipe} from './searchfilter.pipe';
+import {SearchPipe} from './search.pipe';
+import {EntretienComponent} from './components/entretien/entretien.component';
 import {DayPilotModule} from "@daypilot/daypilot-lite-angular";
-import { DossierCandidatureListComponent } from './components/dossier-candidature-list/dossier-candidature-list.component';
-import { EntretienListComponent } from './components/entretien-list/entretien-list.component';
-import { ImageUploadComponent } from './components/image-upload/image-upload.component';
-
+import {
+  DossierCandidatureListComponent
+} from './components/dossier-candidature-list/dossier-candidature-list.component';
+import {EntretienListComponent} from './components/entretien-list/entretien-list.component';
+import {ImageUploadComponent} from './components/image-upload/image-upload.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -78,24 +76,24 @@ FullCalendarModule.registerPlugins([
     DossierCandidatureListComponent,
     EntretienListComponent,
     ImageUploadComponent
-   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
 
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        NgxPaginationModule,
-        FullCalendarModule,
-        NgToastModule,
-        CalendarModule,
-        //Ng2SearchPipeModule,
-        Ng2OrderModule,
-        DayPilotModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    FullCalendarModule,
+    NgToastModule,
+    CalendarModule,
+    //Ng2SearchPipeModule,
+    Ng2OrderModule,
+    DayPilotModule
 
 
-    ],
+  ],
   providers: [
     CandidatService,
     httpInterceptorProviders],

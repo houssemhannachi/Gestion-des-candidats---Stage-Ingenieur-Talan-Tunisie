@@ -2,6 +2,7 @@
   position: relative;
   margin-bottom: 10px;
 }
+
 #progress-bar {
   position: absolute;
   background: rgb(27, 110, 106);;
@@ -10,6 +11,7 @@
   top: 50%;
   left: 0;
 }
+
 #progress-num {
   margin: 0;
   padding: 0;
@@ -17,14 +19,16 @@
   display: flex;
   justify-content: space-between;
 }
+
 #progress-details {
   margin-bottom: 30px;
   padding-left: 120px;
   list-style: none;
   display: flex;
   justify-content: space-between;
-  width:950px;
+  width: 950px;
 }
+
 #progress-num::before {
   content: "";
   background-color: rgb(243, 241, 241);
@@ -35,6 +39,7 @@
   width: 100%;
   z-index: -1;
 }
+
 #progress-num .step {
   border: 1.5px solid rgb(243, 241, 241);
   border-radius: 100%;
@@ -48,11 +53,13 @@
   position: relative;
   z-index: 1;
 }
+
 #progress-num .step.active {
   border-color: rgba(27, 173, 166, 0.89) !important;
   background-color: rgba(27, 173, 166, 0.89) !important;
   color: #fff;
 }
+
 .btn {
   background: lightgray;
   border: none;
@@ -63,12 +70,14 @@
 .workflow {
 
 }
-.center{
-  text-align:center;
+
+.center {
+  text-align: center;
 }
-.center > div{ /* N.B. child combinators don't work in IE6 or less */
-  display:inline-block;
-  width:800px;
+
+.center > div { /* N.B. child combinators don't work in IE6 or less */
+  display: inline-block;
+  width: 800px;
 }
 
 .bold {
@@ -79,15 +88,15 @@ a.leBouton {
   text-decoration: none;
   width: 190px;
   height: 40px;
-  padding:8px;
-  background-color:  rgb(0 74 158 / 89%) !important;
+  padding: 8px;
+  background-color: rgb(0 74 158 / 89%) !important;
   color: white;
   margin-bottom: 10px;
   border: 1px solid;
   border-radius: 12px;
 
 
-  }
+}
 
 
 #progress-num .step.success {

@@ -17,7 +17,7 @@ export class DossierCandidatureListComponent implements OnInit {
   p: number | undefined;
   public entretiens: any = [];
 
-  constructor(private router:Router,
+  constructor(private router: Router,
               private storageService: StorageService,
               private dossierService: DossierService,
               private entretienService: EntretienService) {
@@ -37,9 +37,47 @@ export class DossierCandidatureListComponent implements OnInit {
 
 
   accepter(id: any) {
-    this.dossier=this.dossierService.getDossierById(id);
-    this.dossier.statut="Accepte"
+    this.dossier = this.dossierService.getDossierById(id);
+    this.dossier.statut = "Accepte"
     this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+  refuser(id: any) {
+    this.dossier = this.dossierService.getDossierById(id);
+    this.dossier.statut = "Refuse"
+    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
+  }
+
+  checkstyle(statut: string): string {
+    if (statut == "En_attente") {
+      return "bi bi-pause-circle";
+    } else if ((statut == "En_cours")) {
+      return "bi bi-play"
+    } else if (statut == "Accepte") {
+      return "bi bi-check2-circle"
+    } else if (statut == "Refuse") {
+      return "bi bi-x-circle-fill"
+    } else {
+      return ""
+    }
+  }
+
+  checkstatut(statut: string): string {
+    if (statut == "En_attente") {
+      return "En attente";
+    } else if (statut == "En_cours") {
+      return "En cours"
+    } else if (statut == "Accepte") {
+      return "Accepté"
+    } else if (statut == "Refuse") {
+      return "Refusé"
+    } else {
+      return ""
+    }
   }
 
   private listDossier() {
@@ -47,49 +85,5 @@ export class DossierCandidatureListComponent implements OnInit {
       this.reloadPage();
     }, 0);
     this.router.navigate(['/dossierCandidatureList']);
-  }
-  reloadPage(): void {
-    window.location.reload();
-  }
-
-
-  refuser(id:any) {
-    this.dossier=this.dossierService.getDossierById(id);
-    this.dossier.statut="Refuse"
-    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
-  }
-
-  checkstyle(statut:string) : string{
-    if(statut=="En_attente") {
-      return "bi bi-pause-circle";
-    }
-    else if((statut=="En_cours")) {
-      return "bi bi-play"
-    }
-    else if(statut=="Accepte") {
-      return "bi bi-check2-circle"
-    }
-    else if(statut=="Refuse") {
-      return "bi bi-x-circle-fill"}
-    else {
-      return ""
-    }
-  }
-
-  checkstatut(statut:string) : string{
-    if(statut=="En_attente") {
-      return "En attente";
-    }
-    else if(statut=="En_cours") {
-      return "En cours"
-    }
-    else if(statut=="Accepte") {
-      return "Accepté"
-    }
-    else if(statut=="Refuse") {
-      return "Refusé"}
-    else {
-      return ""
-    }
   }
 }

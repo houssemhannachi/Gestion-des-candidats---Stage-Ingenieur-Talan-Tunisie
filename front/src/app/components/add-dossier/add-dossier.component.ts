@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {DossierCandidature} from "../../_services/dossier.candidature";
 import {DossierService} from "../../_services/dossier.service";
@@ -26,8 +26,8 @@ export class AddDossierComponent implements OnInit {
   }
 
 
-  getCandidats(nom:string,prenom:string){
-    this.candidatService.getCandidatsByName(nom,prenom).subscribe(data => {
+  getCandidats(nom: string, prenom: string) {
+    this.candidatService.getCandidatsByName(nom, prenom).subscribe(data => {
       this.candidats = data;
       this.candidatsLength = data.length;
 
@@ -36,37 +36,36 @@ export class AddDossierComponent implements OnInit {
   }
 
 
-
-  getManager(name:string) {
-      this.userService.getUsersByNameAndRole(name,"ROLE_MANAGER")
-        .subscribe(data => {
+  getManager(name: string) {
+    this.userService.getUsersByNameAndRole(name, "ROLE_MANAGER")
+      .subscribe(data => {
         this.managers = data;
-          this.managersLength = data.length;
-      });;
-  }
-
-
-
-    ngOnInit(): void {
+        this.managersLength = data.length;
+      });
 
   }
 
 
-    save(){
-      this.DossierService.create(this.dossier).subscribe( data =>{
+  ngOnInit(): void {
+
+  }
+
+
+  save() {
+    this.DossierService.create(this.dossier).subscribe(data => {
 
         this.goToList();
       },
       error => console.log(error));
-    }
+  }
 
-    goToList(){
-      this.router.navigate(['/dossier']);
-    }
+  goToList() {
+    this.router.navigate(['/dossier']);
+  }
 
-    onSubmit(){
-      this.save();
-    }
+  onSubmit() {
+    this.save();
+  }
 
 
 }

@@ -21,34 +21,15 @@ export class CandidatListComponent implements OnInit {
   searchValue!: String;
   imageInfos: any;
   totalLength: any;
+  key: string = 'nom';
+  reverse: boolean = false;
 
-  constructor(private uploadService:FileUploadService,private candidatService: CandidatService, private router: Router) {
+  constructor(private uploadService: FileUploadService, private candidatService: CandidatService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.getCandidats();
   }
-
-  private getCandidats() {
-    this.candidatService.getList().subscribe(data => {
-      this.candidats = data;
-      this.totalLength = this.candidats.length;
-
-      this.candidats.forEach((c: {
-        image: any;
-        photo: { id: any; }; }) => {
-        this.uploadService.getImage(c.photo.id).subscribe(file => {
-          c.image=file;
-                  }
-      )})
-      console.log(this.candidats);
-
-  })}
-
-
-
-  key: string = 'nom';
-  reverse: boolean = false;
 
   sort(key: any) {
     this.key = key;
@@ -116,6 +97,25 @@ export class CandidatListComponent implements OnInit {
       } else if (result.dismiss === Swal.DismissReason.cancel) {
 
       }
+    })
+  }
+
+  private getCandidats() {
+    this.candidatService.getList().subscribe(data => {
+      this.candidats = data;
+      this.totalLength = this.candidats.length;
+
+      this.candidats.forEach((c: {
+        image: any;
+        photo: { id: any; };
+      }) => {
+        this.uploadService.getImage(c.photo.id).subscribe(file => {
+            c.image = file;
+          }
+        )
+      })
+      console.log(this.candidats);
+
     })
   }
 }

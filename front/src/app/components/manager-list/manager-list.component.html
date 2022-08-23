@@ -30,17 +30,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let manager of managers|searchfilter:searchValue| orderBy: key: reverse | paginate:{itemsPerPage:5,currentPage:p}">
+        <tr
+          *ngFor="let manager of managers|searchfilter:searchValue| orderBy: key: reverse | paginate:{itemsPerPage:5,currentPage:p}">
 
           <td> {{ manager.name }} </td>
           <td> {{ manager.email }} </td>
           <td>
             <button (click)="open(manager.id)" class="btn btn-outline-danger" style="margin-right: 10px"><i
               class="bi bi-trash3-fill"></i></button>
-              <button  routerLink="/calendar" class="btn btn-outline-info" style="margin-right: 10px">
+            <button class="btn btn-outline-info" routerLink="/calendar" style="margin-right: 10px">
               <i class="bi bi-calendar2-day"></i>
-              
-              </button>
+
+            </button>
           </td>
         </tr>
         </tbody>

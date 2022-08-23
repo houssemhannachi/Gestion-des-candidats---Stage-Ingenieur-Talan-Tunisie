@@ -1,4 +1,4 @@
-import {Component, ViewChild, AfterViewInit} from "@angular/core";
+import {AfterViewInit, Component, ViewChild} from "@angular/core";
 import {
   DayPilot,
   DayPilotCalendarComponent,
@@ -20,25 +20,17 @@ import {StorageService} from "../../_services/storage.service";
 export class CalendarComponent implements AfterViewInit {
   id: any;
   dossier: any;
-  public entretiens: any = new Array();
+  public entretiens: any = [];
   public entretien: Entretien | undefined;
   entretienDossier: Entretien | undefined;
   currentUser: any;
   dossiers: any;
-
-  ngOnInit(): void {
-    this.getEntretien();
-  }
-
   @ViewChild("day") day!: DayPilotCalendarComponent;
   @ViewChild("week") week!: DayPilotCalendarComponent;
   @ViewChild("month") month!: DayPilotMonthComponent;
   @ViewChild("navigator") nav!: DayPilotNavigatorComponent;
-
   events: DayPilot.EventData[] = [];
-
   date = DayPilot.Date.today();
-
   configNavigator: DayPilot.NavigatorConfig = {
     showMonths: 1,
     cellWidth: 25,
@@ -47,20 +39,7 @@ export class CalendarComponent implements AfterViewInit {
       this.loadEvents();
     }
   };
-
-  selectTomorrow() {
-    this.date = DayPilot.Date.today().addDays(1);
-  }
-
-  changeDate(date: DayPilot.Date): void {
-    this.configDay.startDate = date;
-    this.configWeek.startDate = date;
-    this.configMonth.startDate = date;
-
-  }
-
   configDay: DayPilot.CalendarConfig = {};
-
   configWeek: DayPilot.CalendarConfig = {
     viewType: "Week",
     onTimeRangeSelected: async (args) => {
@@ -81,7 +60,6 @@ export class CalendarComponent implements AfterViewInit {
     }
 
   };
-
   configMonth: DayPilot.MonthConfig = {};
 
   constructor(private ds: DataService, private dossierService: DossierService,
@@ -90,6 +68,21 @@ export class CalendarComponent implements AfterViewInit {
               private router: Router,
               private storageService: StorageService) {
     this.viewWeek();
+
+  }
+
+  ngOnInit(): void {
+    this.getEntretien();
+  }
+
+  selectTomorrow() {
+    this.date = DayPilot.Date.today().addDays(1);
+  }
+
+  changeDate(date: DayPilot.Date): void {
+    this.configDay.startDate = date;
+    this.configWeek.startDate = date;
+    this.configMonth.startDate = date;
 
   }
 
@@ -142,15 +135,15 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   private loadEntretiens() {
-      this.entretiens.forEach((d: { dateDebut: any; dateFin: any; text: any; }) => {
-        let event = new DayPilot.Event({
-          start: d.dateDebut,
-          end: d.dateFin,
-          id: DayPilot.guid(),
-          text: d.text,
-        });
-        this.events.push(event.data)
+    this.entretiens.forEach((d: { dateDebut: any; dateFin: any; text: any; }) => {
+      let event = new DayPilot.Event({
+        start: d.dateDebut,
+        end: d.dateFin,
+        id: DayPilot.guid(),
+        text: d.text,
       });
-    }
+      this.events.push(event.data)
+    });
+  }
 }
 

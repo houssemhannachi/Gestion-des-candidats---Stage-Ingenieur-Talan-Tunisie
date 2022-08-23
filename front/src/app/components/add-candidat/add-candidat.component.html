@@ -12,55 +12,55 @@
 
           <div class="form-group">
             <label><b>Nom</b> *</label>
-            <input [(ngModel)]="candidat.nom" class="form-control" id="nom" name="nom"
-                   placeholder="Entrer le nom" #n="ngModel"
-                   type="text"
-                   required>
+            <input #n="ngModel" [(ngModel)]="candidat.nom" class="form-control" id="nom"
+                   name="nom" placeholder="Entrer le nom"
+                   required
+                   type="text">
           </div>
-          <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+          <div *ngIf="n.invalid && n.touched" class="alert alert-danger">
             le champ est obligatoire
           </div>
 
           <div class="form-group">
             <label><b>Prénom</b> *</label>
-            <input [(ngModel)]="candidat.prenom" class="form-control" id="prenom" name="prenom"
-                   placeholder="Entrer le prénom" #l="ngModel"
-                   type="text"
+            <input #l="ngModel" [(ngModel)]="candidat.prenom" class="form-control" id="prenom"
+                   name="prenom" pattern="[a-zA-Z]+"
+                   placeholder="Entrer le prénom"
                    required
-                   pattern="[a-zA-Z]+"
-                  >
+                   type="text"
+            >
           </div>
-          <div class="alert alert-danger" *ngIf="l.invalid && l.touched">
+          <div *ngIf="l.invalid && l.touched" class="alert alert-danger">
             le champ est obligatoire
           </div>
           <div class="form-group">
             <label><b>E-mail</b> * </label>
-            <input [(ngModel)]="candidat.email" class="form-control" id="email" name="email"
-                   placeholder="Entrer l'e-mail" #e="ngModel"
+            <input #e="ngModel" [(ngModel)]="candidat.email" class="form-control" id="email"
+                   name="email" pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}"
+                   placeholder="Entrer l'e-mail"
                    required
-                   pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}"
                    type="email">
           </div>
-          <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
+          <div *ngIf="e.invalid && e.touched" class="alert alert-danger">
             le champ doit respecter les conditions
           </div>
           <div class="form-group">
             <label><b>Numéro de téléphone</b> *</label>
-            <input [(ngModel)]="candidat.tel" class="form-control" id="tel" name="tel"
-                   placeholder="Entrer le numéro de téléphone" #t="ngModel"
-                   type="tel" required pattern="[0-9]{8}"
+            <input #t="ngModel" [(ngModel)]="candidat.tel" class="form-control" id="tel"
+                   name="tel" pattern="[0-9]{8}"
+                   placeholder="Entrer le numéro de téléphone" required type="tel"
             >
           </div>
-          <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+          <div *ngIf="t.invalid && t.touched" class="alert alert-danger">
             le champ doit respecter les conditions
           </div>
           <div class="form-group">
             <label><b>Date de naissance</b> *</label>
-            <input [(ngModel)]="candidat.dateNaissance" class="form-control" id="dateNaissance"
-                   name="dateNaissance" placeholder="Entrer la date de naissance"
-                   type="date" required #d="ngModel">
+            <input #d="ngModel" [(ngModel)]="candidat.dateNaissance" class="form-control"
+                   id="dateNaissance" name="dateNaissance"
+                   placeholder="Entrer la date de naissance" required type="date">
           </div>
-          <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+          <div *ngIf="d.invalid && d.touched" class="alert alert-danger">
             le champ est obligatoire
           </div>
           <div class="form-group">
@@ -74,7 +74,7 @@
           </div>
 
           <div class="form-group boutton">
-            <button class="btn btn-primary btn-block btnSubmit" type="submit" [disabled]="f.invalid">
+            <button [disabled]="f.invalid" class="btn btn-primary btn-block btnSubmit" type="submit">
               Ajouter
             </button>
           </div>

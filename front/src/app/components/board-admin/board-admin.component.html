@@ -4,12 +4,12 @@
       <div class="table-title">
         <div class="row">
           <div class="input-group">
-          <div class="col-xs-6">
-            <h2>Liste des employées</h2>
-          </div>
-          <div class="col">
-            <button class="btn btn-info" (click)="open()"><i class="bi bi-save"></i></button>
-          </div>
+            <div class="col-xs-6">
+              <h2>Liste des employées</h2>
+            </div>
+            <div class="col">
+              <button (click)="open()" class="btn btn-info"><i class="bi bi-save"></i></button>
+            </div>
           </div>
         </div>
 
@@ -32,16 +32,16 @@
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td>
-          <select class="form-select" [(ngModel)]="user.role.name"
-                  (ngModelChange)="user.role.id= check($event)">
-            <option  *ngFor="let i of roles" [value]="i.name"> {{i.role}}</option>
+          <select (ngModelChange)="user.role.id= check($event)" [(ngModel)]="user.role.name"
+                  class="form-select">
+            <option *ngFor="let i of roles" [value]="i.name"> {{i.role}}</option>
           </select>
         </td>
       </tr>
       </tbody>
     </table>
   </div>
-  <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+  <pagination-controls (pageChange)="page = $event" class="text-center"></pagination-controls>
 </div>
 
 

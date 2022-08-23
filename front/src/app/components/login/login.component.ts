@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../_services/auth.service';
-import { StorageService } from '../../_services/storage.service';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../_services/auth.service';
+import {StorageService} from '../../_services/storage.service';
 import {NgToastService} from "ng-angular-popup";
 
 @Component({
@@ -17,9 +17,10 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  role: string|undefined;
+  role: string | undefined;
 
-  constructor(private authService: AuthService,private storageService: StorageService, private toast:NgToastService) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private toast: NgToastService) {
+  }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { email, password } = this.form;
+    const {email, password} = this.form;
 
     this.authService.login(email, password).subscribe({
 
@@ -38,15 +39,19 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.role = this.storageService.getUser().role;
-        setTimeout( () => {
+        setTimeout(() => {
           this.reloadPage();
         }, 1400);
-        this.toast.success({detail:"Connecté avec succès",summary:"Bienvenue.",duration:5000});
+        this.toast.success({detail: "Connecté avec succès", summary: "Bienvenue.", duration: 5000});
 
 
       },
       error: err => {
-        this.toast.error({detail:'Veuillez vérifier votre adresse électronique et votre mot de passe.',summary:"",duration:5000})
+        this.toast.error({
+          detail: 'Veuillez vérifier votre adresse électronique et votre mot de passe.',
+          summary: "",
+          duration: 5000
+        })
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
@@ -54,7 +59,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  reloadPage(): void{
+  reloadPage(): void {
     window.location.reload();
   }
 }

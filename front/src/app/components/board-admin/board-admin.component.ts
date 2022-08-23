@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {UserService} from '../../_services/user.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import Swal from "sweetalert2";
@@ -11,20 +11,20 @@ import Swal from "sweetalert2";
 })
 export class BoardAdminComponent implements OnInit, OnChanges {
   content?: string;
-  public users: any=[];
-  totalLength :any;
-  page:number=1;
+  public users: any = [];
+  totalLength: any;
+  page: number = 1;
   public roles = [
     {id: 1, name: 'ROLE_MANAGER', role: 'Manager'},
     {id: 2, name: 'ROLE_RH', role: 'Ressources Huamines'},
     {id: 3, name: 'ROLE_ADMIN', role: 'Admin'}]
 
-  constructor(private userService: UserService, private router : Router , private route: ActivatedRoute) {
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-        throw new Error('Method not implemented.');
-    }
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit(): void {
     this.userService.getAdminBoard().subscribe({
@@ -46,25 +46,39 @@ export class BoardAdminComponent implements OnInit, OnChanges {
     });
     this.getUser();
   }
+
   getUser() {
     this.userService.getUser()
       .subscribe(
-      data=>{this.users=data;this.totalLength=this.users.length},
-      err=>{console.error(err)},
-      ()=>{console.log(this.totalLength)}
-
-    )
+        data => {
+          this.users = data;
+          this.totalLength = this.users.length
+        },
+        err => {
+          console.error(err)
+        },
+        () => {
+          console.log(this.totalLength)
+        }
+      )
 
   }
 
   save() {
-    this.userService.save(this.users).subscribe(result => this.gotoUserList());;
+    this.userService.save(this.users).subscribe(result => this.gotoUserList());
+
   }
-  check = function(role : String) : number {
-    if (role=="ROLE_MANAGER") { return 1 }
-    else if (role=="ROLE_RH") { return 2 }
-    else if (role=="ROLE_ADMIN") { return 3}
-    else { return 0 }
+
+  check = function (role: String): number {
+    if (role == "ROLE_MANAGER") {
+      return 1
+    } else if (role == "ROLE_RH") {
+      return 2
+    } else if (role == "ROLE_ADMIN") {
+      return 3
+    } else {
+      return 0
+    }
   }
 
 
@@ -85,14 +99,14 @@ export class BoardAdminComponent implements OnInit, OnChanges {
       if (result.value) {
         this.save()
         Swal.fire({
-          title: 'Enregistré!',
-          text:'Vos modifications ont été enregistrées.',
-          icon: 'success',
-          confirmButtonColor:'#435D7D',
-          timer: 2000,
-          showCancelButton: false,
-          showConfirmButton: false}
-
+            title: 'Enregistré!',
+            text: 'Vos modifications ont été enregistrées.',
+            icon: 'success',
+            confirmButtonColor: '#435D7D',
+            timer: 2000,
+            showCancelButton: false,
+            showConfirmButton: false
+          }
         )
       } else if (result.dismiss === Swal.DismissReason.cancel) {
 

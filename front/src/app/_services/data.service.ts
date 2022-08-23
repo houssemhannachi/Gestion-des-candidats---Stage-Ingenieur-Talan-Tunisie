@@ -6,11 +6,9 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class DataService {
 
-  events: any[] = [
-    
-  ];
+  events: any[] = [];
 
-  constructor(private http : HttpClient){
+  constructor(private http: HttpClient) {
   }
 
   getEvents(from: DayPilot.Date, to: DayPilot.Date): Observable<any[]> {

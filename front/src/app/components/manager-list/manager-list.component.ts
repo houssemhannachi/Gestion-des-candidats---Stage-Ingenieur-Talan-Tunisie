@@ -15,17 +15,17 @@ export class ManagerListComponent implements OnInit {
   totalLength: number = 0;
   p: number = 1;
   managers: any;
-  searchValue!:String;
-  key : string = 'name';
+  searchValue!: String;
+  key: string = 'name';
   reverse: boolean = false;
-  sort(key: any) {
-    this.key = key;
-    this.reverse = !this.reverse;
-  }
-
 
   constructor(private userService: UserService,
               private router: Router) {
+  }
+
+  sort(key: any) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class ManagerListComponent implements OnInit {
         this.totalLength = this.managers.length;
         console.log(this.totalLength)
       });
-    ;
+
   }
 
   create() {
@@ -98,7 +98,6 @@ export class ManagerListComponent implements OnInit {
       }
     })
   }
-
 
 
 }

@@ -1,8 +1,6 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { UserService } from '../../_services/user.service';
-import {AppRoutingModule} from "../../app-routing.module";
-import {AppComponent} from "../../app.component";
-import { CandidatService } from '../../_services/candidat.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../../_services/user.service';
+import {CandidatService} from '../../_services/candidat.service';
 import {DossierService} from "../../_services/dossier.service";
 
 
@@ -15,10 +13,12 @@ export class BoardRhComponent implements OnInit {
   content?: string;
   public count!: number;
   countCandidats: any;
-  countManagers:any;
-  countDossiers:any;
-  private totalLength: number|undefined;
-  constructor(private userService: UserService,private candidatService: CandidatService,private dossierService:DossierService) { }
+  countManagers: any;
+  countDossiers: any;
+  private totalLength: number | undefined;
+
+  constructor(private userService: UserService, private candidatService: CandidatService, private dossierService: DossierService) {
+  }
 
   ngOnInit(): void {
     this.userService.getRhBoard().subscribe({
@@ -43,11 +43,12 @@ export class BoardRhComponent implements OnInit {
     this.counterManagers()
   }
 
-   counterCandidats() {
+  counterCandidats() {
     this.candidatService.countCandidats().subscribe(data => {
       this.countCandidats = data;
     });
   }
+
   counterDossiers() {
     this.dossierService.countDossiers().subscribe(data => {
       this.countDossiers = data;
@@ -57,10 +58,10 @@ export class BoardRhComponent implements OnInit {
   counterManagers() {
     this.userService.getUsersByRole("ROLE_MANAGER")
       .subscribe(data => {
-        this.countManagers=data.length;
-      });;
-  }
+        this.countManagers = data.length;
+      });
 
+  }
 
 
 }
