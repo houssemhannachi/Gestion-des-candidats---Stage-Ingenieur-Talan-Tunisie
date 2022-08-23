@@ -16,6 +16,7 @@ export class CandidatDetailsComponent implements OnInit {
   candidat: any ;
   fileURL:any;
   fileInfos: any;
+  imageInfos:any;
   constructor(private candidatService: CandidatService,private route: ActivatedRoute, private uploadService:FileUploadService) { }
 
   ngOnInit(): void {
@@ -26,7 +27,10 @@ export class CandidatDetailsComponent implements OnInit {
       this.candidat = data;
       this.uploadService.getFile(this.candidat.fileDB.id).subscribe(file=>{
         this.fileInfos=file;
-        console.log(this.fileInfos)
+      });
+      this.uploadService.getImage(this.candidat.photo.id).subscribe(file=>{
+        this.imageInfos=file;
+        console.log(this.imageInfos)
       });
 
       });

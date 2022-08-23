@@ -43,6 +43,12 @@ export class AddCandidatComponent implements OnInit {
     this.candidat.fileDB={};
     this.candidat.fileDB.id=$event;
   }
+
+  setPhoto($event: any) {
+    this.candidat.photo={};
+    this.candidat.photo .id=$event;
+  }
+
 }
 
 

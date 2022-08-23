@@ -42,6 +42,7 @@ import { EntretienComponent } from './components/entretien/entretien.component';
 import {DayPilotModule} from "@daypilot/daypilot-lite-angular";
 import { DossierCandidatureListComponent } from './components/dossier-candidature-list/dossier-candidature-list.component';
 import { EntretienListComponent } from './components/entretien-list/entretien-list.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 
 
@@ -75,7 +76,8 @@ FullCalendarModule.registerPlugins([
     SearchPipe,
     EntretienComponent,
     DossierCandidatureListComponent,
-    EntretienListComponent
+    EntretienListComponent,
+    ImageUploadComponent
    ],
     imports: [
         BrowserModule,

@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private baseUrl = 'http://localhost:8093/api';
+  private baseUrl = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) {
   }
@@ -21,11 +21,25 @@ export class FileUploadService {
     return this.http.request(req);
   }
 
+  uploadImage(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `/server/api/uploadPhoto`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}/files`);
   }
 
   getFile(id:number): Observable<any> {
     return this.http.get(`${this.baseUrl}/files/${id}`);
+  }
+
+  getImage(id:number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/images/${id}`);
   }
 }

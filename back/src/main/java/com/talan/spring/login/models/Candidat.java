@@ -24,13 +24,16 @@ public class Candidat implements Serializable {
     private String email;
     private String mdp;
     private String tel;
-    private String photo;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance = new Date();
 
     @OneToOne()
     @JoinColumn(name = "file", referencedColumnName = "id")
     private FileDB fileDB;
+
+    @OneToOne()
+    @JoinColumn(name = "photo", referencedColumnName = "id")
+    private Photo photo;
 
 }
 
