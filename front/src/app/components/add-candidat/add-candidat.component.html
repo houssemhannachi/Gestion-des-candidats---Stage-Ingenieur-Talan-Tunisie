@@ -36,13 +36,13 @@
           <div class="form-group">
             <label><b>E-mail</b> * </label>
             <input #e="ngModel" [(ngModel)]="candidat.email" class="form-control" id="email"
-                   name="email" pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}"
+                   name="email" pattern="^[a-z0-9._%+-]+@[a-zA-Z0-9]+.[a-zA-Z0-9]{2,4}"
                    placeholder="Entrer l'e-mail"
                    required
                    type="email">
           </div>
           <div *ngIf="e.invalid && e.touched" class="alert alert-danger">
-            le champ doit respecter les conditions
+            Le champ doit respecter les conditions
           </div>
           <div class="form-group">
             <label><b>Numéro de téléphone</b> *</label>
@@ -52,7 +52,7 @@
             >
           </div>
           <div *ngIf="t.invalid && t.touched" class="alert alert-danger">
-            le champ doit respecter les conditions
+            Le champ doit respecter les conditions
           </div>
           <div class="form-group">
             <label><b>Date de naissance</b> *</label>

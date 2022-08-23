@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {DossierCandidature} from './_services/dossier.candidature';
+import {DossierCandidature} from '../_services/dossier.candidature';
 
 @Pipe({
   name: 'search'

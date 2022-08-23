@@ -1,0 +1,33 @@
+<section>
+  <div *ngIf="entretiens.length==0" class="alert alert-danger" role="alert">
+    Pas des entretiens!
+  </div>
+  <div class="container py-2">
+
+    <div class="navigator">
+      <daypilot-navigator #navigator (dateChange)="changeDate($event)" [(date)]="date"
+                          [config]="configNavigator" [events]="events"></daypilot-navigator>
+    </div>
+    <div class="content">
+      <div class="buttons">
+        <button (click)="viewDay()" [class]="this.configNavigator.selectMode == 'Day' ? 'selected' : ''" class="button">
+          Jour
+        </button>
+        <button (click)="viewWeek()" [class]="this.configNavigator.selectMode == 'Week' ? 'selected' : ''"
+                class="button">Semaine
+        </button>
+        <button (click)="viewMonth()" [class]="this.configNavigator.selectMode == 'Month' ? 'selected' : ''"
+                class="button">Mois
+        </button>
+
+      </div>
+
+      <daypilot-calendar #day [config]="configDay" [events]="events"></daypilot-calendar>
+      <daypilot-calendar #week [config]="configWeek" [events]="events"></daypilot-calendar>
+      <daypilot-month #month [config]="configMonth" [events]="events"></daypilot-month>
+    </div>
+  </div>
+
+
+</section>
+

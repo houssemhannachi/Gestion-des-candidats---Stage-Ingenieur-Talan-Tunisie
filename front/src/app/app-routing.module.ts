@@ -23,6 +23,7 @@ import {
   DossierCandidatureListComponent
 } from "./components/dossier-candidature-list/dossier-candidature-list.component";
 import {EntretienListComponent} from "./components/entretien-list/entretien-list.component";
+import {CalendarManagerComponent} from "./components/calendar-manager/calendar-manager.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -45,7 +46,8 @@ const routes: Routes = [
   {path: 'managerList', component: ManagerListComponent},
   {path: 'entretien/:id', component: EntretienComponent},
   {path: 'dossierCandidatureList', component: DossierCandidatureListComponent},
-  {path: 'entretienList', component: EntretienListComponent}
+  {path: 'entretienList', component: EntretienListComponent},
+  {path:'calendarManager/:id',component:CalendarManagerComponent}
 
 ];
 

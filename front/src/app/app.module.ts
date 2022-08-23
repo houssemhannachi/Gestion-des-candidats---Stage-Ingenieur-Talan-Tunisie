@@ -33,8 +33,8 @@ import {ManagerListComponent} from './components/manager-list/manager-list.compo
 import {AddCalendarComponent} from './components/add-calendar/add-calendar.component';
 import {FileUploadComponent} from './components/file-upload/file-upload.component';
 import {Ng2OrderModule} from 'ng2-order-pipe';
-import {SearchfilterPipe} from './searchfilter.pipe';
-import {SearchPipe} from './search.pipe';
+import {SearchfilterPipe} from './_pipes/searchfilter.pipe';
+import {SearchPipe} from './_pipes/search.pipe';
 import {EntretienComponent} from './components/entretien/entretien.component';
 import {DayPilotModule} from "@daypilot/daypilot-lite-angular";
 import {
@@ -42,6 +42,7 @@ import {
 } from './components/dossier-candidature-list/dossier-candidature-list.component';
 import {EntretienListComponent} from './components/entretien-list/entretien-list.component';
 import {ImageUploadComponent} from './components/image-upload/image-upload.component';
+import { CalendarManagerComponent } from './components/calendar-manager/calendar-manager.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -75,7 +76,8 @@ FullCalendarModule.registerPlugins([
     EntretienComponent,
     DossierCandidatureListComponent,
     EntretienListComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    CalendarManagerComponent
   ],
   imports: [
     BrowserModule,
