@@ -30,7 +30,7 @@
       <table *ngIf="totalLength" class="table" id="candidat-table">
         <thead>
         <tr>
-
+          <th></th>
           <th (click)="sort('nom')"> Nom <i class="bi bi-sort-down"></i></th>
           <th (click)="sort('prenom')">Prenom <i class="bi bi-sort-down"></i></th>
           <th (click)="sort('email')"> E-mail <i class="bi bi-sort-down"></i></th>
@@ -42,7 +42,7 @@
         <tbody>
         <tr
           *ngFor="let candidat of candidats|searchfilter:searchValue| orderBy: key: reverse  | paginate:{itemsPerPage:5,currentPage:p}">
-
+          <td *ngIf="candidat.image"><img src="{{candidat.image.url}}" style="width:50px"/></td>
           <td> {{ candidat.nom }} </td>
           <td> {{ candidat.prenom }} </td>
           <td> {{ candidat.email }} </td>
