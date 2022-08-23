@@ -10,27 +10,30 @@
           </div>
         </div>
       </div>
-
+      <br>
       <div class="input-group mb-3">
         <input [(ngModel)]="searchValue" class="form-control" id="search" placeholder="Chercher candidat - Nom Candidat"
-               type="text">
+               type="text"style=" border: 1px solid;
+               border-radius: 5px;">
 
         <br>
         <div class="input-group-prepend">
-          <button (click)="create()" class="btn btn-outline-info"
-                  style="float: right;margin-left: 10px;width:45px;height:40px"><i class="bi bi-plus-circle-fill"></i>
+          <button (click)="create()" class="btn btn-outline-success"
+                  style="float: right;margin-left: 10px;width:45px;height:40px; border: 1px solid;
+                  border-radius: 5px;"><i class="bi bi-plus-circle-fill"></i>
           </button>
           <button (click)="exportpdf()" class="btn btn-outline-secondary"
-                  style="float: right;margin-left: 10px;width:45px;height:40px">
+                  style="float: right;margin-left: 10px;width:45px;height:40px; border: 1px solid;
+                  border-radius: 5px;">
             <i class="bi bi-file-pdf-fill"></i>
           </button>
           <br> <br>
         </div>
-      </div>
+      </div><br>
       <table *ngIf="totalLength" class="table" id="candidat-table">
         <thead>
         <tr>
-          <th></th>
+          <th>Image <i class="bi bi-sort-down"></i></th>
           <th (click)="sort('nom')"> Nom <i class="bi bi-sort-down"></i></th>
           <th (click)="sort('prenom')">Prenom <i class="bi bi-sort-down"></i></th>
           <th (click)="sort('email')"> E-mail <i class="bi bi-sort-down"></i></th>

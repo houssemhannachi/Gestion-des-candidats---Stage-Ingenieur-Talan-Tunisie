@@ -7,25 +7,27 @@
             <h2>Liste des managers</h2>
           </div>
         </div>
-      </div>
+      </div><br>
       <div class="input-group mb-3">
         <input [(ngModel)]="searchValue" class="form-control" id="search" placeholder="Chercher manager - Nom Manager"
-               type="text">
+               type="text" style=" border: 1px solid;
+               border-radius: 5px;">
 
-        <br>
+        
         <div class="input-group-prepend">
           <button (click)="exportpdf()" class="btn btn-outline-secondary"
-                  style="float: right;margin-left: 10px;width:45px;height:40px">
+                  style="float: right;margin-left: 10px;width:45px;height:40px;border: 1px solid;
+                  border-radius: 5px;">
             <i class="bi bi-file-pdf-fill"></i>
           </button>
           <br> <br>
         </div>
-      </div>
+      </div><br>
       <table *ngIf="totalLength" class="table " id="manager-table">
         <thead>
         <tr>
-          <th (click)="sort('name')"> Nom et prénom</th>
-          <th> E-mail</th>
+          <th (click)="sort('name')"> Nom et prénom <i class="bi bi-sort-down"></i></th>
+          <th> E-mail <i class="bi bi-sort-down"></i></th>
           <th>Actions</th>
         </tr>
         </thead>

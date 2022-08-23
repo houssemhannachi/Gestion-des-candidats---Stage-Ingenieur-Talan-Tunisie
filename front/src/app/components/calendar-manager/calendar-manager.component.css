@@ -16,7 +16,7 @@
 }
 
 button {
-  background-color: #3c78d8;
+  background-color: #53a1b4;
   color: white;
   border: 0;
   padding: .5rem 1rem;
@@ -24,8 +24,24 @@ button {
   font-size: 14px;
   cursor: pointer;
   margin-right: 5px;
+  border: 1px solid;
+  border-radius: 5px;
 }
 
 button.selected {
-  background-color: #1c4587;
+  background-color: #0b5c70;
+}
+
+.table-title {
+  padding-bottom: 15px;
+  background: whitesmoke;
+  color: black;
+  padding: 16px 30px;
+  margin: 20px ;
+  border-radius: 3px 3px 0 0;
+}
+
+.table-title h2 {
+  margin: 5px 0 0;
+  font-size: 24px;
 }
