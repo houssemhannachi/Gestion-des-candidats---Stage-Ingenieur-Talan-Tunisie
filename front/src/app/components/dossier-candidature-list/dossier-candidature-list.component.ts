@@ -3,6 +3,9 @@ import {StorageService} from "../../_services/storage.service";
 import {DossierService} from "../../_services/dossier.service";
 import {EntretienService} from "../../_services/entretien.service";
 import {Router} from "@angular/router";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-dossier-candidature-list',
@@ -15,6 +18,8 @@ export class DossierCandidatureListComponent implements OnInit {
   currentUser?: any;
   totalLength: any;
   p: number | undefined;
+
+  fileName= 'listeDossiercandidature.xlsx';
   public entretiens: any = [];
 
   constructor(private router: Router,
@@ -35,10 +40,38 @@ export class DossierCandidatureListComponent implements OnInit {
 
   }
 
+  exportpdf(): void {
+    let DATA: any = document.getElementById('table2');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('liste dossier.pdf');
+    });
+  }
+
+  exportexcel(): void
+{
+  /* pass here the table id */
+  let element = document.getElementById('table2');
+  const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+  /* generate workbook and add the worksheet */
+  const wb: XLSX.WorkBook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+  /* save to file */  
+  XLSX.writeFile(wb, this.fileName);
+
+}
 
   accepter(id: any) {
     this.dossier = this.dossierService.getDossierById(id);
     this.dossier.statut = "Accepte"
+    this.dossier.statut.color="green";
     this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
   }
 
@@ -49,6 +82,7 @@ export class DossierCandidatureListComponent implements OnInit {
   refuser(id: any) {
     this.dossier = this.dossierService.getDossierById(id);
     this.dossier.statut = "Refuse"
+    this.dossier.statut.color="red";
     this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
   }
 

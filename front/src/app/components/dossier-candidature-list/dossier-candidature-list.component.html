@@ -9,7 +9,21 @@
         </div>
       </div>
       <br>
-      <table *ngIf="totalLength" class="table" id="table">
+      <div class="input-group-prepend" style="float: right;">
+        
+        <button (click)="exportpdf()" class="btn btn-outline-info"
+                style="float:right;margin-left:10px;width:45px;height:40px; border: 1px solid;
+                border-radius: 5px;"><i class="bi bi-file-pdf-fill"></i>
+        </button>
+        
+        <button (click)="exportexcel()" class="btn btn-outline-warning" 
+        style="margin-left: 10px;margin-right: 40px;border: 1px solid;border-radius: 5px;width:45px;height:40px;">
+          <i class="bi bi-filetype-xlsx"></i>
+       </button>
+
+      </div>
+      <br><br>
+      <table *ngIf="totalLength" class="table" id="table2">
         <thead>
         <tr>
           <th>Intitulé</th>
@@ -24,7 +38,7 @@
           <td> {{ dossier.intitule }} </td>
           <td>{{ dossier.candidat.nom}} {{dossier.candidat.prenom}}</td>
           <td> {{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</td>
-          <td><i class="{{checkstyle(dossier.statut) }}"></i> {{checkstatut(dossier.statut)}}</td>
+          <td style="color:green"><i class="{{checkstyle(dossier.statut) }}"></i> {{checkstatut(dossier.statut)}}</td>
         </tr>
         </tbody>
       </table>
