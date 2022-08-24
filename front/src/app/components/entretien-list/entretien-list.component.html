@@ -32,7 +32,7 @@
             <button (click)="accepter(entretien.id)" class="btn btn-outline-success" style="margin-left: 10px;">
               <i class="bi bi-check-square-fill"></i>
             </button>
-            <button (click)="refuser(entretien.id)" class="btn btn-outline-danger" style="margin-left: 10px;"><i
+            <button (click)="refuser(entretien)" class="btn btn-outline-danger" style="margin-left: 10px;"><i
               class="bi bi-x-square-fill"></i>
             </button>
 
@@ -42,7 +42,7 @@
         </tbody>
       </table>
       <div *ngIf="totalLength==0" class="alert alert-danger" role="alert">
-        Pas des entretiens!
+        Pas des entretiens à confirmer !
       </div>
     </div>
   </div>

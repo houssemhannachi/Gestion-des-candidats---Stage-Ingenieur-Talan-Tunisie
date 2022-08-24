@@ -26,8 +26,8 @@ export class EntretienService {
     return this.http.get<any>(`/server/api/entretien/getEntretien/${id}`)
   }
 
-  updateState(id: number | undefined, entretien: Entretien): Observable<Object> {
-    return this.http.put(`/server/api/entretien/updateState/${id}`, entretien);
+  updateState(id: number | undefined, newState: string): Observable<Object> {
+    return this.http.put(`/server/api/entretien/updateState/${id}`, newState);
   }
 
   getEntretienById(id: any|undefined):Observable<Object> {

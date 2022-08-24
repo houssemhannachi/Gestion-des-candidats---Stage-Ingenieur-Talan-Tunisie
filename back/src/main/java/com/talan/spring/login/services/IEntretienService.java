@@ -12,7 +12,7 @@ public interface IEntretienService {
 
     void deleteEntretien(int id);
 
-    void updateState(int id, Entretien e);
+    void updateState(int id, String newState);
 
     List<Entretien> getEntretienByIdDossier(int id);
 }

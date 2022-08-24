@@ -12,6 +12,8 @@ export class DossierDetailsComponent implements OnInit {
 
   id: number | undefined;
   dossier: any;
+  entretiens: any=[];
+  test: any;
 
   constructor(private dossierService: DossierService, private route: ActivatedRoute) {
   }
@@ -22,32 +24,12 @@ export class DossierDetailsComponent implements OnInit {
     this.dossier = new DossierCandidature();
     this.dossierService.getDossierById(this.id).subscribe(data => {
       this.dossier = data;
-      console.log(this.dossier)
+      this.dossier.entretiens.forEach((e:any)=>{
+        this.entretiens=this.entretiens.concat(e.state)
+      })
+      this.test = this.entretiens.includes('VALIDE');
     });
   }
 
-  checkstatut(statut: string): string {
-    if (statut == "En_attente") {
-      return "En attente";
-    } else if (statut == "En_cours") {
-      return "En cours"
-    } else if (statut == "Accepte") {
-      return "Accepté"
-    } else if (statut == "Refuse") {
-      return "Refusé"
-    } else {
-      return ""
-    }
-  }
-
-  checkstyle(statut: string): string {
-    if (statut == "En_attente") {
-      return "bi bi-pause-circle";
-    } else if ((statut == "En_cours")) {
-      return "bi bi-play"
-    } else {
-      return ""
-    }
-  }
 
 }

@@ -49,20 +49,18 @@ export class EntretienListComponent implements OnInit {
   }
 
 
-  accepter(id: any) {
-    this.e = this.entretienService.getEntretienById(id);
-    this.e.state = 'VALIDE';
-    this.entretienService.updateState(id, this.e).subscribe(result => this.listDossier());
+  accepter(entretien: any) {
+    entretien.state = 'VALIDE';
+    this.entretienService.updateState(entretien.id, entretien.state).subscribe(result => this.listDossier());
   }
 
   reloadPage(): void {
     window.location.reload();
   }
 
-  refuser(id: any) {
-    this.e = this.entretienService.getEntretienById(id);
-    this.e.state = 'REFUSE';
-    this.entretienService.updateState(id, this.e).subscribe(result => this.listDossier());
+  refuser(entretien: any) {
+    entretien.state = 'REFUSE';
+    this.entretienService.updateState(entretien.id, entretien.state).subscribe(result => this.listDossier());
   }
 
   private listDossier() {

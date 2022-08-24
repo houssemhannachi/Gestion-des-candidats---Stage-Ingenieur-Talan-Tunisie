@@ -133,6 +133,7 @@ export class DossierListComponent implements OnInit {
     this.DossierService.getList().subscribe(data => {
       this.dossiers = data;
       this.totalLength = data.length;
+      console.log(this.dossiers)
     });
 
 

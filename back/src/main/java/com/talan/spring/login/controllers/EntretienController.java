@@ -49,8 +49,8 @@ public class EntretienController {
     }
 
     @PutMapping("/updateState/{id}")
-    public void updateState(@PathVariable int id, @RequestBody Entretien e) {
-        entretienService.updateState(id, e);
+    public void updateState(@PathVariable int id, @RequestBody String newState) {
+        entretienService.updateState(id, newState);
     }
 
 }

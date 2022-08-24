@@ -12,6 +12,9 @@ public class EntretienServiceImpl implements IEntretienService {
 
     @Autowired
     EntretienRepository entretienRepository;
+    @Autowired
+    DossierCandidatureRepository dossierCandidatureRepository;
+
 
     @Override
     public Entretien addEntretien(Entretien entretien) {
@@ -29,10 +32,14 @@ public class EntretienServiceImpl implements IEntretienService {
     }
 
     @Override
-    public void updateState(int id, Entretien e) {
+    public void updateState(int id, String newState) {
         Entretien entretien = entretienRepository.findById(id).get();
-        entretien.setState(e.getState());
+        entretien.setState(EStateEntretien.valueOf(newState));
+        if (EStateEntretien.valueOf(newState).equals(EStateEntretien.REFUSE)) {
+            entretien.getDossierCandidature().setStatut(State.En_attente);
+        };
         entretienRepository.saveAndFlush(entretien);
+        dossierCandidatureRepository.save(entretien.getDossierCandidature());
     }
 
     @Override
