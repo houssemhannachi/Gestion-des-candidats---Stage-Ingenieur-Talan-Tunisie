@@ -77,8 +77,9 @@ export class CandidatListComponent implements OnInit {
       icon: 'error',
       showCancelButton: true,
       confirmButtonText: 'Confirmer',
-      confirmButtonColor: '#435D7D',
-      cancelButtonText: 'Annuler'
+      confirmButtonColor: '#006400',
+      cancelButtonText: 'Annuler',
+      cancelButtonColor:'#8B0000'
     }).then((result) => {
       if (result.value) {
         this.delete(id);

@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Entretien} from "./entretien";
 
-const API_URL = 'http://localhost:8080/api/entretien/';
+const API_URL = 'http://localhost:8093/api/entretien/';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})
