@@ -15,13 +15,13 @@
         <div id="progress-bar"></div>
         <ul id="progress-num">
           <li [ngClass]="{'active': dossier.statut=='En_attente'}" class="step" style="margin-right:60px">1</li>
-          <li [ngClass]="{'active': dossier.statut=='En_cours'}" class="step">2</li>
+          <li [ngClass]="{'active': dossier.statut=='En_cours'}"  class="step">2</li>
           <li [ngClass]="{'success':dossier.statut=='Accepte','error':dossier.statut=='Refuse'}" class="step">3</li>
         </ul>
       </div>
       <ul id="progress-details">
-        <li [ngClass]="{'bold': dossier.statut=='En_attente'}" class="step">En attente</li>
-        <li [ngClass]="{'bold': dossier.statut=='En_cours'}" class="step">En cours</li>
+        <li [ngClass]="{'bold': dossier.statut=='En_attente'}" class="step" style="margin-right:60px">En attente</li>
+        <li [ngClass]="{'bold': dossier.statut=='En_cours'}" class="step" >En cours</li>
         <li [ngClass]="{'bold': dossier.statut=='Accepte'||dossier.statut=='Refuse'}" class="step">Résultat <span
           *ngIf="dossier.statut=='Accepte'||dossier.statut=='Refuse'">: {{checkstatut(dossier.statut)}}</span></li>
       </ul>
