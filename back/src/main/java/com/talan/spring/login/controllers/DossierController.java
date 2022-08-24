@@ -58,4 +58,11 @@ public class DossierController {
     public List<DossierCandidature>  getDossier(@PathVariable long id) {
         return dossierService.getDossierCandidatureByManager(id);
     }
+
+    @PutMapping("/updateState/{id}")
+    public void updateState(@PathVariable int id, @RequestBody DossierCandidature d) {
+
+        dossierService.updateState(id, d);
+    }
+
 }

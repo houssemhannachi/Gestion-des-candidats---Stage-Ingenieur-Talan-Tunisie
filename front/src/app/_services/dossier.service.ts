@@ -39,4 +39,8 @@ export class DossierService {
   getDossierByManager(id: any): Observable<any> {
     return this.httpClient.get(`/server/api/dossier/getDossierByManager/${id}`);
   }
+
+  updateState(id: number | undefined, dossier: DossierCandidature): Observable<Object> {
+    return this.httpClient.put(`/server/api/dossier/updateState/${id}`, dossier);
+  }
 }

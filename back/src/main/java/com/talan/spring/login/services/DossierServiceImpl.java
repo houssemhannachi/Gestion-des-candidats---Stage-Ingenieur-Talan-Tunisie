@@ -42,6 +42,13 @@ public class DossierServiceImpl implements IDossierService {
     }
 
     @Override
+    public void updateState(int id, DossierCandidature d) {
+        DossierCandidature dossier = dossierCandidatureRepository.findById(id).get();
+        dossier.setStatut(d.getStatut());
+        dossierCandidatureRepository.saveAndFlush(dossier);
+    }
+
+    @Override
     public long count() {
         return dossierCandidatureRepository.count();
     }

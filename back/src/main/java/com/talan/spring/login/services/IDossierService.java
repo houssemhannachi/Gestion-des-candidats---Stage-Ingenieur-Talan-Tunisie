@@ -18,6 +18,8 @@ public interface IDossierService {
 
     void update(int id, DossierCandidature d);
 
+    void updateState(int id, DossierCandidature d);
+
     List<DossierCandidature> getDossierCandidatureByManager(long id);
     long count();
 }

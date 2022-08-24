@@ -52,7 +52,7 @@ export class EntretienListComponent implements OnInit {
   accepter(id: any) {
     this.dossier = this.dossierService.getDossierById(id);
     this.dossier.statut = "Accepte"
-    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
+    this.dossierService.updateState(id, this.dossier).subscribe(result => this.listDossier());
   }
 
   reloadPage(): void {
@@ -62,7 +62,7 @@ export class EntretienListComponent implements OnInit {
   refuser(id: any) {
     this.dossier = this.dossierService.getDossierById(id);
     this.dossier.statut = "Refuse"
-    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
+    this.dossierService.updateState(id, this.dossier).subscribe(result => this.listDossier());
   }
 
   private listDossier() {
