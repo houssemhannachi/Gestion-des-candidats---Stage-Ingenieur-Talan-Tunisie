@@ -13,7 +13,7 @@ import com.talan.spring.login.services.EmailService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200",allowedHeaders = "*")
 public class EmailController {
 
  @Autowired 

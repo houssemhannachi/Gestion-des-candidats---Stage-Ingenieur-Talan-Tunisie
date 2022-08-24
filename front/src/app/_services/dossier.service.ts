@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs';
 import {DossierCandidature} from './dossier.candidature';
+import {Email} from "./email";
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,8 @@ export class DossierService {
 
   updateState(id: number | undefined, dossier: DossierCandidature): Observable<Object> {
     return this.httpClient.put(`/server/api/dossier/updateState/${id}`, dossier);
+  }
+  mail(email:Email): Observable<any> {
+    return this.httpClient.post('server/api/sendMail',email);
   }
 }

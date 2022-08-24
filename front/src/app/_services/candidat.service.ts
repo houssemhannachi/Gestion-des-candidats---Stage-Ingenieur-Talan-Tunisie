@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import {Observable} from 'rxjs';
 import {Candidat} from './candidat';
+import {Email} from "./email";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})

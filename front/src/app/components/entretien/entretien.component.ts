@@ -139,6 +139,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
     this.dossier = new DossierCandidature();
     this.dossierService.getDossierById(this.id).subscribe(data => {
       this.dossier = data;
+      console.log(this.dossier)
     });
   }
 
@@ -182,7 +183,12 @@ export class EntretienComponent implements OnInit, AfterViewInit {
             showCancelButton: false,
             showConfirmButton: false
           }
+
         )
+        this.sendEmailCandidat();
+        this.sendEmailManager();
+
+
       } else if (result.dismiss === Swal.DismissReason.cancel) {
 
       }
@@ -194,6 +200,23 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       this.reloadPage();
     }, 10);
     this.router.navigate(['/dossier-details', this.dossier.idDossier]);
+  }
+
+  private sendEmailCandidat () {
+    this.dossierService.mail({
+      recipient:this.dossier.candidat.email,
+      msgBody:"You have a meeting.",
+      subject:this.dossier.intitule
+    }).subscribe((result => this.listEntretiens()));
+
+  }
+  private sendEmailManager() {
+    this.dossierService.mail({
+      recipient:this.dossier.user.email,
+      msgBody:"You have a meeting, please check your calendar.",
+      subject:this.dossier.intitule
+    }).subscribe((result => this.listEntretiens()));
+
   }
 
 }
