@@ -29,10 +29,10 @@
           <td>{{entretien.dossiers.candidat.nom}} {{entretien.dossiers.candidat.prenom}}</td>
           <td>
 
-            <button (click)="accepter(entretien.dossiers.idDossier)" class="btn btn-outline-success" style="margin-left: 10px;">
+            <button (click)="accepter(entretien.id)" class="btn btn-outline-success" style="margin-left: 10px;">
               <i class="bi bi-check-square-fill"></i>
             </button>
-            <button (click)="refuser(entretien.dossiers.idDossier)" class="btn btn-outline-danger" style="margin-left: 10px;"><i
+            <button (click)="refuser(entretien.id)" class="btn btn-outline-danger" style="margin-left: 10px;"><i
               class="bi bi-x-square-fill"></i>
             </button>
 

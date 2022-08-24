@@ -25,15 +25,27 @@ public class Entretien {
     @JoinColumn(name = "dossier", referencedColumnName = "idDossier")
     private DossierCandidature dossierCandidature;
 
+    @Enumerated(EnumType.STRING)
+    private EStateEntretien state;
 
-    public Entretien(String text, Date dateDebut, Date dateFin, DossierCandidature dossierCandidature) {
+
+    public Entretien(String text, Date dateDebut, Date dateFin, EStateEntretien state, DossierCandidature dossierCandidature) {
         this.text = text;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        this.state=state;
         this.dossierCandidature = dossierCandidature;
     }
 
     public Entretien() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getText() {
@@ -68,5 +80,11 @@ public class Entretien {
         this.dossierCandidature = dossierCandidature;
     }
 
+    public EStateEntretien getState() {
+        return state;
+    }
 
+    public void setState(EStateEntretien state) {
+        this.state = state;
+    }
 }

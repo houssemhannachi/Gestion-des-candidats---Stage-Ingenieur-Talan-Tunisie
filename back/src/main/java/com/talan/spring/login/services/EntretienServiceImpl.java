@@ -19,7 +19,24 @@ public class EntretienServiceImpl implements IEntretienService {
     }
 
     @Override
-    public List<Entretien> getEntretienById(int id) {
+    public Entretien getEntretienById(int id) {
+        return entretienRepository.findById(id).get();
+    }
+
+    @Override
+    public void deleteEntretien(int id) {
+        entretienRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateState(int id, Entretien e) {
+        Entretien entretien = entretienRepository.findById(id).get();
+        entretien.setState(e.getState());
+        entretienRepository.saveAndFlush(entretien);
+    }
+
+    @Override
+    public List<Entretien> getEntretienByIdDossier(int id) {
         return entretienRepository.findEntretienByDossierCandidature_IdDossier(id);
     }
 }

@@ -26,14 +26,31 @@ public class EntretienController {
         Entretien entretien = new Entretien(entretienDto.getData().getText(),
                 entretienDto.getData().getStart(),
                 entretienDto.getData().getEnd(),
+                entretienDto.getState(),
                 dossierCandidature);
         return entretienService.addEntretien(entretien);
     }
 
     @GetMapping("/getEntretien/{id}")
     @ResponseBody
-    public List<Entretien> getEntretienById(@PathVariable("id") int id) {
+    public List<Entretien> getEntretienByIdDossier(@PathVariable("id") int id) {
+        return entretienService.getEntretienByIdDossier(id);
+    }
+    @GetMapping("/getEntretienId/{id}")
+    @ResponseBody
+    public Entretien getEntretienById(@PathVariable("id") int id) {
         return entretienService.getEntretienById(id);
+    }
+
+    @DeleteMapping("/deleteEntretien/{id}")
+    public String deleteEntretienById(@PathVariable("id") int id) {
+        entretienService.deleteEntretien(id);
+        return "Deleted Successfully";
+    }
+
+    @PutMapping("/updateState/{id}")
+    public void updateState(@PathVariable int id, @RequestBody Entretien e) {
+        entretienService.updateState(id, e);
     }
 
 }

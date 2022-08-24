@@ -8,6 +8,11 @@ public interface IEntretienService {
 
     Entretien addEntretien(Entretien entretien);
 
-    List<Entretien> getEntretienById(int id);
+    Entretien getEntretienById(int id);
 
+    void deleteEntretien(int id);
+
+    void updateState(int id, Entretien e);
+
+    List<Entretien> getEntretienByIdDossier(int id);
 }

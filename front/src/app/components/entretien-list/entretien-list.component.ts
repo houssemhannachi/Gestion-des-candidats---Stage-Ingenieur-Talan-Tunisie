@@ -16,6 +16,7 @@ export class EntretienListComponent implements OnInit {
   totalLength: any;
   p: number | undefined;
   entretiens: any = [];
+  e: any;
 
   constructor(private router: Router,
               private storageService: StorageService,
@@ -29,19 +30,18 @@ export class EntretienListComponent implements OnInit {
         this.dossiers = data;
 
         this.dossiers.forEach(
-          ((d: { entretiens: any; idDossier: any; }) => {
+          ((d: any) => {
+
             d.entretiens.forEach(
-              (p: {
-                dossiers: { entretiens: any; idDossier: any };
-                entretiens: any;
-              }) => {
-                p.dossiers = d;
-                this.entretiens = this.entretiens.concat(p);
+              (e: any) => {
+                if (e.state == 'EN_ATTENTE') {
+                  e.dossiers = d;
+                  this.entretiens = this.entretiens.concat(e);
+                }}
+              )
               }
-            )
-          }));
+          ));
         this.totalLength = this.entretiens.length;
-        console.log(this.entretiens)
       },
       err => {
         console.error(err)
@@ -50,9 +50,9 @@ export class EntretienListComponent implements OnInit {
 
 
   accepter(id: any) {
-    this.dossier = this.dossierService.getDossierById(id);
-    this.dossier.statut = "Accepte"
-    this.dossierService.updateState(id, this.dossier).subscribe(result => this.listDossier());
+    this.e = this.entretienService.getEntretienById(id);
+    this.e.state = 'VALIDE';
+    this.entretienService.updateState(id, this.e).subscribe(result => this.listDossier());
   }
 
   reloadPage(): void {
@@ -60,16 +60,16 @@ export class EntretienListComponent implements OnInit {
   }
 
   refuser(id: any) {
-    this.dossier = this.dossierService.getDossierById(id);
-    this.dossier.statut = "Refuse"
-    this.dossierService.updateState(id, this.dossier).subscribe(result => this.listDossier());
+    this.e = this.entretienService.getEntretienById(id);
+    this.e.state = 'REFUSE';
+    this.entretienService.updateState(id, this.e).subscribe(result => this.listDossier());
   }
 
   private listDossier() {
     setTimeout(() => {
       this.reloadPage();
     }, 0);
-    this.router.navigate(['/dossierCandidatureList']);
+    this.router.navigate(['/entretienList']);
   }
 
 

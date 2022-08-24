@@ -41,25 +41,7 @@ export class CalendarComponent implements AfterViewInit {
   };
   configDay: DayPilot.CalendarConfig = {};
   configWeek: DayPilot.CalendarConfig = {
-    viewType: "Week",
-    onTimeRangeSelected: async (args) => {
-      const modal = await DayPilot.Modal.prompt("Ajouter un evenement:", "Event 1");
-      const dp = args.control;
-      dp.clearSelection();
-      if (!modal.result) {
-        return;
-      }
-      let event = new DayPilot.Event({
-        start: args.start,
-        end: args.end,
-        id: DayPilot.guid(),
-        text: modal.result,
-      })
-      dp.events.add(event);
-      this.entretien = new Entretien(this.dossier.idDossier, event.data);
-    }
-
-  };
+    viewType: "Week"};
   configMonth: DayPilot.MonthConfig = {};
 
   constructor(private ds: DataService, private dossierService: DossierService,
@@ -135,14 +117,15 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   private loadEntretiens() {
-    this.entretiens.forEach((d: { dateDebut: any; dateFin: any; text: any; }) => {
+    this.entretiens.forEach((d: any) => {
+      if(d.state=='VALIDE') {
       let event = new DayPilot.Event({
         start: d.dateDebut,
         end: d.dateFin,
         id: DayPilot.guid(),
         text: d.text,
       });
-      this.events.push(event.data)
+      this.events.push(event.data)}
     });
   }
 }

@@ -12,6 +12,7 @@ import {DossierCandidature} from "../../_services/dossier.candidature";
 import {EntretienService} from "../../_services/entretien.service";
 import {Entretien} from "../../_services/entretien";
 import Swal from "sweetalert2";
+import {StateEntretienEnum} from "../../enums/state.entretien.enum";
 
 @Component({
   selector: 'app-entretien',
@@ -55,7 +56,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
         text: modal.result,
       })
       dp.events.add(event);
-      this.entretien = new Entretien(this.dossier.idDossier, event.data);
+      this.entretien = new Entretien(this.dossier.idDossier, event.data,StateEntretienEnum.EN_ATTENTE);
     },
     contextMenu: new DayPilot.Menu({
       items: [
@@ -146,14 +147,16 @@ export class EntretienComponent implements OnInit, AfterViewInit {
   getEntretien() {
     this.id = this.route.snapshot.params['id'];
     this.entretienService.getEntretienByIdDossier(this.id).subscribe(data => {
-      data.forEach((d: { dateDebut: any; dateFin: any; text: any; }) => {
+      data.forEach((d: any) => {
+        if(d.state!='REFUSE') {
         let event = new DayPilot.Event({
           start: d.dateDebut,
           end: d.dateFin,
           id: DayPilot.guid(),
           text: d.text,
         });
-        this.events.push(event.data)
+
+        this.events.push(event.data)}
       });
     });
   }
@@ -186,8 +189,8 @@ export class EntretienComponent implements OnInit, AfterViewInit {
           }
 
         )
-        this.sendEmailCandidat();
-        this.sendEmailManager();
+        //this.sendEmailCandidat();
+        //this.sendEmailManager();
 
 
       } else if (result.dismiss === Swal.DismissReason.cancel) {
