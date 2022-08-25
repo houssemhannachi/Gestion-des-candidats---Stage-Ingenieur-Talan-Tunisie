@@ -8,5 +8,6 @@ export class DossierCandidature {
   candidat: any;
   user: any;
   description: any;
+  createdBy:any;
 
 }

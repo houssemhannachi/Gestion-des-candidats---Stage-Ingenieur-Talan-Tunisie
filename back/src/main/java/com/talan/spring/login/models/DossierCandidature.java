@@ -41,6 +41,10 @@ public class DossierCandidature implements Serializable {
     @OneToMany(mappedBy="dossierCandidature",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Entretien> entretiens;
 
+    @ManyToOne
+    @JoinColumn(name="created_by",referencedColumnName = "id")
+    private User createdBy;
+
     public DossierCandidature(int idDossier) {
         this.idDossier = idDossier;
     }

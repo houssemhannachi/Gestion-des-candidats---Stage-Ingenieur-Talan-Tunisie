@@ -4,6 +4,7 @@ import {DossierCandidature} from "../../_services/dossier.candidature";
 import {DossierService} from "../../_services/dossier.service";
 import {CandidatService} from "../../_services/candidat.service";
 import {UserService} from "../../_services/user.service";
+import {StorageService} from "../../_services/storage.service";
 
 
 @Component({
@@ -20,9 +21,10 @@ export class AddDossierComponent implements OnInit {
   managers: any;
   candidatsLength: any;
   managersLength: any;
+  currentUser: any;
 
 
-  constructor(private DossierService: DossierService, private router: Router, private candidatService: CandidatService, private userService: UserService) {
+  constructor(private storageService: StorageService, private DossierService: DossierService, private router: Router, private candidatService: CandidatService, private userService: UserService) {
   }
 
 
@@ -47,13 +49,13 @@ export class AddDossierComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.currentUser = this.storageService.getUser();
+    this.dossier.createdBy = {id: this.currentUser.id};
   }
 
 
   save() {
     this.DossierService.create(this.dossier).subscribe(data => {
-
         this.goToList();
       },
       error => console.log(error));
