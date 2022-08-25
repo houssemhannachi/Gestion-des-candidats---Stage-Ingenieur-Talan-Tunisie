@@ -60,23 +60,23 @@ export class EntretienListComponent implements OnInit {
     let dateDebut = this.datepipe.transform(entretien.dateDebut, 'MMM d, y, h:mm:ss a');
     if (typeof dateDebut === "string") {
       msgCandidat = msgCandidat.concat(
-        "\nMadame/Monsieur,",
-        "\nDossier : ",
+        "<h3>Madame/Monsieur,</h3>",
+        "<h2>Dossier : ",
         entretien.text, " ", entretien.dossiers.intitule,
-        "\nNous vous prions de bien vouloir vous rendre à : ",
+        "</h2><p> Nous vous prions de bien vouloir vous rendre à : ",
         dateDebut,
-        "\nCet entretien aura lieu avec Monsieur/Madame : ",
+        "<br>Cet entretien aura lieu avec Monsieur/Madame : ",
         entretien.dossiers.user.name,
-        "\nNous vous prions d'agréer nos respectueuses salutations.");
+        "<br>Nous vous prions d'agréer nos respectueuses salutations.</p>");
       msgManager = msgManager.concat(
-        "\nMadame/Monsieur,",
-        "\nDossier : ",
+        "<h3>Madame/Monsieur,</h3>",
+        "<p><br>Dossier : ",
         entretien.text, " ", entretien.dossiers.intitule,
-        "\nDate : ", dateDebut,
-        "\nCandidat : ",
+        "<br>Date : ", dateDebut,
+        "<br>Candidat : ",
         entretien.dossiers.candidat.nom,
         " ",
-        entretien.dossiers.candidat.prenom)
+        entretien.dossiers.candidat.prenom , "</p>")
     }
     this.entretienService.updateState(entretien.id, entretien.state).subscribe(result => this.listDossier());
     this.dossierService.mail({
@@ -100,11 +100,11 @@ export class EntretienListComponent implements OnInit {
     let dateDebut = this.datepipe.transform(entretien.dateDebut, 'MMM d, y, h:mm:ss a');
     if (typeof dateDebut === "string") {
       msgRH = msgRH.concat(
-        "\nMadame/Monsieur,",
-        "\nDossier : ", entretien.dossiers.intitule,
-        "\nManager :", entretien.dossiers.user.name,
-        "\nDate entretien refusé:", dateDebut,
-        "\nIl faut changer notre date d'entretien.")
+        "<h2>Madame/Monsieur,</h2>",
+        "<h3>Dossier : ", entretien.dossiers.intitule,
+        "</h3><p>Manager :", entretien.dossiers.user.name,
+        "<br>Date entretien refusé:", dateDebut,
+        "<br><span style='color: #6a1a21'>Il faut changer notre date d'entretien.</span></p>")
     }
     entretien.state = 'REFUSE';
     this.entretienService.updateState(entretien.id, entretien.state).subscribe(result => this.listDossier());

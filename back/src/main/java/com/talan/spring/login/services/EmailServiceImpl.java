@@ -1,11 +1,13 @@
 package com.talan.spring.login.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.*;
 import org.springframework.stereotype.Service;
 import com.talan.spring.login.models.EmailDetails;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+
+import javax.mail.internet.*;
 
 
 @Service
@@ -24,18 +26,18 @@ public class EmailServiceImpl implements EmailService {
 
      // Try block to check for exceptions
      try {
-
-         // Creating a simple mail message
-         SimpleMailMessage mailMessage = new SimpleMailMessage();
+         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+         mimeMessage.setContent(details.getMsgBody(), "text/html");
 
          // Setting up necessary details
-         mailMessage.setFrom(sender);
-         mailMessage.setTo(details.getRecipient());
-         mailMessage.setText(details.getMsgBody());
-         mailMessage.setSubject(details.getSubject());
+         helper.setFrom(sender);
+         helper.setTo(details.getRecipient());
+         helper.setText(details.getMsgBody(),true);
+         helper.setSubject(details.getSubject());
 
          // Sending the mail
-         javaMailSender.send(mailMessage);
+         javaMailSender.send(mimeMessage);
          return "Mail Sent Successfully...";
      }
 
