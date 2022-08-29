@@ -6,6 +6,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {DossierService} from "../../_services/dossier.service";
 import Swal from "sweetalert2";
+import Utils from "../../_utils/utils";
 
 @Component({
   selector: 'app-dossier-list',
@@ -16,14 +17,17 @@ export class DossierListComponent implements OnInit {
 
   dossiers: any;
   p: number = 1;
-  dateValidation: Date = new Date();
-  dateCreation: Date = new Date();
   searchValue!: String;
   totalLength: any;
   key: string = 'intitule';
   reverse: boolean = false;
+  ent: any = [];
+  state: any = [];
+  utils = new Utils();
+  status!:string;
 
   constructor(private DossierService: DossierService, private router: Router) {
+
   }
 
   ngOnInit(): void {
@@ -65,7 +69,7 @@ export class DossierListComponent implements OnInit {
       confirmButtonText: 'Confirmer',
       confirmButtonColor: '#006400',
       cancelButtonText: 'Annuler',
-      cancelButtonColor:'#8B0000'
+      cancelButtonColor: '#8B0000'
 
     }).then((result) => {
       if (result.value) {
@@ -101,44 +105,29 @@ export class DossierListComponent implements OnInit {
     });
   }
 
-  checkstyle(statut: string): string {
-    if (statut == "En_attente") {
-      return "bi bi-pause-circle";
-    } else if ((statut == "En_cours")) {
-      return "bi bi-play"
-    } else if (statut == "Accepte") {
-      return "bi bi-check2-circle"
-    } else if (statut == "Refuse") {
-      return "bi bi-x-circle-fill"
-    } else {
-      return ""
-    }
-  }
-
-  checkstatut(statut: string): string {
-    if (statut == "En_attente") {
-      return "En attente";
-    } else if (statut == "En_cours") {
-      return "En cours"
-    } else if (statut == "Accepte") {
-      return "Accepté"
-    } else if (statut == "Refuse") {
-      return "Refusé"
-    } else {
-      return ""
-    }
+  getValues() {
+    console.log(this.status)
   }
 
   private getdossier() {
     this.DossierService.getList().subscribe(data => {
       this.dossiers = data;
-      this.totalLength = data.length;
-      console.log(this.dossiers)
-    });
+      this.totalLength = data.length
+      this.dossiers.forEach(
+        (d: any) => {
+          d.etat = [];
+          d.entretiens.forEach(
+            (e: any) => {
+              d.etat = d.etat.concat(e.state)
+
+            }
+          )
+        }
+      )
+      ;
+    })
 
 
   }
-
-
 }
 

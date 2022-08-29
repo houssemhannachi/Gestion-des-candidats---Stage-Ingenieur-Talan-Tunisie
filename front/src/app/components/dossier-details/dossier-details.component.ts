@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DossierCandidature} from "../../_services/dossier.candidature";
 import {DossierService} from "../../_services/dossier.service";
+import Utils from "../../_utils/utils";
 
 @Component({
   selector: 'app-dossier-details',
@@ -16,7 +17,7 @@ export class DossierDetailsComponent implements OnInit {
   entretienValide: any;
   entretienAttente: any;
   test: any;
-
+  utils = new Utils();
   constructor(private dossierService: DossierService, private route: ActivatedRoute) {
   }
 
@@ -26,36 +27,9 @@ export class DossierDetailsComponent implements OnInit {
     this.dossier = new DossierCandidature();
     this.dossierService.getDossierById(this.id).subscribe(data => {
       this.dossier = data;
-      this.dossier.entretiens.forEach((e: any) => {
-        this.entretiens = this.entretiens.concat(e.state)
-      })
-      if (this.dossier.entretiens.length > 0) {
-        this.entretienAttente = "En attente";
-      }
-      this.test = this.entretiens.includes('VALIDE');
+      this.utils.checkstate(this.dossier)
 
-      if (this.entretiens.includes('VALIDE')) {
-        this.entretienValide = "Entretien planifié et validé"
-      } else if (this.entretiens.includes('EN_ATTENTE')) {
-        this.entretienValide = "En attente de validation de manager"
-      } else {
-        this.entretienValide = "En cours";
-      }
-      this.entretiens.forEach((e: any) => {
-        if (e == 'REFUSE') {
-          this.entretienAttente = "Proposition d'entretien refusé par le manager";
-        } else {
-          this.entretienAttente = "En attente";
-        }
-      })
-
-      if (this.dossier.entretiens.length == 0) {
-        this.entretienAttente = "Pas d'entretien planifié";
-      }
+  });
 
 
-    });
-  }
-
-
-}
+}}

@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as XLSX from 'xlsx';
+import Utils from "../../_utils/utils";
 
 @Component({
   selector: 'app-dossier-candidature-list',
@@ -18,14 +19,15 @@ export class DossierCandidatureListComponent implements OnInit {
   currentUser?: any;
   totalLength: any;
   p: number | undefined;
-
-  fileName= 'listeDossiercandidature.xlsx';
+  fileName = 'listeDossiercandidature.xlsx';
   public entretiens: any = [];
+  util = new Utils();
 
   constructor(private router: Router,
               private storageService: StorageService,
               private dossierService: DossierService,
-              private entretienService: EntretienService) {
+              private entretienService: EntretienService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -53,66 +55,25 @@ export class DossierCandidatureListComponent implements OnInit {
     });
   }
 
-  exportexcel(): void
-{
-  /* pass here the table id */
-  let element = document.getElementById('table2');
-  const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+  exportexcel(): void {
+    /* pass here the table id */
+    let element = document.getElementById('table2');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
-  /* generate workbook and add the worksheet */
-  const wb: XLSX.WorkBook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-  /* save to file */  
-  XLSX.writeFile(wb, this.fileName);
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
 
-}
-
-  accepter(id: any) {
-    this.dossier = this.dossierService.getDossierById(id);
-    this.dossier.statut = "Accepte"
-    this.dossier.statut.color="green";
-    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
   }
+
 
   reloadPage(): void {
     window.location.reload();
   }
 
-  refuser(id: any) {
-    this.dossier = this.dossierService.getDossierById(id);
-    this.dossier.statut = "Refuse"
-    this.dossier.statut.color="red";
-    this.dossierService.update(id, this.dossier).subscribe(result => this.listDossier());
-  }
-
-  checkstyle(statut: string): string {
-    if (statut == "En_attente") {
-      return "bi bi-pause-circle";
-    } else if ((statut == "En_cours")) {
-      return "bi bi-play"
-    } else if (statut == "Accepte") {
-      return "bi bi-check2-circle"
-    } else if (statut == "Refuse") {
-      return "bi bi-x-circle-fill"
-    } else {
-      return ""
-    }
-  }
-
-  checkstatut(statut: string): string {
-    if (statut == "En_attente") {
-      return "En attente";
-    } else if (statut == "En_cours") {
-      return "En cours"
-    } else if (statut == "Accepte") {
-      return "Accepté"
-    } else if (statut == "Refuse") {
-      return "Refusé"
-    } else {
-      return ""
-    }
-  }
 
   private listDossier() {
     setTimeout(() => {

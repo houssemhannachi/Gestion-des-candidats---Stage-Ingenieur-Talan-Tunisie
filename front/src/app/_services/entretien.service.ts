@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Entretien} from "../_entities/entretien";
 import {DossierCandidature} from "./dossier.candidature";
 
-const API_URL = 'http://localhost:8093/api/entretien/';
+const API_URL = 'http://localhost:8080/api/entretien/';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*'})

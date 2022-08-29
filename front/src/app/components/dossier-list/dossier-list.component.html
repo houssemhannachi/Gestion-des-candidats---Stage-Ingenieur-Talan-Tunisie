@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="    margin-left: -40px;">
   <div class="table-responsive">
     <div class="table-wrapper">
       <div class="table-title">
@@ -7,14 +7,18 @@
             <h2>Liste des dossiers de candidature</h2>
           </div>
         </div>
-      </div><br>
+      </div>
+      <br>
       <div class="input-group mb-3">
         <input [(ngModel)]="searchValue" class="form-control" id="search"
                placeholder="Chercher dossier - Intitulé de poste"
-               type="text"style="border: 1px solid;
-               border-radius: 5px;">
+               style="border: 1px solid;
+               border-radius: 5px;" type="text">
+        <input [(ngModel)]="status" class="form-control col-xl-5" id="status"
+               placeholder="Chercher dossier - Status"
+               style="border: 1px solid;
+               border-radius: 5px;" type="text">
 
-  
         <button (click)="create()" class="btn btn-outline-success"
                 style="margin-left: 10px;float: right;width:45px;height:40px;border: 1px solid;
                 border-radius: 5px;"><i class="bi bi-plus-circle-fill"></i>
@@ -25,8 +29,9 @@
           <i class="bi bi-file-pdf-fill"></i>
         </button>
 
-       
-      </div><br>
+
+      </div>
+      <br>
       <table *ngIf="totalLength" class="table" id="table">
         <thead>
         <tr>
@@ -48,7 +53,7 @@
           </td>
           <td> {{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</td>
           <td> {{ dossier.user.name}} </td>
-          <td><i class="{{checkstyle(dossier.statut)}}"></i> {{checkstatut(dossier.statut)}}</td>
+          <td><span class="{{utils.check(dossier).style}}">{{utils.check(dossier).etat}}</span></td>
 
           <td>
             <button (click)="update(dossier.idDossier)" class="btn btn-outline-warning"><i class="bi bi-pen-fill"></i>

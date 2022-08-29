@@ -81,9 +81,9 @@ export class EntretienListComponent implements OnInit {
         " ",
         entretien.dossiers.candidat.prenom , "</p>",
         "<b>Cordialement.</b>",
-        
+
         "<br><br><h2><span style='color:#5F9EA0'>RH Talan </h2></span><p>Talan Tunisie<br>10 rue de l'énergie solaire,<br>Impasse n°1 Cedex 2035 Charguia 1 Tunis</p>"
-        
+
         );
     }
     this.entretienService.updateState(entretien.id, entretien.state).subscribe(result => this.listDossier());
@@ -131,22 +131,4 @@ export class EntretienListComponent implements OnInit {
     this.router.navigate(['/entretienList']);
   }
 
-
-  private sendEmailCandidat() {
-    this.dossierService.mail({
-      recipient: this.dossier.candidat.email,
-      msgBody: "You have a meeting.",
-      subject: this.dossier.intitule
-    }).subscribe((result => this.listDossier()));
-
-  }
-
-  private sendEmailManager() {
-    this.dossierService.mail({
-      recipient: this.dossier.user.email,
-      msgBody: "You have a meeting, please check your calendar.",
-      subject: this.dossier.intitule
-    }).subscribe((result => this.listDossier()));
-
-  }
 }

@@ -49,3 +49,11 @@ table.table td a {
   outline: none !important;
   margin-left: 10px;
 }
+.state {
+  height: 10px;
+}
+
+ng-select {
+  border-color: rgb(0 74 158 / 89%) !important;
+  border-radius: 10px;
+}

@@ -20,13 +20,13 @@
         </ul>
       </div>
       <ul id="progress-details">
-        <li [ngClass]="{'bold': dossier.statut=='En_attente'}" class="step">{{entretienAttente}}</li>
-        <li [ngClass]="{'bold': dossier.statut=='En_cours'}" class="step">{{entretienValide}}</li>
+        <li [ngClass]="{'bold': dossier.statut=='En_attente'}" class="step">{{utils.entretienAttente}}</li>
+        <li [ngClass]="{'bold': dossier.statut=='En_cours'}" class="step">{{utils.entretienValide}}</li>
         <li class="step">Résultat</li>
       </ul>
     </div>
     <div class="row" style="justify-content:right; padding-right: 20px">
-      <button [disabled]="test" [ngClass]="{'disabled': test,'leBouton':!test} " routerLink="/entretien/{{dossier.idDossier}}"><i class="bi bi-alarm"></i> Planifier un
+      <button [disabled]="utils.test" [ngClass]="{'disabled': utils.test,'leBouton':!utils.test} " routerLink="/entretien/{{dossier.idDossier}}"><i class="bi bi-alarm"></i> Planifier un
         entretien</button>
     </div>
     <div class="row">

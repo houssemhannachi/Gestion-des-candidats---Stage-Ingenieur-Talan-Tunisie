@@ -23,6 +23,7 @@
     "@fullcalendar/daygrid": "^5.11.2",
     "@fullcalendar/interaction": "^5.11.2",
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
+    "@ng-select/ng-select": "^9.0.2",
     "@popperjs/core": "^2.11.5",
     "@syncfusion/ej2-angular-schedule": "^20.2.40",
     "@syncfusion/ej2-base": "^20.2.39",

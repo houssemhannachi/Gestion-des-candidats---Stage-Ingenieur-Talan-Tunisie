@@ -43,6 +43,7 @@ import {
 import {EntretienListComponent} from './components/entretien-list/entretien-list.component';
 import {ImageUploadComponent} from './components/image-upload/image-upload.component';
 import { CalendarManagerComponent } from './components/calendar-manager/calendar-manager.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 FullCalendarModule.registerPlugins([
@@ -79,23 +80,24 @@ FullCalendarModule.registerPlugins([
     ImageUploadComponent,
     CalendarManagerComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
 
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxPaginationModule,
-    FullCalendarModule,
-    NgToastModule,
-    CalendarModule,
-    //Ng2SearchPipeModule,
-    Ng2OrderModule,
-    DayPilotModule
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NgxPaginationModule,
+        FullCalendarModule,
+        NgToastModule,
+        CalendarModule,
+        //Ng2SearchPipeModule,
+        Ng2OrderModule,
+        DayPilotModule,
+        NgSelectModule
 
 
-  ],
+    ],
   providers: [
     CandidatService,
     httpInterceptorProviders],

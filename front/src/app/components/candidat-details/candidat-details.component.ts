@@ -4,6 +4,7 @@ import {CandidatService} from "../../_services/candidat.service";
 import {Candidat} from "../../_entities/candidat";
 import {FileUploadService} from "../../_services/file-upload.service";
 import {DossierService} from "../../_services/dossier.service";
+import Utils from "../../_utils/utils";
 
 @Component({
   selector: 'app-candidat-details',
@@ -18,7 +19,7 @@ export class CandidatDetailsComponent implements OnInit {
   fileInfos: any;
   imageInfos: any;
   dossier: any;
-
+  utils=new Utils();
   constructor(private dossierService: DossierService,
               private candidatService: CandidatService,
               private route: ActivatedRoute,
@@ -40,37 +41,21 @@ export class CandidatDetailsComponent implements OnInit {
       });
 
     });
-    this.dossierService.getDossierByCandidat(this.id).subscribe(data=>{
-      this.dossier=data;
-    })
+    this.dossierService.getDossierByCandidat(this.id).subscribe(data => {
+        this.dossier = data;
+        this.dossier.forEach(
+          (d: any) => {
+            d.etat = [];
+            d.entretiens.forEach(
+              (e: any) => {
+                d.etat = d.etat.concat(e.state)
+              }
+            )
+          }
+        )
 
-  }
+      }
+    )}
 
-  checkstyle(statut: string): string {
-    if (statut == "En_attente") {
-      return "bi bi-pause-circle";
-    } else if ((statut == "En_cours")) {
-      return "bi bi-play"
-    } else if (statut == "Accepte") {
-      return "bi bi-check2-circle"
-    } else if (statut == "Refuse") {
-      return "bi bi-x-circle-fill"
-    } else {
-      return ""
-    }
-  }
 
-  checkstatut(statut: string): string {
-    if (statut == "En_attente") {
-      return " En attente";
-    } else if (statut == "En_cours") {
-      return " En cours"
-    } else if (statut == "Accepte") {
-      return " Accepté"
-    } else if (statut == "Refuse") {
-      return " Refusé"
-    } else {
-      return ""
-    }
-  }
 }
