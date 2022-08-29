@@ -14,20 +14,20 @@
       <div id="progress">
         <div id="progress-bar"></div>
         <ul id="progress-num">
-          <li [ngClass]="{'active': dossier.statut=='En_attente'}" class="step" style="margin-right:60px">1</li>
+          <li [ngClass]="{'active': dossier.statut=='En_attente'}" class="step">1</li>
           <li [ngClass]="{'active': dossier.statut=='En_cours'}"  class="step">2</li>
           <li class="step">3</li>
         </ul>
       </div>
       <ul id="progress-details">
-        <li [ngClass]="{'bold': dossier.statut=='En_attente'}" class="step" style="margin-right:60px">En attente</li>
-        <li [ngClass]="{'bold': dossier.statut=='En_cours'}" class="step" >En cours</li>
+        <li [ngClass]="{'bold': dossier.statut=='En_attente'}" class="step">{{entretienAttente}}</li>
+        <li [ngClass]="{'bold': dossier.statut=='En_cours'}" class="step">{{entretienValide}}</li>
         <li class="step">Résultat</li>
       </ul>
     </div>
     <div class="row" style="justify-content:right; padding-right: 20px">
-      <a class="leBouton" routerLink="/entretien/{{dossier.idDossier}}"><i class="bi bi-alarm"></i> Planifier un
-        entretien</a>
+      <button [disabled]="test" [ngClass]="{'disabled': test,'leBouton':!test} " routerLink="/entretien/{{dossier.idDossier}}"><i class="bi bi-alarm"></i> Planifier un
+        entretien</button>
     </div>
     <div class="row">
 
@@ -95,9 +95,15 @@
                 <p class="text-muted mb-0">{{dossier.description}} </p>
               </div>
             </div>
-            <br>
-
-
+            <hr *ngIf="this.dossier.entretiens && this.dossier.entretiens.length==0">
+            <div class="row" *ngIf="this.dossier.entretiens && this.dossier.entretiens.length==0">
+              <div class="col-sm-3">
+                <p class="mb-0">Statut entretien</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">Pas d'entretien planifié</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
