@@ -47,4 +47,8 @@ export class DossierService {
   mail(email:Email): Observable<any> {
     return this.httpClient.post('server/api/sendMail',email);
   }
+
+  getDossierByCandidat(id: any): Observable<any> {
+    return this.httpClient.get(`/server/api/dossier/getDossierByCandidat/${id}`);
+  }
 }

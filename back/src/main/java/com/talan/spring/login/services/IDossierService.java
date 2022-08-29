@@ -22,4 +22,6 @@ public interface IDossierService {
 
     List<DossierCandidature> getDossierCandidatureByManager(long id);
     long count();
+
+    List<DossierCandidature> getDossierByCandidat(int id);
 }

@@ -53,6 +53,11 @@ public class DossierServiceImpl implements IDossierService {
         return dossierCandidatureRepository.count();
     }
 
+    @Override
+    public List<DossierCandidature> getDossierByCandidat(int id) {
+        return dossierCandidatureRepository.findDossierCandidatureByCandidat_IdCandidat(id);
+    }
+
 
     @Override
     public void deleteDossierCandidature(int id) {

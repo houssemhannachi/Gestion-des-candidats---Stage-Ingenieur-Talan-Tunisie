@@ -65,4 +65,9 @@ public class DossierController {
         dossierService.updateState(id, d);
     }
 
+    @GetMapping("/getDossierByCandidat/{id}")
+    public List<DossierCandidature> getDossierByCandidat(@PathVariable int id) {
+        return dossierService.getDossierByCandidat(id);
+    }
+
 }

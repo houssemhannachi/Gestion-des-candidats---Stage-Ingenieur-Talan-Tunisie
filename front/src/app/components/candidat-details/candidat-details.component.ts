@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {CandidatService} from "../../_services/candidat.service";
 import {Candidat} from "../../_services/candidat";
 import {FileUploadService} from "../../_services/file-upload.service";
+import {DossierService} from "../../_services/dossier.service";
 
 @Component({
   selector: 'app-candidat-details',
@@ -16,8 +17,12 @@ export class CandidatDetailsComponent implements OnInit {
   fileURL: any;
   fileInfos: any;
   imageInfos: any;
+  dossier: any;
 
-  constructor(private candidatService: CandidatService, private route: ActivatedRoute, private uploadService: FileUploadService) {
+  constructor(private dossierService: DossierService,
+              private candidatService: CandidatService,
+              private route: ActivatedRoute,
+              private uploadService: FileUploadService) {
   }
 
   ngOnInit(): void {
@@ -35,6 +40,37 @@ export class CandidatDetailsComponent implements OnInit {
       });
 
     });
+    this.dossierService.getDossierByCandidat(this.id).subscribe(data=>{
+      this.dossier=data;
+    })
 
+  }
+
+  checkstyle(statut: string): string {
+    if (statut == "En_attente") {
+      return "bi bi-pause-circle";
+    } else if ((statut == "En_cours")) {
+      return "bi bi-play"
+    } else if (statut == "Accepte") {
+      return "bi bi-check2-circle"
+    } else if (statut == "Refuse") {
+      return "bi bi-x-circle-fill"
+    } else {
+      return ""
+    }
+  }
+
+  checkstatut(statut: string): string {
+    if (statut == "En_attente") {
+      return " En attente";
+    } else if (statut == "En_cours") {
+      return " En cours"
+    } else if (statut == "Accepte") {
+      return " Accepté"
+    } else if (statut == "Refuse") {
+      return " Refusé"
+    } else {
+      return ""
+    }
   }
 }

@@ -68,13 +68,29 @@
                 <p class="mb-0"><i class="bi bi-filetype-pdf"></i></p>
               </div>
               <div *ngIf="fileInfos" class="col-sm-9">
-                <ul
-                  class="list-group list-group-flush"
-                >
-                  <li class="list-group-item">
-                    <a href="{{ fileInfos.url }}">{{ candidat.fileDB.name }}</a>
-                  </li>
+                <ul class="list-group list-group-flush">
+                  <a class="text-muted mb-0" href="{{ fileInfos.url }}">{{ candidat.fileDB.name }}</a>
                 </ul>
+              </div>
+            </div>
+            <hr>
+            <div *ngIf="dossier.length>0" class="row">
+
+              <div class="col-sm-3">
+                <p class="mb-0"><i class="bi bi-archive"></i></p>
+              </div>
+              <div class="col-sm-9">
+
+                <span><b>Dossiers de candidature :</b></span>
+                <div class="col-sm-11">
+                  <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item" *ngFor="let d of dossier" >
+                      <a class="text-muted mb-0" routerLink="/dossier-details/{{d.idDossier}}">{{d.intitule}}</a>
+                      : <i class="{{checkstyle(d.statut)}}"></i><span class="text-muted mb-0">{{checkstatut(d.statut)}}</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
