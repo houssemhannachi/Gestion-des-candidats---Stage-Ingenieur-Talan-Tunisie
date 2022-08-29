@@ -10,7 +10,7 @@ import {DossierService} from "../../_services/dossier.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DossierCandidature} from "../../_services/dossier.candidature";
 import {EntretienService} from "../../_services/entretien.service";
-import {Entretien} from "../../_services/entretien";
+import {Entretien} from "../../_entities/entretien";
 import Swal from "sweetalert2";
 import {StateEntretienEnum} from "../../enums/state.entretien.enum";
 

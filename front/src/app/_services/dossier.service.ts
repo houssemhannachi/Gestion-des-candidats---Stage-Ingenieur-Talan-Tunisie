@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs';
 import {DossierCandidature} from './dossier.candidature';
-import {Email} from "./email";
+import {Email} from "../_entities/email";
 
 @Injectable({
   providedIn: 'root'

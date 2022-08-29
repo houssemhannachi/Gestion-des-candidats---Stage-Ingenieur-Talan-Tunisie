@@ -6,7 +6,7 @@ import {
   DayPilotNavigatorComponent
 } from "@daypilot/daypilot-lite-angular";
 import {DataService} from "../../_services/data.service";
-import {Entretien} from "../../_services/entretien";
+import {Entretien} from "../../_entities/entretien";
 import {DossierService} from "../../_services/dossier.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EntretienService} from "../../_services/entretien.service";

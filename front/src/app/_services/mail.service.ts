@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { EmailDetails } from './EmailDetails';
+import {Email} from "../_entities/email";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,8 +19,8 @@ export class MailService {
 
   constructor(private http: HttpClient) { }
 
-  sendMessage(mailMessage: EmailDetails): Observable<EmailDetails> {
-    return this.http.post<EmailDetails>(this.sendMailUrl, mailMessage, httpOptions)
+  sendMessage(mailMessage: Email): Observable<Email> {
+    return this.http.post<Email>(this.sendMailUrl, mailMessage, httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Entretien} from "./entretien";
+import {Entretien} from "../_entities/entretien";
 import {DossierCandidature} from "./dossier.candidature";
 
 const API_URL = 'http://localhost:8093/api/entretien/';

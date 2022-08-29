@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CandidatService} from "../../_services/candidat.service";
-import {Candidat} from "../../_services/candidat";
+import {Candidat} from "../../_entities/candidat";
 import {FileUploadService} from "../../_services/file-upload.service";
 import {DossierService} from "../../_services/dossier.service";
 

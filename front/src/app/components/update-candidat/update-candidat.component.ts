@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Candidat} from "../../_services/candidat";
+import {Candidat} from "../../_entities/candidat";
 import {CandidatService} from "../../_services/candidat.service";
 
 

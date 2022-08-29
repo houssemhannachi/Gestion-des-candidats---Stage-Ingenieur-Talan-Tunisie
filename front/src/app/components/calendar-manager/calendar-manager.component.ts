@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewChild} from "@angular/core";
-import {Entretien} from "../../_services/entretien";
+import {Entretien} from "../../_entities/entretien";
 import {ActivatedRoute, Router} from "@angular/router";
 import {
   DayPilot,
