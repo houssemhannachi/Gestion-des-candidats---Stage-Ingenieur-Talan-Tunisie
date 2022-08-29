@@ -2,9 +2,11 @@ package com.talan.spring.login.controllers;
 
 
 import com.talan.spring.login.models.*;
+import com.talan.spring.login.payload.response.*;
 import com.talan.spring.login.repository.*;
 import com.talan.spring.login.services.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -18,7 +20,7 @@ public class CandidatController {
     @Autowired
     ICandidatService candidatService;
     @Autowired
-    CandidatRepository CandidatRepository;
+    CandidatRepository candidatRepository;
 
     @GetMapping("/getAllcandidat")
     @ResponseBody
@@ -28,8 +30,12 @@ public class CandidatController {
 
     @PostMapping("/Addcandidat")
     @ResponseBody
-    public Candidat ajouterCandidat(@RequestBody Candidat cdt) {
-        return candidatService.ajouterCandidat(cdt);
+    public ResponseEntity<?> ajouterCandidat(@RequestBody Candidat cdt) {
+        if (candidatRepository.existsCandidatByEmail(cdt.getEmail())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Erreur: Ce candidat existe déjà!"));
+        }
+        candidatService.ajouterCandidat(cdt);
+        return ResponseEntity.ok(new MessageResponse("Ce candidat est enregistré avec succès!"));
     }
 
 

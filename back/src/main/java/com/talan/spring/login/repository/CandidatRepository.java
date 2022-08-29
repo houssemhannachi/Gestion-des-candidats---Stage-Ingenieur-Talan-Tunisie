@@ -12,5 +12,7 @@ import java.util.*;
 public interface CandidatRepository extends JpaRepository<Candidat, Integer> {
     List<Candidat> findByNomContainingIgnoreCaseAndPrenomContainingIgnoreCase(String nom, String prenom);
 
+    Boolean existsCandidatByEmail(String email);
+
 
 }

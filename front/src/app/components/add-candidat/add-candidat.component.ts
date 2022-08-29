@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Candidat} from "../../_services/candidat";
 import {CandidatService} from "../../_services/candidat.service";
+import {NgToastService} from "ng-angular-popup";
 
 
 @Component({
@@ -13,9 +14,10 @@ export class AddCandidatComponent implements OnInit {
 
 
   candidat: Candidat = new Candidat();
+  errorMessage: any;
 
 
-  constructor(private candidatService: CandidatService, private router: Router) {
+  constructor(private candidatService: CandidatService, private router: Router,private toast: NgToastService) {
   }
 
   ngOnInit(): void {
@@ -25,7 +27,15 @@ export class AddCandidatComponent implements OnInit {
     this.candidatService.create(this.candidat).subscribe(data => {
         this.goToList();
       },
-      error => console.log(error));
+      error => {
+        this.toast.error({
+          detail: 'Ce candidat existe dèjà.',
+          summary: "",
+          duration: 5000
+        })
+        this.errorMessage = error.error.message;
+      }
+    );
   }
 
 

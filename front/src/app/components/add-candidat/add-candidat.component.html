@@ -78,7 +78,11 @@
               Ajouter
             </button>
           </div>
-
+          <div class="form-group ">
+            <div *ngIf="f.submitted" class="alert alert-danger text-center" role="alert">
+              {{ errorMessage }}
+            </div>
+          </div>
         </form>
       </div>
     </div>
