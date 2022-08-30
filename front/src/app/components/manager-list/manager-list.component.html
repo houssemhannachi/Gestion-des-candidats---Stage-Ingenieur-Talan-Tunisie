@@ -9,10 +9,9 @@
         </div>
       </div><br>
       <div class="input-group mb-3">
-        <input [(ngModel)]="searchValue" class="form-control" id="search" placeholder="Chercher manager - Nom Manager"
-               type="text" style=" border: 1px solid;
-               border-radius: 5px;">
-
+        
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" 
+        placeholder="Chercher un manager">
         
         <div class="input-group-prepend">
           <button (click)="exportpdf()" class="btn btn-outline-secondary"
@@ -33,7 +32,7 @@
         </thead>
         <tbody>
         <tr
-          *ngFor="let manager of managers|searchfilter:searchValue| orderBy: key: reverse | paginate:{itemsPerPage:5,currentPage:p}">
+          *ngFor="let manager of managers| filter:searchText | orderBy: key: reverse | paginate:{itemsPerPage:5,currentPage:p}">
 
           <td> {{ manager.name }} </td>
           <td> {{ manager.email }} </td>

@@ -5,7 +5,6 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-//import { CalendarModule, DateAdapter } from 'angular-calendar';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {HomeComponent} from './components/home/home.component';
@@ -44,6 +43,8 @@ import {EntretienListComponent} from './components/entretien-list/entretien-list
 import {ImageUploadComponent} from './components/image-upload/image-upload.component';
 import { CalendarManagerComponent } from './components/calendar-manager/calendar-manager.component';
 import {NgSelectModule} from "@ng-select/ng-select";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterSPipe } from './_pipes/filter-s.pipe';
 
 
 FullCalendarModule.registerPlugins([
@@ -78,7 +79,8 @@ FullCalendarModule.registerPlugins([
     DossierCandidatureListComponent,
     EntretienListComponent,
     ImageUploadComponent,
-    CalendarManagerComponent
+    CalendarManagerComponent,
+    FilterSPipe
   ],
     imports: [
         BrowserModule,
@@ -91,8 +93,8 @@ FullCalendarModule.registerPlugins([
         FullCalendarModule,
         NgToastModule,
         CalendarModule,
-        //Ng2SearchPipeModule,
         Ng2OrderModule,
+        Ng2SearchPipeModule,
         DayPilotModule,
         NgSelectModule
 

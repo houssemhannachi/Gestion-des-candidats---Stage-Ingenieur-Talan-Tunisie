@@ -15,9 +15,9 @@ export class ManagerListComponent implements OnInit {
   totalLength: number = 0;
   p: number = 1;
   managers: any;
-  searchValue!: String;
   key: string = 'name';
   reverse: boolean = false;
+  searchText:any;
 
   constructor(private userService: UserService,
               private router: Router) {

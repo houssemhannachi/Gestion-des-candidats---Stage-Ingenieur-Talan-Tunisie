@@ -18,13 +18,15 @@ export class DossierListComponent implements OnInit {
   dossiers: any;
   p: number = 1;
   searchValue!: String;
+  searchState!:String;
   totalLength: any;
-  key: string = 'intitule';
+  key: String = 'intitule';
   reverse: boolean = false;
   ent: any = [];
   state: any = [];
   utils = new Utils();
-  status!:string;
+  statut!:String;
+  
 
   constructor(private DossierService: DossierService, private router: Router) {
 
@@ -106,7 +108,7 @@ export class DossierListComponent implements OnInit {
   }
 
   getValues() {
-    console.log(this.status)
+    console.log(this.statut)
   }
 
   private getdossier() {

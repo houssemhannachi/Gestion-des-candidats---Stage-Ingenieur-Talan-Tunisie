@@ -14,7 +14,7 @@
                placeholder="Chercher dossier - Intitulé de poste"
                style="border: 1px solid;
                border-radius: 5px;" type="text">
-        <input [(ngModel)]="status" class="form-control col-xl-5" id="status"
+        <input [(ngModel)]="searchState" class="form-control col-xl-5" id="status"
                placeholder="Chercher dossier - Status"
                style="border: 1px solid;
                border-radius: 5px;" type="text">
@@ -45,7 +45,7 @@
         </thead>
         <tbody>
         <tr
-          *ngFor="let dossier of dossiers |search:searchValue| paginate:{itemsPerPage:5,currentPage:p} |orderBy: key: reverse ">
+          *ngFor="let dossier of dossiers |search:searchValue |filterS:searchState |paginate:{itemsPerPage:5,currentPage:p} |orderBy: key: reverse ">
 
           <td> {{ dossier.intitule }} </td>
           <td><a
