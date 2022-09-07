@@ -53,7 +53,7 @@
           </td>
           <td> {{ dossier.dateCreation | date: 'dd/MM/yyyy'}}</td>
           <td> {{ dossier.user.name}} </td>
-          <td><span class="{{utils.check(dossier).style}}">{{utils.check(dossier).etat}}</span></td>
+          <td ><span style="padding-top: 4px" class="{{utils.check(dossier).style}}">{{utils.check(dossier).etat}}</span></td>
 
           <td>
             <button (click)="update(dossier.idDossier)" class="btn btn-outline-warning"><i class="bi bi-pen-fill"></i>

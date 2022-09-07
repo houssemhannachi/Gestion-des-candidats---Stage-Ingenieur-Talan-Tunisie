@@ -57,6 +57,7 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       })
       dp.events.add(event);
       this.entretien = new Entretien(this.dossier.idDossier, event.data,StateEntretienEnum.EN_ATTENTE);
+      console.log(this.entretien)
     },
     contextMenu: new DayPilot.Menu({
       items: [
@@ -177,7 +178,8 @@ export class EntretienComponent implements OnInit, AfterViewInit {
       cancelButtonColor:'#8B0000'
     }).then((result) => {
       if (result.value) {
-        this.save()
+        this.save();
+        this.sendMail();
         Swal.fire({
             title: 'Enregistré!',
             text: 'Vos modifications ont été enregistrées.',
@@ -206,19 +208,21 @@ export class EntretienComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/dossier-details', this.dossier.idDossier]);
   }
 
-  private sendEmailCandidat () {
-    this.dossierService.mail({
-      recipient:this.dossier.candidat.email,
-      msgBody:"You have a meeting.",
-      subject:this.dossier.intitule
-    }).subscribe((result => this.listEntretiens()));
+  private sendMail () {
+    let msg: string = '';
+    msg = msg.concat("<h3>Bonjour ,</h3>",
+      "<p><b>Le dossier de candidature est :</b></p>","<br>",
+      this.dossier.intitule,
+      "<br><p><b>Date proposée pour l'entretien :</b> ", this.entretien?.data.start.value,
+      "<br>Selon votre disponibilité, prière d'accepter ou de refuser la date proposée.<br>",
+      "<b>Cordialement.</b>",
 
-  }
-  private sendEmailManager() {
+      "<br><br><h2><span style='color:#5F9EA0'>RH Talan </h2></span><p>Talan Tunisie<br>10 rue de l'énergie solaire,<br>Impasse n°1 Cedex 2035 Charguia 1 Tunis</p>"
+    )
     this.dossierService.mail({
       recipient:this.dossier.user.email,
-      msgBody:"You have a meeting, please check your calendar.",
-      subject:this.dossier.intitule
+      msgBody:msg,
+      subject:"Proposition d'une date d'entretien"
     }).subscribe((result => this.listEntretiens()));
 
   }

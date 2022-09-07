@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class MailService {
 
-  sendMailUrl = 'http://localhost:8093/api/sendMail';
+  sendMailUrl = 'http://localhost:8080/api/sendMail';
 
   constructor(private http: HttpClient) { }
 
